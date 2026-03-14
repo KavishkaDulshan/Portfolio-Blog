@@ -1,0 +1,65 @@
+const contacts = [
+  {
+    label: 'Email',
+    value: 'kavishkadulshan@email.com',
+    href: 'mailto:kavishkadulshan@email.com',
+    description: 'Best way to reach me for anything serious.',
+  },
+  {
+    label: 'GitHub',
+    value: 'github.com/kavishkadulshan',
+    href: 'https://github.com/kavishkadulshan',
+    description: 'Code, open source contributions, personal projects.',
+  },
+  {
+    label: 'LinkedIn',
+    value: 'linkedin.com/in/kavishkadulshan',
+    href: 'https://linkedin.com/in/kavishkadulshan',
+    description: 'Professional profile and connections.',
+  },
+  {
+    label: 'X / Twitter',
+    value: '@kavishkadulshan',
+    href: 'https://x.com/kavishkadulshan',
+    description: 'Thoughts, links, and occasional dev takes.',
+  },
+];
+
+export default function Contact() {
+  return (
+    <div className="max-w-2xl mx-auto px-6 sm:px-8 py-16">
+      {/* Header */}
+      <h1 className="font-serif text-3xl sm:text-4xl font-medium text-gray-900 mb-3">Contact</h1>
+      <p className="text-gray-600 text-sm mb-12">
+        I'm open to conversations about internships, collaboration, and interesting ideas.
+        Pick a channel that works for you.
+      </p>
+
+      {/* Contact list */}
+      <div className="divide-y divide-gray-200">
+        {contacts.map(({ label, value, href, description }) => (
+          <div key={label} className="py-6 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
+            <div>
+              <p className="text-xs uppercase tracking-widest text-gray-600 mb-1">{label}</p>
+              <p className="text-sm text-gray-600 leading-relaxed max-w-xs">{description}</p>
+            </div>
+            <a
+              href={href}
+              target={href.startsWith('mailto') ? undefined : '_blank'}
+              rel="noopener noreferrer"
+              className="text-sm font-medium text-gray-900 hover:underline underline-offset-2 whitespace-nowrap"
+            >
+              {value}
+            </a>
+          </div>
+        ))}
+      </div>
+
+      <div className="border-t border-gray-200 mt-4 pt-10">
+        <p className="text-sm text-gray-600">
+          I typically respond to emails within 1–2 days. For quick questions, X/Twitter DMs work too.
+        </p>
+      </div>
+    </div>
+  );
+}
