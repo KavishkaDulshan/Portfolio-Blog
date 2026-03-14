@@ -76,7 +76,11 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.2, delay: 0.6 }}
-            className="hidden lg:block h-[480px] rounded-2xl overflow-hidden border border-gray-100 bg-white"
+            className="hidden lg:block h-[480px] overflow-hidden bg-white"
+            style={{
+              maskImage: 'radial-gradient(ellipse 85% 85% at 50% 50%, black 50%, transparent 100%)',
+              WebkitMaskImage: 'radial-gradient(ellipse 85% 85% at 50% 50%, black 50%, transparent 100%)',
+            }}
           >
             <ParticleCanvas />
           </motion.div>

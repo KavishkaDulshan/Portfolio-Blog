@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  SiGithub, SiJavascript, SiReact, SiHtml5, SiCss,
+  SiGithub, SiJavascript, SiReact, 
   SiNodedotjs, SiTailwindcss, SiPython, SiGit,
   SiAndroidstudio, SiArduino, SiEspressif,
-  SiFlutter, SiDocker, SiPostman, SiMongodb, SiIntellijidea, SiSwagger, SiRaspberrypi, 
+  SiFlutter, SiDocker, SiPostman, SiMongodb, SiSwagger, SiRaspberrypi, 
 } from 'react-icons/si';
 
 const icons = [
@@ -17,14 +17,11 @@ const icons = [
   { Icon: SiPython,        label: 'Python' },
   { Icon: SiArduino,       label: 'Arduino' },
   { Icon: SiEspressif,     label: 'ESP32' },
-  { Icon: SiHtml5,         label: 'HTML5' },
-  { Icon: SiCss,           label: 'CSS3' },
   { Icon: SiGit,           label: 'Git' },
   { Icon: SiFlutter,       label: 'Flutter' },
   { Icon: SiDocker,        label: 'Docker' },
   { Icon: SiPostman,       label: 'Postman' },
   { Icon: SiMongodb,       label: 'MongoDB' },
-  { Icon: SiIntellijidea,  label: 'IntelliJ IDEA' },
   { Icon: SiSwagger,       label: 'Swagger' },
   { Icon: SiRaspberrypi,   label: 'Raspberry Pi' },
 
