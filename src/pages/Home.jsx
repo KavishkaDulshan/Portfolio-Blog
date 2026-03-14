@@ -6,6 +6,7 @@ import BlogCard from '../components/BlogCard';
 import ProjectCard from '../components/ProjectCard';
 import TechStack from '../components/TechStack';
 import FadeIn from '../components/FadeIn';
+import ParticleCanvas from '../components/ParticleCanvas';
 
 // Stagger variants for hero text lines
 const heroVariants = {
@@ -26,46 +27,60 @@ export default function Home() {
 
       {/* ── Hero ── */}
       <section className="max-w-5xl mx-auto px-6 sm:px-8 pt-20 pb-8 sm:pt-28 sm:pb-10">
-        <motion.div variants={heroVariants} initial="hidden" animate="show">
-          <motion.p variants={heroItem}
-            className="text-xs uppercase tracking-widest text-gray-600 mb-4 font-sans"
-          >
-            Software Engineering Undergraduate
-          </motion.p>
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
-          <motion.h1 variants={heroItem}
-            className="font-serif text-4xl sm:text-5xl md:text-6xl font-medium text-gray-900 leading-tight tracking-tight mb-6"
-          >
-            Hi, I'm Kavishka<br />Dulshan.
-          </motion.h1>
-
-          <motion.p variants={heroItem}
-            className="text-base sm:text-lg text-gray-500 leading-relaxed max-w-xl mb-10"
-          >
-            I build software, write about what I learn, and share projects I care about.
-            This is my corner of the internet — read the blog, explore the work.
-          </motion.p>
-
-          <motion.div variants={heroItem} className="flex flex-wrap gap-3">
-            <Link
-              to="/blog"
-              className="inline-flex items-center gap-2 rounded-full bg-gray-900 text-white px-5 py-2.5 text-sm font-medium hover:bg-gray-700 transition-colors"
+          {/* Left — text content */}
+          <motion.div variants={heroVariants} initial="hidden" animate="show">
+            <motion.p variants={heroItem}
+              className="text-xs uppercase tracking-widest text-gray-600 mb-4 font-sans"
             >
-              Read the blog
-            </Link>
-            <Link
-              to="/projects"
-              className="inline-flex items-center gap-2 rounded-full border border-gray-300 text-gray-700 px-5 py-2.5 text-sm font-medium hover:border-gray-900 hover:text-gray-900 transition-colors"
+              Software Engineering Undergraduate
+            </motion.p>
+
+            <motion.h1 variants={heroItem}
+              className="font-serif text-4xl sm:text-5xl md:text-6xl font-medium text-gray-900 leading-tight tracking-tight mb-6"
             >
-              View projects
-            </Link>
+              Hi, I'm Kavishka<br />Dulshan.
+            </motion.h1>
+
+            <motion.p variants={heroItem}
+              className="text-base sm:text-lg text-gray-500 leading-relaxed max-w-xl mb-10"
+            >
+              I build software, write about what I learn, and share projects I care about.
+              This is my corner of the internet — read the blog, explore the work.
+            </motion.p>
+
+            <motion.div variants={heroItem} className="flex flex-wrap gap-3">
+              <Link
+                to="/blog"
+                className="inline-flex items-center gap-2 rounded-full bg-gray-900 text-white px-5 py-2.5 text-sm font-medium hover:bg-gray-700 transition-colors"
+              >
+                Read the blog
+              </Link>
+              <Link
+                to="/projects"
+                className="inline-flex items-center gap-2 rounded-full border border-gray-300 text-gray-700 px-5 py-2.5 text-sm font-medium hover:border-gray-900 hover:text-gray-900 transition-colors"
+              >
+                View projects
+              </Link>
+            </motion.div>
+
+            {/* Tech stack icon row */}
+            <motion.div variants={heroItem}>
+              <TechStack />
+            </motion.div>
           </motion.div>
 
-          {/* ── Tech stack icon row ── */}
-          <motion.div variants={heroItem}>
-            <TechStack />
+          {/* Right — interactive particle animation (desktop only) */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.2, delay: 0.6 }}
+            className="hidden lg:block h-[480px] rounded-2xl overflow-hidden border border-gray-100 bg-white"
+          >
+            <ParticleCanvas />
           </motion.div>
-        </motion.div>
+        </div>
       </section>
 
       <div className="border-t border-gray-200" />
