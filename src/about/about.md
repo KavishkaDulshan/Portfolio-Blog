@@ -21,6 +21,8 @@ skills:
     items: ["Node.js", "Express", "REST APIs", "Spring Boot"]
   - category: "Tools & Platforms"
     items: ["Git & GitHub", "Linux", "Docker", "Figma", "VS Code"]
+  - category: ["AI Tools"]
+    items: ["Gemini", "Perplexity", "Claude", "Chat GPT", "Ollama", "LLM Studio"]
 
 certificates:
   - title: "Responsive Web Design"

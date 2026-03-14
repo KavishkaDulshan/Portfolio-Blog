@@ -4,7 +4,7 @@ import { useEffect, useRef, useCallback } from 'react';
 const N            = 240;
 const DOT_R        = 1.4;
 const PERSP        = 400;
-const ORB_R_FACTOR = 0.25;
+const ORB_R_FACTOR = 0.3;
 const REPEL_R      = 310;
 const REPEL_STR    = 25;
 const ROT_SPD_Y    = (Math.PI * 2) / 12000; // full rotation in 12 s
