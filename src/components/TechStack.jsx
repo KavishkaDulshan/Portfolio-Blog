@@ -4,7 +4,7 @@ import {
   SiGithub, SiJavascript, SiReact, 
   SiNodedotjs, SiTailwindcss, SiPython, SiGit,
   SiAndroidstudio, SiArduino, SiEspressif,
-  SiFlutter, SiDocker, SiPostman, SiMongodb, SiSwagger, SiRaspberrypi, SiLinux
+  SiFlutter, SiDocker, SiPostman, SiMongodb, SiRaspberrypi, SiLinux, SiGithubcopilot,
 } from 'react-icons/si';
 
 const icons = [
@@ -21,7 +21,7 @@ const icons = [
   { Icon: SiDocker,        label: 'Docker' },
   { Icon: SiPostman,       label: 'Postman' },
   { Icon: SiMongodb,       label: 'MongoDB' },
-  { Icon: SiSwagger,       label: 'Swagger' },
+  { Icon: SiGithubcopilot, label: 'GitHub Copilot' },
   { Icon: SiRaspberrypi,   label: 'Raspberry Pi' },
   { Icon: SiLinux,         label: 'Linux' },
 

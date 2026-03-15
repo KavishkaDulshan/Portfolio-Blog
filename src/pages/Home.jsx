@@ -46,8 +46,7 @@ export default function Home() {
             <motion.p variants={heroItem}
               className="text-base sm:text-lg text-gray-500 leading-relaxed max-w-xl mb-10"
             >
-              I build software, write about what I learn, and share projects I care about.
-              This is my corner of the internet — read the blog, explore the work.
+              I build software, tinker with IoT, write about what I learn, and share projects I care about. This is my corner of the internet. Read the blog, explore the work.
             </motion.p>
 
             <motion.div variants={heroItem} className="flex flex-wrap gap-3">
