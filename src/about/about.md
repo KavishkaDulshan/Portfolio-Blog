@@ -41,13 +41,16 @@ certificates:
     issuer: "EF Standard English Test (EF SET) "
     date: "June 2024"
     url: "https://cert.efset.org/TFXzQA"
+  - title: "From Relational Model (SQL) to MongoDB's Document Model"
+    issuer: "MongoDB "
+    date: "March 2026"
+    url: "https://www.credly.com/badges/fe81fcba-e640-4713-b1ce-2cefe612d7a6/public_url"
 
 currently:
   - "Studying Software Engineering at university"
   - "Building this portfolio and writing about what I learn"
   - "Open to internship and research opportunities"
 ---
-
 Hi, I'm **Kavishka Dulshan**. I am a Software Engineering undergraduate at NSBM Green University, a full stack developer, and an IoT enthusiast.
 
 Driven by an eagerness to understand exactly how things work, I specialize in the intersection of web application development, computer security, and connected devices. My strong grasp of software engineering fundamentals allows me to build clean, reliable systems across the entire stack.
