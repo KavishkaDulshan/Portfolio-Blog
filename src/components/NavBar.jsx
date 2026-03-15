@@ -24,7 +24,7 @@ export default function NavBar() {
 
           {/* Logo */}
           <Link to="/" className="text-base font-semibold tracking-tight text-gray-900">
-            kavish<span className="text-gray-400">.</span>dev
+            alCatraZ<span className="text-gray-400">.</span>dev
           </Link>
 
           {/* Desktop links */}

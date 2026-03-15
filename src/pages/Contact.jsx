@@ -3,27 +3,21 @@ import FadeIn from '../components/FadeIn';
 const contacts = [
   {
     label: 'Email',
-    value: 'kavishkadulshan@email.com',
-    href: 'mailto:kavishkadulshan@email.com',
+    value: 'kavishkadulshan2@gmail.com',
+    href: 'mailto:kavishkadulshan2@gmail.com',
     description: 'Best way to reach me for anything serious.',
   },
   {
     label: 'GitHub',
-    value: 'github.com/kavishkadulshan',
-    href: 'https://github.com/kavishkadulshan',
-    description: 'Code, open source contributions, personal projects.',
+    value: 'https://github.com/KavishkaDulshan',
+    href: 'https://github.com/KavishkaDulshan',
+    description: 'Code, contributions, personal projects.',
   },
   {
     label: 'LinkedIn',
-    value: 'linkedin.com/in/kavishkadulshan',
-    href: 'https://linkedin.com/in/kavishkadulshan',
+    value: 'https://www.linkedin.com/in/kavishka-dulshan/',
+    href: 'https://www.linkedin.com/in/kavishka-dulshan/',
     description: 'Professional profile and connections.',
-  },
-  {
-    label: 'X / Twitter',
-    value: '@kavishkadulshan',
-    href: 'https://x.com/kavishkadulshan',
-    description: 'Thoughts, links, and occasional dev takes.',
   },
 ];
 
@@ -63,7 +57,7 @@ export default function Contact() {
       <FadeIn delay={0.3}>
         <div className="border-t border-gray-200 mt-4 pt-10">
           <p className="text-sm text-gray-600">
-            I typically respond to emails within 1–2 days. For quick questions, X/Twitter DMs work too.
+            I typically respond to emails within 1–2 days. For quick questions, LinkedIn DMs work too.
           </p>
         </div>
       </FadeIn>
