@@ -4,21 +4,15 @@ import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
 import 'highlight.js/styles/github.css';
 import { getProjectBySlug } from '../utils/getProjects';
+import ImageGallery from '../components/ImageGallery';
 
-// Renders ![alt](src "title") — if a title is present it renders as a visible caption.
+// Renders ![alt](src "title") with optional caption
 function ImageWithCaption({ src, alt, title }) {
   return (
     <figure className="my-8">
-      <img
-        src={src}
-        alt={alt}
-        title={title}
-        className="rounded-xl shadow-sm w-full"
-      />
+      <img src={src} alt={alt} title={title} className="rounded-xl shadow-sm w-full" />
       {title && (
-        <figcaption className="mt-2 text-center text-sm text-gray-600 italic">
-          {title}
-        </figcaption>
+        <figcaption className="mt-2 text-center text-sm text-gray-600 italic">{title}</figcaption>
       )}
     </figure>
   );
@@ -26,13 +20,59 @@ function ImageWithCaption({ src, alt, title }) {
 
 const mdComponents = { img: ImageWithCaption };
 
+// Detect direct video files vs embed URLs
+function isDirectVideo(url = '') {
+  return /\.(mp4|webm|ogg|mov)(\?.*)?$/i.test(url);
+}
+
+// Inline video — <video> for direct files, <iframe> for embeds
+function InlineVideo({ src }) {
+  if (!src) return null;
+
+  if (isDirectVideo(src)) {
+    return (
+      <div className="rounded-xl overflow-hidden border border-gray-200 bg-gray-50 my-8">
+        <video
+          src={src}
+          controls
+          className="w-full block max-h-[480px]"
+          playsInline
+        />
+      </div>
+    );
+  }
+
+  return (
+    <div className="rounded-xl overflow-hidden border border-gray-200 aspect-video my-8">
+      <iframe
+        src={src}
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+        className="w-full h-full block"
+        title="Demo video"
+      />
+    </div>
+  );
+}
+
 export default function ProjectPost() {
   const { slug } = useParams();
   const project = getProjectBySlug(slug);
 
   if (!project) return <Navigate to="/projects" replace />;
 
-  const { title, excerpt, tags = [], github, demo, coverImage, body } = project;
+  const {
+    title,
+    excerpt,
+    tags = [],
+    github,
+    demo,
+    demoVideo,
+    inlineVideo,
+    coverImage,
+    gallery,
+    body,
+  } = project;
 
   return (
     <div className="max-w-2xl mx-auto px-6 sm:px-8 py-16">
@@ -95,13 +135,32 @@ export default function ProjectPost() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-gray-300 text-gray-700 px-4 py-2 text-sm font-medium hover:border-gray-900 hover:text-gray-900 transition-colors"
             >
-              Live demo →
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+              </svg>
+              Live demo
+            </a>
+          )}
+          {demoVideo && (
+            <a
+              href={demoVideo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-gray-300 text-gray-700 px-4 py-2 text-sm font-medium hover:border-gray-900 hover:text-gray-900 transition-colors"
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 010 1.972l-11.54 6.347a1.125 1.125 0 01-1.667-.986V5.653z" />
+              </svg>
+              Watch demo video
             </a>
           )}
         </div>
       </header>
 
       <div className="border-t border-gray-200 my-8" />
+
+      {/* Inline video — embedded player for short/medium videos */}
+      {inlineVideo && <InlineVideo src={inlineVideo} />}
 
       {/* Body */}
       <div
@@ -124,6 +183,9 @@ export default function ProjectPost() {
           {body}
         </ReactMarkdown>
       </div>
+
+      {/* Image gallery */}
+      {gallery?.length > 0 && <ImageGallery images={gallery} />}
     </div>
   );
 }

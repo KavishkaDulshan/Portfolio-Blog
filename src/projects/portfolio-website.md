@@ -5,6 +5,21 @@ excerpt: "A blog-first personal portfolio built with React, Vite, and Tailwind C
 tags: ["react", "vite", "tailwind", "markdown"]
 github: "https://github.com/kavishkadulshan/portfolio"
 coverImage: "https://picsum.photos/seed/portfolio-cover/1200/630"
+# demo: "https://yourapp.netlify.app"          — shows "Live demo" button
+# demoVideo: "https://drive.google.com/..."    — shows "Watch demo video" button (opens in new tab)
+# inlineVideo: "https://www.youtube.com/embed/VIDEOID"  — embeds a player on the page
+# inlineVideo: "/videos/demo.mp4"              — OR a local .mp4 file in public/videos/
+gallery:
+  - src: "https://picsum.photos/seed/port-ss1/1200/675"
+    caption: "Home page — hero section"
+  - src: "https://picsum.photos/seed/port-ss2/1200/675"
+    caption: "Blog listing page"
+  - src: "https://picsum.photos/seed/port-ss3/1200/675"
+    caption: "Blog post reader"
+  - src: "https://picsum.photos/seed/port-ss4/1200/675"
+    caption: "Projects page"
+  - src: "https://picsum.photos/seed/port-ss5/1200/675"
+  - src: "https://picsum.photos/seed/port-ss6/1200/675"
 ---
 
 ## Overview
