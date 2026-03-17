@@ -10,7 +10,7 @@ coverImage: "/images/projects/rms-inventory-dashboard.png"
 ---
 ## Overview
 
-As part of a university group project, I was responsible for designing and developing the **Inventory Management Module** for a comprehensive Restaurant Management System (RMS). The goal was to move away from manual tracking and provide restaurant managers with a data-driven way to monitor stock levels, record daily usage, and minimize food waste.
+As part of a university group project of Development Enterprises Applications module, I was responsible for designing and developing the **Inventory Management Module** for a comprehensive Restaurant Management System (RMS). The goal was to move away from manual tracking and provide restaurant managers with a data-driven way to monitor stock levels, record daily usage, and minimize food waste.
 
 This module acts as the "backbone" of the restaurant's operations, ensuring that the kitchen never runs out of essential ingredients while providing financial transparency regarding ingredient costs and usage history.
 
