@@ -7,8 +7,8 @@ tags: ["python", "kivy", "rest-api"]
 github: "https://github.com/KavishkaDulshan/Weather-Tracking-App.git"
 coverImage: "/images/projects/weather-app-cover.png"
 gallery: 
-  - "/images/projects/ProjectGallery/image.png"
-  - "/images/projects/ProjectGallery/image1.png"
+  - "/images/projects/Gallery/WeatherApp/image.png"
+  - "/images/projects/Gallery/WeatherApp/image1.png"
 ---
 ## Overview
 
