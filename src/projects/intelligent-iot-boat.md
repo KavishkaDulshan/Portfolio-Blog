@@ -6,7 +6,14 @@ description: "An autonomous-ready IoT vessel designed for aquatic waste collecti
 tags: ["IoT", "Raspberry Pi", "ESP32", "Environmental Tech", "Robotics", "Python"]
 github: "https://github.com/KavishkaDulshan/WIFI-Remote-Controller"
 excerpt: "Cleaning our waters using IoT: A multi-tier robotic system that bridges high-level navigation with low-level hardware actuation."
-coverImage: "/images/projects/iot-boat-v2.png"
+coverImage: "/images/projects/Gallery/boat/image2.png"
+gallery:
+  - /images/projects/Gallery/boat/image.png
+  - /images/projects/Gallery/boat/image2.png
+  - /images/projects/Gallery/boat/image3.png
+  - /images/projects/Gallery/boat/image4.png
+  - /images/projects/Gallery/boat/image5.png
+  - /images/projects/Gallery/boat/image1.png
 ---
 ## Overview
 
