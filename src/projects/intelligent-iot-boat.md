@@ -55,7 +55,7 @@ The ESP32 acts as the "Nervous System," handling low-level timing:
 | **Actuation**  | L298N Motor Driver, MG996R Servos, DC Motors |
 | **Networking** | UDP over WiFi, UART Serial Bridge            |
 
-## Lessons from the Bench (Hardware Engineering)
+Lessons from the Bench (Hardware Engineering)
 
 This project was a deep dive into the realities of IoT hardware. One of the most significant lessons came from the **"burning of electronic components."** During the prototyping phase, I learned firsthand about the critical importance of:
 
@@ -66,7 +66,3 @@ This project was a deep dive into the realities of IoT hardware. One of the most
 ## Future Intelligent Navigation
 
 With the Raspberry Pi 3B+ already integrated as the bridge, the next phase involves deploying a lightweight **TensorFlow Lite** model. This will enable the boat to distinguish between natural obstacles (like rocks) and target waste (like plastic bottles), making the collection process truly autonomous.
-
----
-
-**Do you have more technical specs for the collection arm, or should we move on to formatting your next project?**
