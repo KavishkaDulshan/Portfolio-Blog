@@ -1,7 +1,7 @@
 ---
 title: "The Coffee Shop"
 slug: "the-coffee-shop"
-date: "2025-02-03" # Please update with the correct date/month you completed this
+date: "2025-02-03"
 excerpt: "A full-stack coffee shop website featuring a customer-facing frontend and an admin panel, built during my first year of university."
 tags: ["php", "mysql", "html", "css", "university-project"]
 github: "https://github.com/kavishkadulshan/the-coffee-shop-"
