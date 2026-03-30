@@ -26,7 +26,7 @@ export default function Home() {
     <div className="bg-white">
 
       {/* ── Hero ── */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 pt-20 pb-8 sm:pt-28 sm:pb-10">
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 pt-10 pb-8 sm:pt-14 sm:pb-10">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
           {/* Left — text content */}
