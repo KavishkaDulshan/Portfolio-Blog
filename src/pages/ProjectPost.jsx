@@ -1,10 +1,14 @@
 import { useParams, Link, Navigate } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
 import 'highlight.js/styles/github.css';
+import mermaid from 'mermaid';
 import { getProjectBySlug } from '../utils/getProjects';
 import ImageGallery from '../components/ImageGallery';
+
+mermaid.initialize({ startOnLoad: true, theme: 'default' });
 
 // Renders ![alt](src "title") with optional caption
 function ImageWithCaption({ src, alt, title }) {
@@ -18,7 +22,150 @@ function ImageWithCaption({ src, alt, title }) {
   );
 }
 
-const mdComponents = { img: ImageWithCaption };
+// Renders mermaid diagrams with fullscreen option
+function MermaidBlock({ code }) {
+  const ref = useRef(null);
+  const [svg, setSvg] = useState('');
+  const [error, setError] = useState('');
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [scale, setScale] = useState(1);
+  const diagramId = useRef(`mermaid-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`);
+
+  useEffect(() => {
+    if (!code || !code.trim()) {
+      setError('No diagram code provided');
+      return;
+    }
+
+    const renderDiagram = async () => {
+      try {
+        const trimmedCode = code.trim();
+        console.log('Rendering mermaid:', trimmedCode.substring(0, 100));
+        const { svg: mermaidSvg } = await mermaid.render(diagramId.current, trimmedCode);
+        setSvg(mermaidSvg);
+        setError('');
+      } catch (err) {
+        console.error('Mermaid render error:', err);
+        setError(`Failed to render diagram: ${err.message}`);
+      }
+    };
+    renderDiagram();
+  }, [code]);
+
+  if (error) {
+    return (
+      <div className="my-8 p-4 bg-red-50 border border-red-200 rounded text-red-700 text-sm">
+        {error}
+      </div>
+    );
+  }
+
+  const DiagramContent = () => (
+    <div 
+      className="w-full flex justify-center items-start p-4" 
+      style={{ transform: `scale(${scale})`, transformOrigin: 'top center', transition: 'transform 0.2s' }}
+      dangerouslySetInnerHTML={{ __html: svg }} 
+    />
+  );
+
+  return (
+    <>
+      <div ref={ref} className="my-8 flex flex-col gap-3">
+        <div className="flex gap-2 justify-between items-center">
+          <div className="flex gap-2">
+            <button
+              onClick={() => setScale(Math.max(0.5, scale - 0.2))}
+              className="px-3 py-1 text-sm bg-gray-200 hover:bg-gray-300 rounded transition-colors"
+              title="Zoom out"
+            >
+              −
+            </button>
+            <span className="px-3 py-1 text-sm bg-gray-100 rounded min-w-[60px] text-center">
+              {Math.round(scale * 100)}%
+            </span>
+            <button
+              onClick={() => setScale(Math.min(2, scale + 0.2))}
+              className="px-3 py-1 text-sm bg-gray-200 hover:bg-gray-300 rounded transition-colors"
+              title="Zoom in"
+            >
+              +
+            </button>
+          </div>
+          <button
+            onClick={() => setIsFullscreen(true)}
+            className="px-4 py-1 text-sm bg-gray-900 text-white hover:bg-gray-700 rounded transition-colors"
+          >
+            Fullscreen
+          </button>
+        </div>
+        <div className="overflow-auto bg-white rounded-lg border border-gray-200 max-h-[600px]">
+          {svg ? <DiagramContent /> : <div className="text-gray-500 py-12 text-center">Rendering diagram...</div>}
+        </div>
+      </div>
+
+      {isFullscreen && (
+        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg w-full h-full max-w-7xl max-h-screen flex flex-col">
+            <div className="flex justify-between items-center p-4 border-b border-gray-200">
+              <h3 className="font-semibold text-lg">Architecture Diagram</h3>
+              <div className="flex gap-3 items-center">
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => setScale(Math.max(0.5, scale - 0.2))}
+                    className="px-3 py-1 text-sm bg-gray-200 hover:bg-gray-300 rounded transition-colors"
+                    title="Zoom out"
+                  >
+                    −
+                  </button>
+                  <span className="px-3 py-1 text-sm bg-gray-100 rounded min-w-[60px] text-center">
+                    {Math.round(scale * 100)}%
+                  </span>
+                  <button
+                    onClick={() => setScale(Math.min(2, scale + 0.2))}
+                    className="px-3 py-1 text-sm bg-gray-200 hover:bg-gray-300 rounded transition-colors"
+                    title="Zoom in"
+                  >
+                    +
+                  </button>
+                </div>
+                <button
+                  onClick={() => setIsFullscreen(false)}
+                  className="px-4 py-1 text-sm bg-gray-900 text-white hover:bg-gray-700 rounded transition-colors"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+            <div className="flex-1 overflow-auto flex items-start justify-center p-4">
+              <DiagramContent />
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
+const mdComponents = {
+  img: ImageWithCaption,
+  code: ({ inline, className, children }) => {
+    const match = className?.match(/language-([\w-]+)/);
+    const language = match?.[1];
+    
+    // Extract text content from children
+    const codeText = Array.isArray(children)
+      ? children.map(child => typeof child === 'string' ? child : child?.props?.children || '').join('')
+      : typeof children === 'string'
+        ? children
+        : String(children);
+
+    if (language === 'mermaid' && !inline) {
+      return <MermaidBlock code={codeText} />;
+    }
+    
+    return <code className={className}>{children}</code>;
+  },
+};
 
 // Detect direct video files vs embed URLs
 function isDirectVideo(url = '') {
