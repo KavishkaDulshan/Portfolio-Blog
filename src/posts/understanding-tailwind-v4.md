@@ -3,9 +3,8 @@ title: "What's New in Tailwind CSS v4"
 date: "2025-03-01"
 excerpt: "Tailwind v4 drops the config file and moves everything into CSS. Here's what changed and why it's better."
 tags: ["tailwind", "css", "tooling"]
-coverImage: "https://picsum.photos/seed/tailwind-cover/1200/630"
+coverImage: "/images/blog/post2/image.png"
 ---
-
 Tailwind CSS v4 is a ground-up rewrite. The changes feel radical at first, but they make a lot of sense once you understand what the team was going for.
 
 ## No more `tailwind.config.js`
@@ -99,20 +98,22 @@ You can reference these in custom CSS:
 
 The new engine is built in Rust (via the Oxide engine) and is significantly faster:
 
-| Operation | v3 | v4 |
-|-----------|----|----|
+
+| Operation    | v3      | v4     |
+| ------------ | ------- | ------ |
 | Full rebuild | ~1200ms | ~105ms |
-| Incremental | ~180ms | ~4ms |
+| Incremental  | ~180ms  | ~4ms   |
 
 These numbers are from the Tailwind team's benchmarks on a large project.
 
 ## Summary
 
-| v3 | v4 |
-|----|----|
-| `tailwind.config.js` | `@theme` in CSS |
-| PostCSS plugin | Native Vite plugin |
-| `@tailwind base/components/utilities` | `@import "tailwindcss"` |
-| JS-only tokens | CSS variables everywhere |
+
+| v3                                    | v4                       |
+| ------------------------------------- | ------------------------ |
+| `tailwind.config.js`                  | `@theme` in CSS          |
+| PostCSS plugin                        | Native Vite plugin       |
+| `@tailwind base/components/utilities` | `@import "tailwindcss"`  |
+| JS-only tokens                        | CSS variables everywhere |
 
 The migration from v3 to v4 takes some effort, but new projects should start with v4 from day one.

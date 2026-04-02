@@ -3,9 +3,8 @@ title: "Getting Started with React: A Practical Guide"
 date: "2025-03-10"
 excerpt: "React can feel overwhelming at first. Here's how I approach learning it — starting with the mental model, not the syntax."
 tags: ["react", "javascript", "beginners"]
-coverImage: "https://picsum.photos/seed/react-cover/1200/630"
+coverImage: "/images/blog/post1/image.png"
 ---
-
 React is a JavaScript library for building user interfaces. If you've been putting off learning it, this is the guide I wish existed when I started.
 
 ## The core idea
@@ -67,6 +66,7 @@ function Counter() {
 ```
 
 Key rules:
+
 - Never mutate state directly (`state.value = x` is wrong)
 - Always use the setter function (`setState(newValue)`)
 - State updates trigger a re-render
@@ -95,6 +95,7 @@ function UserProfile({ userId }) {
 ## Thinking in components
 
 When you look at a UI, ask:
+
 1. What are the data needs?
 2. What can change over time? → that's state
 3. Where does each piece of state live? → the lowest common ancestor component
@@ -103,12 +104,13 @@ When you look at a UI, ask:
 
 Once you're comfortable with components, state, and effects, explore:
 
-| Topic | Why it matters |
-|-------|---------------|
-| React Router | Multi-page navigation |
-| Tailwind CSS | Fast, utility-first styling |
-| React Query | Server state management |
-| TypeScript | Type safety for large projects |
+
+| Topic        | Why it matters                 |
+| ------------ | ------------------------------ |
+| React Router | Multi-page navigation          |
+| Tailwind CSS | Fast, utility-first styling    |
+| React Query  | Server state management        |
+| TypeScript   | Type safety for large projects |
 
 ---
 
