@@ -1,15 +1,15 @@
 ---
-title: "ViralChat: Real-Time Encrypted Messaging Platform" 
-slug: "viralchat-realtime-messaging" date: "2026-03-31" 
+title: "BlinkChat: Real-Time Encrypted Messaging Platform" 
+slug: "blinkchat-realtime-messaging" date: "2026-03-31" 
 excerpt: "A cross-platform chat application featuring Socket.io real-time communication, MFA security, and automated Azure deployments." 
 description: "Comprehensive documentation for ViralChat, an actively developed full-stack messaging platform utilizing Flutter, Node.js, MongoDB, and Docker." 
 tags: ["Flutter", "Node.js", "Socket.io", "MongoDB", "Docker", "Azure", "GitHub Actions"] 
 github: "https://github.com/kavishkadulshan/chat-app-client" 
-coverImage: "/images/projects/viralchat-cover.png"
+coverImage: "/images/projects/Gallery/blinkchat/1.png"
 ---
 ## Overview
 
-**ViralChat** is a scalable, cross-platform real-time messaging application designed to provide a seamless and secure communication experience. Currently live and hosted on a **Microsoft Azure Virtual Machine**, the platform allows users to register, authenticate, and communicate instantly.
+**BlinkChat** is a scalable, cross-platform real-time messaging application designed to provide a seamless and secure communication experience. Currently live and hosted on a **Microsoft Azure Virtual Machine**, the platform allows users to register, authenticate, and communicate instantly.
 
 While the application is fully functional and open for user registration, it remains under active development. New features are continuously being implemented, and existing infrastructure is being fine-tuned to ensure high availability, optimal performance, and robust security.
 
