@@ -186,7 +186,7 @@ export default function BlogPost() {
     : '';
 
   return (
-    <div className="max-w-2xl mx-auto px-6 sm:px-8 py-16">
+    <div className="max-w-2xl mx-auto px-6 sm:px-8 py-10 sm:py-16">
       {/* Back */}
       <Link
         to="/blog"

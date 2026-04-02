@@ -6,7 +6,7 @@ export default function Blog() {
   const posts = getAllPosts();
 
   return (
-    <div className="max-w-5xl mx-auto px-6 sm:px-8 py-16">
+    <div className="max-w-5xl mx-auto px-6 sm:px-8 py-10 sm:py-16">
       <FadeIn>
         <div className="mb-12">
           <h1 className="font-serif text-3xl sm:text-4xl font-medium text-gray-900 mb-3">Blog</h1>
