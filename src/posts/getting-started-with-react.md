@@ -19,8 +19,6 @@ Given the same state, your UI will always look the same. Change the state, and R
 
 ![React's component tree visualised](/images/blog/react-tree.png "The component tree — every UI is a hierarchy of nested components")
 
-> The diagram above is a placeholder. Replace it with `public/images/blog/react-tree.png` to see a real image with a caption below it.
-
 ## Setting up a project
 
 The fastest way to get started in 2025 is with Vite:
