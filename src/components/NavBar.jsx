@@ -20,12 +20,12 @@ export default function NavBar() {
   return (
     <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
       <div className="max-w-5xl mx-auto px-6 sm:px-8">
-        <div className="flex justify-between h-20 items-center">
+        <div className="flex justify-between h-15 items-center">
 
           {/* Logo */}
           <Link to="/" className="flex items-center" aria-label="Go to home">
             <video
-              className="h-20 w-auto max-w-[160px] object-contain"
+              className="h-15 w-auto max-w-[160px] object-contain"
               autoPlay
               loop
               muted
