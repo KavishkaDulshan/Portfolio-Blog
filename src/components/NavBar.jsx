@@ -20,21 +20,15 @@ export default function NavBar() {
   return (
     <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
       <div className="max-w-5xl mx-auto px-6 sm:px-8">
-        <div className="flex justify-between h-15 items-center">
+        <div className="flex justify-between h-12 items-center">
 
           {/* Logo */}
           <Link to="/" className="flex items-center" aria-label="Go to home">
-            <video
-              className="h-15 w-auto max-w-[160px] object-contain"
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="auto"
-            >
-              <source src="/logo.mp4" type="video/mp4" />
-              alCatraZ.dev
-            </video>
+            <img
+              src="/favicon.svg"
+              alt="alCatraZ.dev"
+              className="h-12 w-auto object-contain"
+            />
           </Link>
 
           {/* Desktop links */}
