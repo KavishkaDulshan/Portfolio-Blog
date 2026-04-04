@@ -1,16 +1,25 @@
-# React + Vite
+# Personal Portfolio & Blog
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+This is the repository for my personal portfolio and blog. I built it as a way to learn Vite, practice Tailwind CSS v4, and have a place to write publicly.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The design goal was simple: maximum readability, minimum noise. Black and white. Good typography. Fast load times.
 
-## React Compiler
+## How it works
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+There's no backend, no CMS, no database. Content is stored as Markdown files:
+src/
+├── posts/          ← blog posts as .md files
+└── projects/       ← project writeups as .md files
 
-## Expanding the ESLint configuration
+Vite's `import.meta.glob` picks up all `.md` files at build time:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```js
+const rawFiles = import.meta.glob('/src/posts/*.md', {
+  query: '?raw',
+  import: 'default',
+  eager: true,
+});
+Each file has YAML frontmatter (title, date, tags, etc.) parsed by front-matter, and the body is rendered by react-markdown with GFM support and syntax highlighting.Tech stackLayerTechnologyFrameworkReact 19 + Vite 8RoutingReact Router v7StylingTailwind CSS v4Markdownreact-markdown + remark-gfmSyntax highlightingrehype-highlight + highlight.jsFontsPlus Jakarta Sans + Lora (Google Fonts)Design decisionsWhy no backend? Zero friction. To publish a post, I write a Markdown file and push to GitHub. The site is statically deployable to Netlify or GitHub Pages.Why serif for body text? Blog posts are meant to be read at length. Studies consistently show that serif typefaces improve readability for long-form content. Lora is well-optimised for screens.Why black and white? Color is a distraction when you're trying to read. The constraint forces hierarchy to come from typography and spacing, not color accents.Future plans[ ]  RSS feed generation[ ]  Open Graph images for social sharing[ ]  Reading time estimate on blog posts[ ]  Tag filtering on blog list page
+```
