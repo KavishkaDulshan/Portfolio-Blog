@@ -7,6 +7,7 @@ import ProjectCard from '../components/ProjectCard';
 import TechStack from '../components/TechStack';
 import FadeIn from '../components/FadeIn';
 import ParticleCanvas from '../components/ParticleCanvas';
+import { GitHubCalendar } from 'react-github-calendar';
 
 // Stagger variants for hero text lines
 const heroVariants = {
@@ -84,6 +85,29 @@ export default function Home() {
             <ParticleCanvas />
           </motion.div>
         </div>
+      </section>
+
+      <div className="border-t border-gray-200" />
+
+      {/* ── GitHub Contributions ── */}
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-16 overflow-hidden">
+        <FadeIn>
+          <div className="flex flex-col">
+            <h2 className="text-xl font-semibold text-gray-900 mb-8">GitHub contributions</h2>
+            <div className="w-full overflow-x-auto pb-4">
+              <div className="min-w-[800px]">
+                <GitHubCalendar 
+                  username="kavishkadulshan"
+                  colorScheme="light"
+                  theme={{
+                    light: ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39']
+                  }}
+                  hideColorLegend={false}
+                />
+              </div>
+            </div>
+          </div>
+        </FadeIn>
       </section>
 
       <div className="border-t border-gray-200" />
