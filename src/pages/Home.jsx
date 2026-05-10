@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import { FiBookOpen, FiArrowRight } from 'react-icons/fi';
+import { FiBookOpen, FiArrowRight, FiStar } from 'react-icons/fi';
 import { getAllPosts } from '../utils/getPosts';
 import { getAllProjects } from '../utils/getProjects';
 import BlogCard from '../components/BlogCard';
@@ -155,7 +155,7 @@ export default function Home() {
                     <p className="text-sm text-gray-500 mb-4 flex-grow line-clamp-2">{repo.description || "No description provided."}</p>
                     <div className="flex justify-between items-center text-xs text-gray-500 mt-auto pt-4 border-t border-gray-100">
                       <span className="font-medium">{repo.language || 'Multiple'}</span>
-                      <span>⭐ {repo.stargazers_count}</span>
+                      <span className="flex items-center gap-1"><FiStar className="text-gray-400" /> {repo.stargazers_count}</span>
                     </div>
                   </div>
                 </a>
