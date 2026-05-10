@@ -41,14 +41,15 @@ Each file includes **YAML frontmatter** (title, date, tags, etc.) parsed by `fro
 
 ## Tech stack
 
-| Layer             | Technology                          |
-|------------------|--------------------------------------|
-| Framework         | React 19 + Vite 8                    |
-| Routing           | React Router v7                      |
-| Styling           | Tailwind CSS v4                      |
-| Markdown          | react-markdown + remark-gfm          |
-| Syntax highlighting | rehype-highlight + highlight.js    |
-| Fonts             | Plus Jakarta Sans + Lora (Google Fonts) |
+
+| Layer               | Technology                              |
+| ------------------- | --------------------------------------- |
+| Framework           | React 19 + Vite 8                       |
+| Routing             | React Router v7                         |
+| Styling             | Tailwind CSS v4                         |
+| Markdown            | react-markdown + remark-gfm             |
+| Syntax highlighting | rehype-highlight + highlight.js         |
+| Fonts               | Plus Jakarta Sans + Lora (Google Fonts) |
 
 ---
 
@@ -56,12 +57,12 @@ Each file includes **YAML frontmatter** (title, date, tags, etc.) parsed by `fro
 
 ### Why no backend?
 
-Zero friction. To publish a post, I write a Markdown file and push to GitHub.  
+Zero friction. To publish a post, I write a Markdown file and push to GitHub.
 The site is statically deployable to Netlify or GitHub Pages.
 
 ### Why serif for body text?
 
-Blog posts are meant to be read at length. Serif typefaces tend to improve readability for long-form content.  
+Blog posts are meant to be read at length. Serif typefaces tend to improve readability for long-form content.
 Lora is well-optimised for screens.
 
 ### Why black and white?
@@ -72,7 +73,7 @@ Color is a distraction when you're trying to read. The constraint forces hierarc
 
 ## Future plans
 
-- [ ] RSS feed generation
-- [ ] Open Graph images for social sharing
-- [ ] Reading time estimate on blog posts
-- [ ] Tag filtering on blog list page
+- [ ]  RSS feed generation
+- [ ]  Open Graph images for social sharing
+- [ ]  Reading time estimate on blog posts
+- [ ]  Tag filtering on blog list page
