@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { FiArrowRight, FiGithub, FiExternalLink } from 'react-icons/fi';
 
 export default function ProjectCard({ project }) {
   const { slug, title, excerpt, tags = [], github, demo, coverImage } = project;
@@ -45,18 +46,18 @@ export default function ProjectCard({ project }) {
         <div className="mt-auto flex items-center gap-4">
           <Link
             to={`/projects/${slug}`}
-            className="text-sm font-medium text-gray-900 hover:underline underline-offset-2 inline-flex items-center gap-1"
+            className="text-sm font-medium text-gray-900 hover:text-gray-700 inline-flex items-center gap-1 group/btn"
           >
-            View project <span aria-hidden="true">→</span>
+            View project <FiArrowRight className="transform group-hover/btn:translate-x-1 transition-transform" />
           </Link>
           {github && (
             <a
               href={github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
+              className="text-sm text-gray-600 hover:text-gray-900 transition-colors inline-flex items-center gap-1.5"
             >
-              GitHub
+              <FiGithub className="text-gray-400" /> GitHub
             </a>
           )}
           {demo && (
@@ -64,9 +65,9 @@ export default function ProjectCard({ project }) {
               href={demo}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
+              className="text-sm text-gray-600 hover:text-gray-900 transition-colors inline-flex items-center gap-1.5"
             >
-              Live demo
+              <FiExternalLink className="text-gray-400" /> Live demo
             </a>
           )}
         </div>

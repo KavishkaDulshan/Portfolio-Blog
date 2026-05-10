@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { FiTerminal, FiStar, FiUsers, FiGitPullRequest, FiAlertCircle, FiCode, FiFolder } from 'react-icons/fi';
 import FadeIn from '../components/FadeIn';
 
 export default function Dashboard() {
@@ -105,7 +106,10 @@ export default function Dashboard() {
   return (
     <div className="bg-white min-h-screen pt-10 pb-16 max-w-5xl mx-auto px-6 sm:px-8">
       <FadeIn>
-        <h1 className="font-serif text-4xl sm:text-5xl font-medium text-gray-900 mb-4">The Lab</h1>
+        <h1 className="font-serif text-4xl sm:text-5xl font-medium text-gray-900 mb-4 flex items-center gap-3">
+          <FiTerminal className="text-gray-400" />
+          The Lab
+        </h1>
         <p className="text-gray-500 mb-12">Kavishka Dulshan - Developer Dashboard</p>
       </FadeIn>
       
@@ -119,19 +123,23 @@ export default function Dashboard() {
             <div className="text-sm text-gray-500">{statsError}</div>
           ) : stats ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              <div className="bg-white border border-gray-200 rounded-2xl p-6 text-center shadow-sm">
+              <div className="bg-white border border-gray-200 rounded-2xl p-6 text-center shadow-sm flex flex-col items-center">
+                <FiStar className="text-gray-400 text-xl mb-3" />
                 <div className="text-gray-500 text-sm font-medium mb-2">Total Stars</div>
                 <div className="text-3xl font-bold text-gray-900">{stats.stars}</div>
               </div>
-              <div className="bg-white border border-gray-200 rounded-2xl p-6 text-center shadow-sm">
+              <div className="bg-white border border-gray-200 rounded-2xl p-6 text-center shadow-sm flex flex-col items-center">
+                <FiUsers className="text-gray-400 text-xl mb-3" />
                 <div className="text-gray-500 text-sm font-medium mb-2">Followers</div>
                 <div className="text-3xl font-bold text-gray-900">{stats.followers}</div>
               </div>
-              <div className="bg-white border border-gray-200 rounded-2xl p-6 text-center shadow-sm">
+              <div className="bg-white border border-gray-200 rounded-2xl p-6 text-center shadow-sm flex flex-col items-center">
+                <FiGitPullRequest className="text-gray-400 text-xl mb-3" />
                 <div className="text-gray-500 text-sm font-medium mb-2">Pull Requests</div>
                 <div className="text-3xl font-bold text-gray-900">{stats.pullRequests}</div>
               </div>
-              <div className="bg-white border border-gray-200 rounded-2xl p-6 text-center shadow-sm">
+              <div className="bg-white border border-gray-200 rounded-2xl p-6 text-center shadow-sm flex flex-col items-center">
+                <FiAlertCircle className="text-gray-400 text-xl mb-3" />
                 <div className="text-gray-500 text-sm font-medium mb-2">Issues</div>
                 <div className="text-3xl font-bold text-gray-900">{stats.issues}</div>
               </div>
@@ -146,7 +154,10 @@ export default function Dashboard() {
         <>
           {/* Language DNA */}
           <FadeIn delay={0.1}>
-            <h2 className="text-xl font-semibold text-gray-900 mb-6">Language DNA</h2>
+            <h2 className="text-xl font-semibold text-gray-900 mb-6 flex items-center gap-2">
+              <FiCode className="text-gray-400" />
+              Language DNA
+            </h2>
             <div className="flex flex-wrap gap-3 mb-16">
               {sortedLanguages.map(([lang, count]) => (
                 <span key={lang} className="px-3 py-1.5 bg-gray-50 text-gray-700 border border-gray-200 rounded-full text-sm font-medium">
@@ -158,7 +169,10 @@ export default function Dashboard() {
 
           {/* Active Repositories */}
           <FadeIn delay={0.2}>
-            <h2 className="text-xl font-semibold text-gray-900 mb-6">Active Repositories</h2>
+            <h2 className="text-xl font-semibold text-gray-900 mb-6 flex items-center gap-2">
+              <FiFolder className="text-gray-400" />
+              Active Repositories
+            </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {repos.map((repo) => (
                 <a key={repo.id} href={repo.html_url} target="_blank" rel="noopener noreferrer" className="block group h-full">

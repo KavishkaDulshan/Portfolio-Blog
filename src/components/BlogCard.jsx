@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { FiCalendar, FiArrowRight } from 'react-icons/fi';
 
 export default function BlogCard({ post }) {
   const { slug, title, date, excerpt, tags = [], coverImage } = post;
@@ -23,7 +24,10 @@ export default function BlogCard({ post }) {
       <div className="flex flex-col flex-1 p-6">
         {/* Meta */}
         <div className="flex flex-wrap items-center gap-3 mb-3">
-          <time className="text-xs text-gray-600 tabular-nums">{formattedDate}</time>
+          <time className="text-xs text-gray-600 tabular-nums flex items-center gap-1.5">
+            <FiCalendar className="text-gray-400" />
+            {formattedDate}
+          </time>
           {tags.slice(0, 2).map((tag) => (
             <span
               key={tag}
@@ -47,9 +51,9 @@ export default function BlogCard({ post }) {
         {/* CTA */}
         <Link
           to={`/blog/${slug}`}
-          className="mt-auto text-sm font-medium text-gray-900 hover:underline underline-offset-2 inline-flex items-center gap-1"
+          className="mt-auto text-sm font-medium text-gray-900 hover:text-gray-700 inline-flex items-center gap-1 group/btn"
         >
-          Read article <span aria-hidden="true">→</span>
+          Read article <FiArrowRight className="transform group-hover/btn:translate-x-1 transition-transform" />
         </Link>
       </div>
     </article>

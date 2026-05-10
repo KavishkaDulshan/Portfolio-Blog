@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import { FiBookOpen, FiArrowRight } from 'react-icons/fi';
 import { getAllPosts } from '../utils/getPosts';
 import { getAllProjects } from '../utils/getProjects';
 import BlogCard from '../components/BlogCard';
@@ -19,6 +20,8 @@ const heroItem = {
   hidden: { opacity: 0, y: 18 },
   show:   { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } },
 };
+
+const MotionLink = motion(Link);
 
 export default function Home() {
   const latestPosts    = getAllPosts().slice(0, 3);
@@ -64,18 +67,26 @@ export default function Home() {
             </motion.p>
 
             <motion.div variants={heroItem} className="flex flex-wrap gap-3">
-              <Link
+              <MotionLink
                 to="/blog"
+                whileHover="hover"
                 className="inline-flex items-center gap-2 rounded-full bg-gray-900 text-white px-5 py-2.5 text-sm font-medium hover:bg-gray-700 transition-colors"
               >
                 Read the blog
-              </Link>
-              <Link
+                <motion.span variants={{ hover: { y: -2 } }}>
+                  <FiBookOpen />
+                </motion.span>
+              </MotionLink>
+              <MotionLink
                 to="/projects"
-                className="inline-flex items-center gap-2 rounded-full border border-gray-300 text-gray-700 px-5 py-2.5 text-sm font-medium hover:border-gray-900 hover:text-gray-900 transition-colors"
+                whileHover="hover"
+                className="inline-flex items-center gap-2 rounded-full border border-gray-300 text-gray-700 px-5 py-2.5 text-sm font-medium hover:border-gray-900 hover:text-gray-900 transition-colors group"
               >
                 View projects
-              </Link>
+                <motion.span variants={{ hover: { x: 3 } }}>
+                  <FiArrowRight />
+                </motion.span>
+              </MotionLink>
             </motion.div>
 
             {/* Tech stack icon row */}
@@ -129,8 +140,9 @@ export default function Home() {
           <FadeIn>
             <div className="flex items-baseline justify-between mb-8">
               <h2 className="text-xl font-semibold text-gray-900">Live Repositories</h2>
-              <Link to="/dashboard" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">
-                View all in Dashboard →
+              <Link to="/dashboard" className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-gray-900 transition-colors group">
+                View all in Dashboard
+                <FiArrowRight className="transform group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
           </FadeIn>
@@ -161,8 +173,8 @@ export default function Home() {
           <FadeIn>
             <div className="flex items-baseline justify-between mb-8">
               <h2 className="text-xl font-semibold text-gray-900">Latest writing</h2>
-              <Link to="/blog" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">
-                All posts →
+              <Link to="/blog" className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-gray-900 transition-colors group">
+                All posts <FiArrowRight className="transform group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
           </FadeIn>
@@ -184,8 +196,8 @@ export default function Home() {
             <FadeIn>
               <div className="flex items-baseline justify-between mb-8">
                 <h2 className="text-xl font-semibold text-gray-900">Featured projects</h2>
-                <Link to="/projects" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">
-                  All projects →
+                <Link to="/projects" className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-gray-900 transition-colors group">
+                  All projects <FiArrowRight className="transform group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
             </FadeIn>
