@@ -1,4 +1,5 @@
 import FadeIn from '../components/FadeIn';
+import LinkedInBadge from '../components/LinkedInBadge';
 
 const contacts = [
   {
@@ -26,10 +27,14 @@ export default function Contact() {
     <div className="max-w-2xl mx-auto px-6 sm:px-8 py-10 sm:py-16">
       <FadeIn>
         <h1 className="font-serif text-3xl sm:text-4xl font-medium text-gray-900 mb-3">Contact</h1>
-        <p className="text-gray-600 text-sm mb-12">
+        <p className="text-gray-600 text-sm mb-4">
           I'm open to conversations about internships, collaboration, and interesting ideas.
           Pick a channel that works for you.
         </p>
+        <p className="text-gray-600 text-sm mb-8 font-medium">
+          I'm actively seeking software engineering internship opportunities. Connect with me on LinkedIn!
+        </p>
+        <LinkedInBadge vanityName="kavishka-dulshan" />
       </FadeIn>
 
       {/* Contact list — each row staggers in */}
