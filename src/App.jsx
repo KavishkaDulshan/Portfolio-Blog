@@ -7,6 +7,7 @@ import Projects from './pages/Projects';
 import ProjectPost from './pages/ProjectPost';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import Dashboard from './pages/Dashboard';
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
       { path: 'blog/:slug', element: <BlogPost /> },
       { path: 'projects', element: <Projects /> },
       { path: 'projects/:slug', element: <ProjectPost /> },
+      { path: 'dashboard', element: <Dashboard /> },
       { path: 'about', element: <About /> },
       { path: 'contact', element: <Contact /> },
     ],

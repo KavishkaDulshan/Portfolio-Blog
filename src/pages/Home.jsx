@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
 import { getAllPosts } from '../utils/getPosts';
 import { getAllProjects } from '../utils/getProjects';
 import BlogCard from '../components/BlogCard';
@@ -22,6 +23,18 @@ const heroItem = {
 export default function Home() {
   const latestPosts    = getAllPosts().slice(0, 3);
   const latestProjects = getAllProjects().slice(0, 3);
+  const [liveRepos, setLiveRepos] = useState([]);
+
+  useEffect(() => {
+    fetch('https://api.github.com/users/kavishkadulshan/repos?sort=updated&per_page=3')
+      .then(res => res.json())
+      .then(data => {
+        if(Array.isArray(data)) {
+          setLiveRepos(data);
+        }
+      })
+      .catch(err => console.error("Failed to fetch live repos", err));
+  }, []);
 
   return (
     <div className="bg-white">
@@ -109,6 +122,36 @@ export default function Home() {
           </div>
         </FadeIn>
       </section>
+
+      {/* ── Live Repositories ── */}
+      {liveRepos.length > 0 && (
+        <section className="max-w-5xl mx-auto px-6 sm:px-8 pb-16">
+          <FadeIn>
+            <div className="flex items-baseline justify-between mb-8">
+              <h2 className="text-xl font-semibold text-gray-900">Live Repositories</h2>
+              <Link to="/dashboard" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">
+                View all in Dashboard →
+              </Link>
+            </div>
+          </FadeIn>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {liveRepos.map((repo, i) => (
+              <FadeIn key={repo.id} delay={i * 0.08}>
+                <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="block group h-full">
+                  <div className="h-full border border-gray-200 rounded-2xl p-5 hover:border-gray-900 transition-colors flex flex-col">
+                    <h3 className="font-medium text-gray-900 mb-2 truncate group-hover:underline">{repo.name}</h3>
+                    <p className="text-sm text-gray-500 mb-4 flex-grow line-clamp-2">{repo.description || "No description provided."}</p>
+                    <div className="flex justify-between items-center text-xs text-gray-500 mt-auto pt-4 border-t border-gray-100">
+                      <span className="font-medium">{repo.language || 'Multiple'}</span>
+                      <span>⭐ {repo.stargazers_count}</span>
+                    </div>
+                  </div>
+                </a>
+              </FadeIn>
+            ))}
+          </div>
+        </section>
+      )}
 
       <div className="border-t border-gray-200" />
 
