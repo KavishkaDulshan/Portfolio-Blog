@@ -117,14 +117,31 @@ export default function Dashboard() {
 
   const assignedBanners = useMemo(() => {
     const assignments = [];
-    let lastIndex = -1;
+    let availableBanners = [];
+    let lastBanner = null;
+
+    const shuffle = (array) => {
+      const arr = [...array];
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    };
+
     for (let i = 0; i < repos.length; i++) {
-      let nextIndex;
-      do {
-        nextIndex = Math.floor(Math.random() * bannerFiles.length);
-      } while (nextIndex === lastIndex);
-      assignments.push(bannerFiles[nextIndex]);
-      lastIndex = nextIndex;
+      if (availableBanners.length === 0) {
+        availableBanners = shuffle(bannerFiles);
+        // Ensure the newly drawn banner isn't the same as the last one appended across reshuffles
+        if (availableBanners[availableBanners.length - 1] === lastBanner && availableBanners.length > 1) {
+          const temp = availableBanners[availableBanners.length - 1];
+          availableBanners[availableBanners.length - 1] = availableBanners[availableBanners.length - 2];
+          availableBanners[availableBanners.length - 2] = temp;
+        }
+      }
+      const chosenBanner = availableBanners.pop();
+      assignments.push(chosenBanner);
+      lastBanner = chosenBanner;
     }
     return assignments;
   }, [repos]);
