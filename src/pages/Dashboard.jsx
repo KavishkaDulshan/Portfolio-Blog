@@ -1,6 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { FiTerminal, FiStar, FiUsers, FiGitPullRequest, FiAlertCircle, FiCode, FiFolder } from 'react-icons/fi';
 import FadeIn from '../components/FadeIn';
+
+const bannerFiles = [
+  "11936-isaicarb.gif", "1229-code.gif", "1784-thunder.gif", "19237-orderside0.jpg",
+  "2332-nike.gif", "24149-celestial-requiem.png", "3373-guts-v-s-griffith.gif", "3752-anime.gif",
+  "3760-madeon.gif", "37715-shadow.gif", "4742-grass.gif", "4746-star-wars.png",
+  "4855-cat.gif", "5132-pixel-mario.gif", "5466-chise.gif", "55395-banner.jpg",
+  "56990-rain.jpg", "6100-.gif", "6136-walking.gif", "6459-purple-to-blue-snowy-mountains-w-girl.gif",
+  "7066-katana.gif", "70753-chill-girl-banner.png", "71662-weak-arm-with-a-gun.jpg", "71710-child-and-tanks.jpg",
+  "7338-smooth-rick-roll.gif", "7461-car-gif.gif", "7718-wumpus-in-space.gif", "8263-the-garden-of-words-1.gif",
+  "8401-white-tree.gif", "85514-zephric.jpg", "8636-gunny.gif", "94015-yo.jpg",
+  "9539-the-garden-of-words-2.gif", "99160-maro.jpg"
+];
 
 export default function Dashboard() {
   const [repos, setRepos] = useState([]);
@@ -103,6 +115,20 @@ export default function Dashboard() {
   
   const sortedLanguages = Object.entries(languages).sort((a, b) => b[1] - a[1]);
 
+  const assignedBanners = useMemo(() => {
+    const assignments = [];
+    let lastIndex = -1;
+    for (let i = 0; i < repos.length; i++) {
+      let nextIndex;
+      do {
+        nextIndex = Math.floor(Math.random() * bannerFiles.length);
+      } while (nextIndex === lastIndex);
+      assignments.push(bannerFiles[nextIndex]);
+      lastIndex = nextIndex;
+    }
+    return assignments;
+  }, [repos]);
+
   return (
     <div className="bg-white min-h-screen pt-10 pb-16 max-w-5xl mx-auto px-6 sm:px-8">
       <FadeIn>
@@ -168,26 +194,40 @@ export default function Dashboard() {
           </FadeIn>
 
           {/* Active Repositories */}
-          <FadeIn delay={0.2}>
-            <h2 className="text-xl font-semibold text-gray-900 mb-6 flex items-center gap-2">
-              <FiFolder className="text-gray-400" />
-              Active Repositories
-            </h2>
+          <div>
+            <FadeIn delay={0.2}>
+              <h2 className="text-xl font-semibold text-gray-900 mb-6 flex items-center gap-2">
+                <FiFolder className="text-gray-400" />
+                Active Repositories
+              </h2>
+            </FadeIn>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {repos.map((repo) => (
-                <a key={repo.id} href={repo.html_url} target="_blank" rel="noopener noreferrer" className="block group h-full">
-                  <div className="h-full border border-gray-200 rounded-2xl p-5 hover:border-gray-900 transition-colors flex flex-col">
-                    <h3 className="font-medium text-gray-900 mb-2 truncate group-hover:underline">{repo.name}</h3>
-                    <p className="text-sm text-gray-500 mb-4 flex-grow line-clamp-2">{repo.description || "No description provided."}</p>
-                    <div className="flex justify-between items-center text-xs text-gray-500 mt-auto pt-4 border-t border-gray-100">
-                      <span className="font-medium">{repo.language || 'Multiple'}</span>
-                      <span className="flex items-center gap-1"><FiStar className="text-gray-400" /> {repo.stargazers_count}</span>
+              {repos.map((repo, i) => (
+                <FadeIn key={repo.id} delay={i < 10 ? i * 0.05 : 0}>
+                  <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="group flex flex-col h-full border border-gray-200 rounded-2xl hover:border-gray-900 transition-colors relative overflow-hidden bg-white">
+                    {/* Aesthetic 2D Animated Banner */}
+                    <div className="w-full h-24 bg-gray-50 flex-shrink-0 border-b border-gray-100 flex items-center justify-center overflow-hidden">
+                      <img 
+                        src={`/images/banners/${assignedBanners[i]}`}
+                        alt={`${repo.name} aesthetic banner`}
+                        loading="lazy"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
                     </div>
-                  </div>
-                </a>
+                    
+                    <div className="p-5 flex flex-col flex-1">
+                      <h3 className="font-medium text-gray-900 mb-2 truncate group-hover:underline">{repo.name}</h3>
+                      <p className="text-sm text-gray-500 mb-4 flex-grow line-clamp-2">{repo.description || "No description provided."}</p>
+                      <div className="flex justify-between items-center text-xs text-gray-500 mt-auto pt-4 border-t border-gray-100">
+                        <span className="font-medium">{repo.language || 'Multiple'}</span>
+                        <span className="flex items-center gap-1"><FiStar className="text-gray-400" /> {repo.stargazers_count}</span>
+                      </div>
+                    </div>
+                  </a>
+                </FadeIn>
               ))}
             </div>
-          </FadeIn>
+          </div>
         </>
       )}
     </div>
