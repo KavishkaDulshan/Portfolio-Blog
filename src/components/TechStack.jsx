@@ -5,7 +5,10 @@ import {
   SiNodedotjs, SiTailwindcss, SiPython, SiGit,
   SiAndroidstudio, SiArduino, SiEspressif,
   SiFlutter, SiDocker, SiPostman, SiMongodb, SiRaspberrypi, SiLinux, SiGithubcopilot,
+  SiTypescript, SiCplusplus, SiDart, SiPostgresql, SiExpress, SiFirebase, SiFigma, SiOpenai, SiTensorflow, SiSocketdotio, SiPhp,
 } from 'react-icons/si';
+import { FaJava } from 'react-icons/fa';
+import { VscAzure } from 'react-icons/vsc';
 
 const icons = [
   { Icon: SiGithub,        label: 'GitHub' },
@@ -24,6 +27,19 @@ const icons = [
   { Icon: SiGithubcopilot, label: 'GitHub Copilot' },
   { Icon: SiRaspberrypi,   label: 'Raspberry Pi' },
   { Icon: SiLinux,         label: 'Linux' },
+  { Icon: SiTypescript,    label: 'TypeScript' },
+  { Icon: FaJava,          label: 'Java' },
+  { Icon: SiCplusplus,     label: 'C / C++' },
+  { Icon: SiDart,          label: 'Dart' },
+  { Icon: SiPostgresql,    label: 'PostgreSQL' },
+  { Icon: SiExpress,       label: 'Express' },
+  { Icon: SiPhp,           label: 'PHP' },
+  { Icon: SiFirebase,      label: 'Firebase' },
+  { Icon: VscAzure,        label: 'Azure' },
+  { Icon: SiFigma,         label: 'Figma' },
+  { Icon: SiOpenai,        label: 'OpenAI' },
+  { Icon: SiTensorflow,    label: 'TensorFlow' },
+  { Icon: SiSocketdotio,   label: 'Socket.IO' },
 
 ];
 

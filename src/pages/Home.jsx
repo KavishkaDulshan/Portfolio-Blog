@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { FiBookOpen, FiArrowRight, FiStar } from 'react-icons/fi';
 import { getAllPosts } from '../utils/getPosts';
 import { getAllProjects } from '../utils/getProjects';
@@ -37,6 +37,45 @@ export default function Home() {
         }
       })
       .catch(err => console.error("Failed to fetch live repos", err));
+  }, []);
+
+  // Ref for the GitHub contributions container so we can scroll it programmatically
+  const contributionsWrapperRef = useRef(null);
+
+  // On mobile, ensure the contributions container scrolls to the far right (most recent)
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const isMobile = window.innerWidth <= 768;
+    if (!isMobile) return;
+
+    const el = contributionsWrapperRef.current;
+    if (!el) return;
+
+    // Wait for the calendar to render, then scroll to the end.
+    let attempts = 0;
+    const tryScroll = () => {
+      attempts += 1;
+      if (el.scrollWidth > el.clientWidth || attempts > 15) {
+        el.scrollLeft = el.scrollWidth - el.clientWidth;
+        return;
+      }
+      requestAnimationFrame(tryScroll);
+    };
+    tryScroll();
+
+    // Also re-run on orientation change / resize to keep position correct
+    const onResize = () => {
+      if (window.innerWidth <= 768) {
+        el.scrollLeft = el.scrollWidth - el.clientWidth;
+      }
+    };
+    window.addEventListener('resize', onResize);
+    window.addEventListener('orientationchange', onResize);
+    return () => {
+      window.removeEventListener('resize', onResize);
+      window.removeEventListener('orientationchange', onResize);
+    };
   }, []);
 
   return (
@@ -118,7 +157,7 @@ export default function Home() {
         <FadeIn>
           <div className="flex flex-col">
             <h2 className="text-xl font-semibold text-gray-900 mb-8">GitHub contributions</h2>
-            <div className="w-full overflow-x-auto pb-4">
+            <div className="w-full overflow-x-auto pb-4" ref={contributionsWrapperRef}>
               <div className="min-w-[800px]">
                 <GitHubCalendar 
                   username="kavishkadulshan"
