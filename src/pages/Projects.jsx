@@ -1,4 +1,5 @@
 import { getAllProjects } from '../utils/getProjects';
+import SEO from '../components/SEO';
 import ProjectCard from '../components/ProjectCard';
 import FadeIn from '../components/FadeIn';
 
@@ -7,6 +8,11 @@ export default function Projects() {
 
   return (
     <div className="max-w-5xl mx-auto px-6 sm:px-8 py-10 sm:py-16">
+      <SEO
+        title="Projects"
+        description="Things I've built — from university coursework to personal experiments in full-stack, IoT, and AI."
+        path="/projects"
+      />
       <FadeIn>
         <div className="mb-12">
           <h1 className="font-serif text-3xl sm:text-4xl font-medium text-gray-900 mb-3">Projects</h1>

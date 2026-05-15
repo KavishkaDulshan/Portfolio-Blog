@@ -1,4 +1,5 @@
 import { useParams, Link, Navigate } from 'react-router-dom';
+import SEO from '../components/SEO';
 import { useEffect, useRef, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -223,6 +224,12 @@ export default function ProjectPost() {
 
   return (
     <div className="max-w-2xl mx-auto px-6 sm:px-8 py-10 sm:py-16">
+      <SEO
+        title={title}
+        description={project.description || excerpt || `Explore the "${title}" project by Kavishka Dulshan.`}
+        path={`/projects/${slug}`}
+        ogImage={coverImage}
+      />
       {/* Back */}
       <Link
         to="/projects"

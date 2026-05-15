@@ -79,29 +79,63 @@ async function prerender() {
 
   for (const route of routes) {
     try {
-      const { html: appHtml, helmet } = render(route);
+      const { html: appHtml } = render(route);
 
-      // Build the <head> injection string from Helmet
-      const helmetHead = [
-        helmet?.title?.toString() || '',
-        helmet?.meta?.toString() || '',
-        helmet?.link?.toString() || '',
-      ]
-        .filter(Boolean)
-        .join('\n    ');
+      // ── React 19 native head hoisting ──
+      // React 19's renderToString inlines <title>, <meta>, and <link> tags
+      // at the start of the rendered output. We extract them from the body,
+      // remove them from the inline position, and inject them into <head>.
+
+      // Extract SEO tags that React 19 inlined in the rendered HTML
+      const inlineTitle = appHtml.match(/<title>[^<]*<\/title>/)?.[0] || '';
+      const inlineMetas = appHtml.match(/<meta\s[^>]*(?:name|property)=["'][^"']*["'][^>]*\/?>/g) || [];
+      const inlineCanonical = appHtml.match(/<link\s[^>]*rel=["']canonical["'][^>]*\/?>/g) || [];
+
+      // Remove the extracted SEO tags from the body content
+      let cleanAppHtml = appHtml;
+      if (inlineTitle) {
+        cleanAppHtml = cleanAppHtml.replace(inlineTitle, '');
+      }
+      for (const meta of inlineMetas) {
+        cleanAppHtml = cleanAppHtml.replace(meta, '');
+      }
+      for (const link of inlineCanonical) {
+        cleanAppHtml = cleanAppHtml.replace(link, '');
+      }
 
       let finalHtml = template;
 
-      // Replace the placeholder in <div id="root"></div> with pre-rendered content
+      // Inject pre-rendered content into #root
       finalHtml = finalHtml.replace(
         '<div id="root"></div>',
-        `<div id="root">${appHtml}</div>`
+        `<div id="root">${cleanAppHtml}</div>`
       );
 
-      // Inject Helmet-generated tags into <head>
-      // We inject right before </head> to avoid replacing existing static tags
-      if (helmetHead) {
-        finalHtml = finalHtml.replace('</head>', `    ${helmetHead}\n  </head>`);
+      // Replace the default <title> with the page-specific one
+      if (inlineTitle) {
+        finalHtml = finalHtml.replace(
+          /<title>[^<]*<\/title>/,
+          inlineTitle
+        );
+      }
+
+      // Remove the template's default meta tags that will be replaced
+      const defaultMetaPatterns = [
+        /\s*<meta\s+name="description"[^>]*\/?>\s*/gi,
+        /\s*<meta\s+property="og:[^"]*"[^>]*\/?>\s*/gi,
+      ];
+      for (const pattern of defaultMetaPatterns) {
+        finalHtml = finalHtml.replace(pattern, '\n    ');
+      }
+
+      // Build the SEO head block from extracted tags
+      const seoHeadTags = [...inlineMetas, ...inlineCanonical]
+        .map(tag => `    ${tag}`)
+        .join('\n');
+
+      // Inject extracted SEO tags into <head> before </head>
+      if (seoHeadTags) {
+        finalHtml = finalHtml.replace('</head>', `${seoHeadTags}\n  </head>`);
       }
 
       // Determine the output file path

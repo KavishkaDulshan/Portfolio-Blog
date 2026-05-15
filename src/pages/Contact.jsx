@@ -1,4 +1,5 @@
 import FadeIn from '../components/FadeIn';
+import SEO from '../components/SEO';
 import LinkedInBadge from '../components/LinkedInBadge';
 
 const contacts = [
@@ -25,6 +26,11 @@ const contacts = [
 export default function Contact() {
   return (
     <div className="max-w-2xl mx-auto px-6 sm:px-8 py-10 sm:py-16">
+      <SEO
+        title="Contact"
+        description="Get in touch with Kavishka Dulshan — open to internships, collaboration, and interesting ideas. Reach out via email, GitHub, or LinkedIn."
+        path="/contact"
+      />
       <FadeIn>
         <h1 className="font-serif text-3xl sm:text-4xl font-medium text-gray-900 mb-3">Contact</h1>
         <p className="text-gray-600 text-sm mb-4">

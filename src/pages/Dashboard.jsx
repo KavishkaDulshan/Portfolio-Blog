@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
+import SEO from '../components/SEO';
 import { FiTerminal, FiStar, FiUsers, FiGitPullRequest, FiAlertCircle, FiCode, FiFolder } from 'react-icons/fi';
 import FadeIn from '../components/FadeIn';
 
@@ -148,6 +149,11 @@ export default function Dashboard() {
 
   return (
     <div className="bg-white min-h-screen pt-10 pb-16 max-w-5xl mx-auto px-6 sm:px-8">
+      <SEO
+        title="Dashboard"
+        description="Kavishka Dulshan's developer dashboard — live GitHub stats, repositories, language breakdown, and coding activity."
+        path="/dashboard"
+      />
       <FadeIn>
         <h1 className="font-serif text-4xl sm:text-5xl font-medium text-gray-900 mb-4 flex items-center gap-3">
           <FiTerminal className="text-gray-400" />

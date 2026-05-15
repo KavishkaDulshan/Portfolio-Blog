@@ -1,4 +1,5 @@
 import { getAllPosts } from '../utils/getPosts';
+import SEO from '../components/SEO';
 import BlogCard from '../components/BlogCard';
 import FadeIn from '../components/FadeIn';
 
@@ -7,6 +8,11 @@ export default function Blog() {
 
   return (
     <div className="max-w-5xl mx-auto px-6 sm:px-8 py-10 sm:py-16">
+      <SEO
+        title="Blog"
+        description="Articles on software engineering, IoT, microcontrollers, and learning in public — by Kavishka Dulshan."
+        path="/blog"
+      />
       <FadeIn>
         <div className="mb-12">
           <h1 className="font-serif text-3xl sm:text-4xl font-medium text-gray-900 mb-3">Blog</h1>

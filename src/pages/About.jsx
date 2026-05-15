@@ -1,4 +1,5 @@
 import ReactMarkdown from 'react-markdown';
+import SEO from '../components/SEO';
 import { getAboutData } from '../utils/getAbout';
 import FadeIn from '../components/FadeIn';
 
@@ -15,6 +16,11 @@ export default function About() {
 
   return (
     <div className="max-w-5xl mx-auto px-6 sm:px-8 py-10 sm:py-16">
+      <SEO
+        title="About"
+        description={`${name} — ${tagline}. Full-stack developer and IoT enthusiast specializing in React, Node.js, Flutter, and embedded systems.`}
+        path="/about"
+      />
 
       {/* Header */}
       <FadeIn>

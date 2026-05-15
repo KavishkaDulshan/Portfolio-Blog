@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 import { motion } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
 import { FiBookOpen, FiArrowRight, FiStar } from 'react-icons/fi';
@@ -80,6 +81,12 @@ export default function Home() {
 
   return (
     <div className="bg-white">
+      <SEO
+        title="Software Engineer"
+        description="Hi, I'm Kavishka Dulshan — a Software Engineering undergraduate who builds software, tinkers with IoT, and writes about what I learn."
+        path="/"
+        noSuffix={false}
+      />
 
       {/* ── Hero ── */}
       <section className="max-w-5xl mx-auto px-6 sm:px-8 pt-10 pb-8 sm:pt-14 sm:pb-10">
