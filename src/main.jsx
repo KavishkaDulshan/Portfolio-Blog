@@ -1,11 +1,26 @@
 import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-import { RouterProvider } from 'react-router-dom';
+import { hydrateRoot, createRoot } from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import './index.css';
-import router from './App.jsx';
+import App from './App.jsx';
 
-createRoot(document.getElementById('root')).render(
+const container = document.getElementById('root');
+
+// If the root already contains server-rendered HTML, hydrate it.
+// Otherwise, do a full client-side render (e.g. during vite dev).
+const app = (
   <StrictMode>
-    <RouterProvider router={router} />
-  </StrictMode>,
+    <HelmetProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </HelmetProvider>
+  </StrictMode>
 );
+
+if (container.hasChildNodes()) {
+  hydrateRoot(container, app);
+} else {
+  createRoot(container).render(app);
+}
