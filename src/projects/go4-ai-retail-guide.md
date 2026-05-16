@@ -6,7 +6,7 @@ description: "A multimodal retail guide mobile application utilizing AI for prod
 tags: ["Flutter", "Node.js", "Gemini API", "Docker", "Mobile App"]
 github: "https://github.com/kavishkadulshan/Go4-Group-Project"
 excerpt: "Bridging the gap between physical retail and digital convenience with a Flutter and Node.js stack powered by Gemini AI and Serper APIs."
-coverImage: "/images/projects/Gallery/go4/cover.png"
+coverImage: "/images/projects/Gallery/go4/cover.webp"
 ---
 ## Overview
 

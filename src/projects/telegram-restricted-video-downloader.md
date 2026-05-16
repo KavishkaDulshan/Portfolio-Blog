@@ -6,7 +6,7 @@ description: "A Chrome DevTools Extension to capture, reassemble, and download r
 excerpt: "How I built a Chrome DevTools extension to bypass Telegram's download restrictions by capturing and reassembling binary video chunks in real-time."
 tags: ["javascript", "chrome-extension", "manifest-v3", "binary-data"]
 github: "https://github.com/kavishkadulshan/telegram-restricted-video-downloader"
-coverImage: "/images/projects/Gallery/telehacker/telegram-downloader-cover.png"
+coverImage: "/images/projects/Gallery/telehacker/telegram-downloader-cover.webp"
 inlineVideo: "/images/projects/Gallery/telehacker/demo.mp4"
 
 ---

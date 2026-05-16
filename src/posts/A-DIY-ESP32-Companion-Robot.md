@@ -3,7 +3,7 @@ title: "Building 2.1: A DIY ESP32 Companion Robot"
 date: "2026-05-16"
 excerpt: "Learn how to build your own companion robot using an ESP32, OLED display, and basic sensors for a fun and interactive desktop companion."
 tags: ["esp32", "robotics", "diy", "arduino", "iot"]
-coverImage: "/images/blog/2.1/image.png"
+coverImage: "/images/blog/2.1/image.webp"
 ---
 ---
 
@@ -19,25 +19,25 @@ I created this with very simple and minimal resources that everyone can easily f
 
 ### ESP32 Board
 
-![ESP32 Board](/images/blog/2.1/0.png "comparison")
+![ESP32 Board](/images/blog/2.1/0.webp "comparison")
 
 This is the main component that handle all processing tasks and act as the brain of our 2.1. I prefer ESP32 over Arduino uno because this has builtin WIFI, bloototh capabilities and higher memory with higher processing capability.
 
 ### SSD1306 I2C 128 x 64 OLED Display
 
-![OLED Display](/images/blog/2.1/1.png "OLED Display")
+![OLED Display](/images/blog/2.1/1.webp "OLED Display")
 
 I choose this SSD1306 I2C 128 x 64 OLED display to show our 2.1's eye animations and it's feelings. This display is 128x64 pixel display and it is not a colour display it is a wihte colour only ( some sources says that white colour display is much durable than the blue one- do your own research and confirm by yourself).
 
 ### MPU6050 6-Axis Motion Tracking Sensor
 
-![MPU6050](/images/blog/2.1/2.png "MPU6050")
+![MPU6050](/images/blog/2.1/2.webp "MPU6050")
 
 I am using this sensor module to detect 2.1's movements and change it's expressions accordingly. This sensor module includes gyroscope and accelerometer. So it can detect movements and make 2.1 more interactive.
 
 ### Capacitive Touch Sensor
 
-![Capastive Touch Sensor](/images/blog/2.1/3.png "Capastive Touch Sensor")
+![Capastive Touch Sensor](/images/blog/2.1/3.webp "Capastive Touch Sensor")
 
 I am using this touch sensor for directly interact with 2.1. We can give different commands by touches with this sensor. It detects touches and we can communicate with our robot easily with it.
 
@@ -46,7 +46,7 @@ I am using this touch sensor for directly interact with 2.1. We can give differe
 Now we have to interconnect all the components we collected and make the final setup for our prototype of 2.1. It is very easy to do with a bread board and some jumper wiers.
 
 *Setup Diagram:*
-![Setup Diagram](/images/blog/2.1/4.png "Setup Diagram")
+![Setup Diagram](/images/blog/2.1/4.webp "Setup Diagram")
 Diagram drawn with wokwi online emulator (https://wokwi.com/projects/435758617419686913)
 
 You should connect all the components as above diagram. with correct pins.
@@ -71,7 +71,7 @@ You should connect all the components as above diagram. with correct pins.
 * VCC ==> 3V
 * GND ==> Any GND pin in ESP32
 
-![Complete setup](/images/blog/2.1/5.png "Complete setup")
+![Complete setup](/images/blog/2.1/5.webp "Complete setup")
 
 ## Setup Arduino IDE with ESP32 and Install Relevant Libraries
 

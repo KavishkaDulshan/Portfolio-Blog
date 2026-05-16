@@ -5,10 +5,10 @@ date: "2025-08-01"
 excerpt: "A real-time, cross-platform desktop weather dashboard built with Python and KivyMD, featuring modern Material Design 3 standards."
 tags: ["python", "kivy", "rest-api"]
 github: "https://github.com/KavishkaDulshan/Weather-Tracking-App.git"
-coverImage: "/images/projects/weather-app-cover.png"
+coverImage: "/images/projects/weather-app-cover.webp"
 gallery: 
-  - "/images/projects/Gallery/WeatherApp/image.png"
-  - "/images/projects/Gallery/WeatherApp/image1.png"
+  - "/images/projects/Gallery/WeatherApp/image.webp"
+  - "/images/projects/Gallery/WeatherApp/image1.webp"
 ---
 ## Overview
 

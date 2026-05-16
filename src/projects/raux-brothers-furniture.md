@@ -7,13 +7,13 @@ tags: ["React", "Vite", "Tailwind CSS", "UI/UX Design", "GitHub Pages"]
 github: "https://github.com/kavishkadulshan/WebProject1"
 demo: "https://kavishkadulshan.github.io/WebProject1/"
 excerpt: "Transforming a heritage furniture brand into a modern digital experience using React 19 and a curated Material/Serif design system."
-coverImage: "/images/projects/Gallery/roux/image2.png"
+coverImage: "/images/projects/Gallery/roux/image2.webp"
 gallery:
-  - /images/projects/Gallery/roux/image2.png
-  - /images/projects/Gallery/roux/image3.png
-  - /images/projects/Gallery/roux/image4.png
-  - /images/projects/Gallery/roux/image5.png
-  - /images/projects/Gallery/roux/image1.png
+  - /images/projects/Gallery/roux/image2.webp
+  - /images/projects/Gallery/roux/image3.webp
+  - /images/projects/Gallery/roux/image4.webp
+  - /images/projects/Gallery/roux/image5.webp
+  - /images/projects/Gallery/roux/image1.webp
 ---
 ## Overview
 

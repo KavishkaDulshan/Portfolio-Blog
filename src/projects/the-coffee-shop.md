@@ -5,14 +5,14 @@ date: "2025-02-03"
 excerpt: "A full-stack coffee shop website featuring a customer-facing frontend and an admin panel, built during my first year of university."
 tags: ["php", "mysql", "html", "css", "university-project"]
 github: "https://github.com/kavishkadulshan/the-coffee-shop-"
-coverImage: "/images/projects/Gallery/coffeeshop/2.png"
+coverImage: "/images/projects/Gallery/coffeeshop/2.webp"
 demo: "https://freephotospcrack.kesug.com/index.php"
 gallery:
-    - "/images/projects/Gallery/coffeeshop/2.png"
-    - "/images/projects/Gallery/coffeeshop/1.png"
-    - "/images/projects/Gallery/coffeeshop/3.png"
-    - "/images/projects/Gallery/coffeeshop/4.png"
-    - "/images/projects/Gallery/coffeeshop/5.png"
+    - "/images/projects/Gallery/coffeeshop/2.webp"
+    - "/images/projects/Gallery/coffeeshop/1.webp"
+    - "/images/projects/Gallery/coffeeshop/3.webp"
+    - "/images/projects/Gallery/coffeeshop/4.webp"
+    - "/images/projects/Gallery/coffeeshop/5.webp"
 ---
 ## Overview
 

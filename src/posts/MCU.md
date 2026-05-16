@@ -3,11 +3,11 @@ title: "The Tiny Brains Behind the IoT Revolution: Understanding Microcontroller
 date: "2025-10-14"
 excerpt: "Discover the unsung hero of modern electronics—the Microcontroller Unit (MCU)—and why it is the critical component powering the IoT era."
 tags: ["microcontrollers", "embedded-systems", "iot", "electronics", "technology"]
-coverImage: "/images/blog/mcu/1.png"
+coverImage: "/images/blog/mcu/1.webp"
 ---
 In today's connected world, a single component is often the unsung hero enabling real-time control and smart functionality in everything from your smart thermostat to your car's engine management system: the **Microcontroller Unit (MCU)**.
 
-![MCU](/images/blog/mcu/0.png "post")
+![MCU](/images/blog/mcu/0.webp "post")
 
 ## What is an MCU?
 

@@ -3,7 +3,7 @@ title: "Danger of Phone Number Recycling"
 date: "2026-03-15"
 excerpt: "Mobile phone numbers are recycled by telecom operators due to limited number allocations, creating significant security risks for linked online accounts."
 tags: ["security", "privacy", "mobile-safety"]
-coverImage: "/images/blog/post3/image.png"
+coverImage: "/images/blog/post3/image.webp"
 ---
 ## Understanding Phone Number Recycling
 

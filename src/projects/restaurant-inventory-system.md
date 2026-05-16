@@ -6,7 +6,7 @@ description: "A comprehensive inventory management solution for restaurants, fea
 tags: ["Jakarta EE", "JPA/Hibernate", "MySQL", "Java 22", "Maven"]
 github: "https://github.com/kavishkadulshan/inventory-management-system"
 excerpt: "Developing a mission-critical inventory sub-system for a restaurant management platform using a modern Jakarta EE 10 stack."
-coverImage: "/images/projects/rms-inventory-dashboard.png"
+coverImage: "/images/projects/rms-inventory-dashboard.webp"
 ---
 ## Overview
 

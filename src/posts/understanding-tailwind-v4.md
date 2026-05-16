@@ -3,7 +3,7 @@ title: "What's New in Tailwind CSS v4"
 date: "2025-03-01"
 excerpt: "Tailwind v4 drops the config file and moves everything into CSS. Here's what changed and why it's better."
 tags: ["tailwind", "css", "tooling"]
-coverImage: "/images/blog/post2/image.png"
+coverImage: "/images/blog/post2/image.webp"
 ---
 Tailwind CSS v4 is a ground-up rewrite. The changes feel radical at first, but they make a lot of sense once you understand what the team was going for.
 

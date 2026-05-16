@@ -4,7 +4,7 @@ date: "2025-03-14"
 excerpt: "A blog-first personal portfolio built with React, Vite, and Tailwind CSS v4. Blog posts and projects are written as Markdown files — no backend required."
 tags: ["react", "vite", "tailwind", "markdown"]
 github: "https://github.com/kavishkadulshan/portfolio"
-coverImage: "/images/projects/Gallery/portfolio/1.png"
+coverImage: "/images/projects/Gallery/portfolio/1.webp"
 # demo: "https://yourapp.netlify.app"          — shows "Live demo" button
 # demoVideo: "https://drive.google.com/..."    — shows "Watch demo video" button (opens in new tab)
 # inlineVideo: "https://www.youtube.com/embed/VIDEOID"  — embeds a player on the page

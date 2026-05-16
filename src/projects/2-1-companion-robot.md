@@ -6,15 +6,15 @@ description: "A fun, low-cost DIY companion robot built with an ESP32, featuring
 excerpt: "A fun, low-cost DIY companion robot built with an ESP32, featuring interactive OLED eye animations, motion tracking, and touch capabilities."
 tags: ["esp32", "robotics", "cpp", "arduino", "diy"]
 github: "https://github.com/kavishkadulshan/2.1_the_companion_robot"
-coverImage: "/images/projects/Gallery/2.1V1/image.jpeg"
+coverImage: "/images/projects/Gallery/2.1V1/image.webp"
 demoVideo: "https://github.com/user-attachments/assets/388a6fea-129f-4372-ae87-fc4299581075"
 gallery:
-    - "/images/projects/Gallery/2.1V1/image.jpeg"
-    - "/images/projects/Gallery/2.1V1/1.png"
-    - "/images/projects/Gallery/2.1V1/2.png"
-    - "/images/projects/Gallery/2.1V1/3.png"
-    - "/images/projects/Gallery/2.1V1/4.png"
-    - "/images/projects/Gallery/2.1V1/5.png"
+    - "/images/projects/Gallery/2.1V1/image.webp"
+    - "/images/projects/Gallery/2.1V1/1.webp"
+    - "/images/projects/Gallery/2.1V1/2.webp"
+    - "/images/projects/Gallery/2.1V1/3.webp"
+    - "/images/projects/Gallery/2.1V1/4.webp"
+    - "/images/projects/Gallery/2.1V1/5.webp"
 inlineVideo: "/images/projects/Gallery/2.1V1/demo.mp4"
 ---
 ---

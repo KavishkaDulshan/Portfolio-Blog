@@ -3,7 +3,7 @@ title: "How to Use a Raspberry Pi as a WIFI Access Point (Sinhala)"
 date: "2025-09-10"
 excerpt: "A step-by-step guide on transforming your Raspberry Pi into a functional WiFi access point using hostapd and dnsmasq."
 tags: ["RaspberryPi", "WiFi", "Networking", "IoT", "DIYProjects"]
-coverImage: "/images/blog/RaspberryPi/0.png"
+coverImage: "/images/blog/RaspberryPi/0.webp"
 ---
 මම මෑතකදී කරපු project එකකදි මට සිද්දවුනා Raspberry pi එකක් WIFI access point එක්ක් විදිහට use කරන්න. කාටම හරි useful වෙයි කියලා හිතලා මං කියන්නම් කොහොමද ඒක ලේසියෙන්ම කරගන්නේ කියලා.
 
@@ -113,4 +113,4 @@ sudo systemctl enable hostapd dnsmasq
 sudo reboot
 ```
 
-![Raspberry Pi setup](/images/blog/RaspberryPi/1.png "Raspberry Pi setup")
+![Raspberry Pi setup](/images/blog/RaspberryPi/1.webp "Raspberry Pi setup")

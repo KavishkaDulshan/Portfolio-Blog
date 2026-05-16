@@ -3,7 +3,7 @@ title: "Getting Started with React: A Practical Guide"
 date: "2025-03-10"
 excerpt: "React can feel overwhelming at first. Here's how I approach learning it — starting with the mental model, not the syntax."
 tags: ["react", "javascript", "beginners"]
-coverImage: "/images/blog/post1/image.png"
+coverImage: "/images/blog/post1/image.webp"
 ---
 React is a JavaScript library for building user interfaces. If you've been putting off learning it, this is the guide I wish existed when I started.
 
@@ -17,7 +17,7 @@ UI = f(state)
 
 Given the same state, your UI will always look the same. Change the state, and React figures out the minimal set of DOM updates needed to reflect that change. That's it — everything else is just details.
 
-![React's component tree visualised](/images/blog/react-tree.png "The component tree — every UI is a hierarchy of nested components")
+![React's component tree visualised](/images/blog/react-tree.webp "The component tree — every UI is a hierarchy of nested components")
 
 ## Setting up a project
 

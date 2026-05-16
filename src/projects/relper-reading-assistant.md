@@ -7,7 +7,7 @@ tags: ["React", "Python", "Vite", "PDF.js", "Open Source", "Desktop App"]
 github: "https://github.com/KavishkaDulshan/Relper"
 demo: "https://kavishkadulshan.github.io/Relper/"
 excerpt: "A shared-codebase reading assistant that makes digesting English PDFs seamless by providing instant definitions and AI explanations without breaking your reading flow."
-coverImage: "/images/projects/Gallery/relper/0.png"
+coverImage: "/images/projects/Gallery/relper/0.webp"
 ---
 ## Overview
 

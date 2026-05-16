@@ -5,7 +5,7 @@ excerpt: "A cross platform chat application featuring Socket.io real time commun
 description: "Comprehensive documentation for ViralChat, an actively developed full stack messaging platform utilizing Flutter, Node.js, MongoDB, and Docker." 
 tags: ["Flutter", "Node.js", "Socket.io", "MongoDB", "Docker", "Azure", "GitHub Actions"] 
 github: "https://github.com/kavishkadulshan/chat-app-client" 
-coverImage: "/images/projects/Gallery/blinkchat/1.png"
+coverImage: "/images/projects/Gallery/blinkchat/1.webp"
 ---
 ## Overview
 

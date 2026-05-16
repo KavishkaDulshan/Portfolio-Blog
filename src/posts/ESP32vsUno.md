@@ -3,13 +3,13 @@ title: "Arduino Uno vs ESP32: Which One Should You Choose?"
 date: "2025-08-25"
 excerpt: "Choosing the right microcontroller is key for embedded systems and IoT. Here’s a breakdown of the Arduino Uno and ESP32 to help you decide."
 tags: ["iot", "arduino", "esp32", "microcontrollers", "engineering"]
-coverImage: "/images/blog/ESP32vsUno/0.png"
+coverImage: "/images/blog/ESP32vsUno/0.webp"
 ---
 ---
 
 If you’re diving into embedded systems or IoT, choosing the right microcontroller is key. Here’s a quick breakdown to help you decide:
 
-![ESP32vsUno](/images/blog/ESP32vsUno/1.png "comparison")
+![ESP32vsUno](/images/blog/ESP32vsUno/1.webp "comparison")
 
 ## Arduino Uno
 

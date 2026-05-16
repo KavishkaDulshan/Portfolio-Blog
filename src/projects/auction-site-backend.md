@@ -5,7 +5,7 @@ date: "2025-03-16" # Updated to today's date; adjust if needed
 excerpt: "A scalable .NET 8 backend for a real-time auction platform, featuring a decoupled repository architecture, SignalR bidding rooms, and JWT security."
 tags: [".net", "c#", "mysql", "signalr", "jwt", "rest-api"]
 github: "https://github.com/kavishkadulshan/auction_site_backend"
-coverImage: "/images/projects/auction-backend-cover.jpg"
+coverImage: "/images/projects/auction-backend-cover.webp"
 ---
 ## Overview
 
