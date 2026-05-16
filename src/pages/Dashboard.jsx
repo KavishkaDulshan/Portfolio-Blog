@@ -4,15 +4,15 @@ import { FiTerminal, FiStar, FiUsers, FiGitPullRequest, FiAlertCircle, FiCode, F
 import FadeIn from '../components/FadeIn';
 
 const bannerFiles = [
-  "11936-isaicarb.gif", "1229-code.gif", "1784-thunder.gif", "19237-orderside0.jpg",
-  "2332-nike.gif", "24149-celestial-requiem.png", "3373-guts-v-s-griffith.gif", "3752-anime.gif",
-  "3760-madeon.gif", "37715-shadow.gif", "4742-grass.gif", "4746-star-wars.png",
-  "4855-cat.gif", "5132-pixel-mario.gif", "5466-chise.gif", "55395-banner.jpg",
-  "56990-rain.jpg", "6100-.gif", "6136-walking.gif", "6459-purple-to-blue-snowy-mountains-w-girl.gif",
-  "7066-katana.gif", "70753-chill-girl-banner.png", "71662-weak-arm-with-a-gun.jpg", "71710-child-and-tanks.jpg",
-  "7338-smooth-rick-roll.gif", "7461-car-gif.gif", "7718-wumpus-in-space.gif", "8263-the-garden-of-words-1.gif",
-  "8401-white-tree.gif", "85514-zephric.jpg", "8636-gunny.gif", "94015-yo.jpg",
-  "9539-the-garden-of-words-2.gif", "99160-maro.jpg"
+  "11936-isaicarb.webp", "1229-code.webp", "1784-thunder.webp", "19237-orderside0.webp",
+  "2332-nike.webp", "24149-celestial-requiem.webp", "3373-guts-v-s-griffith.webp", "3752-anime.webp",
+  "3760-madeon.webp", "37715-shadow.webp", "4742-grass.webp", "4746-star-wars.webp",
+  "4855-cat.webp", "5132-pixel-mario.webp", "5466-chise.webp", "55395-banner.webp",
+  "56990-rain.webp", "6100-.webp", "6136-walking.webp", "6459-purple-to-blue-snowy-mountains-w-girl.webp",
+  "7066-katana.webp", "70753-chill-girl-banner.webp", "71662-weak-arm-with-a-gun.webp", "71710-child-and-tanks.webp",
+  "7338-smooth-rick-roll.webp", "7461-car-gif.webp", "7718-wumpus-in-space.webp", "8263-the-garden-of-words-1.webp",
+  "8401-white-tree.webp", "85514-zephric.webp", "8636-gunny.webp", "94015-yo.webp",
+  "9539-the-garden-of-words-2.webp", "99160-maro.webp"
 ];
 
 export default function Dashboard() {

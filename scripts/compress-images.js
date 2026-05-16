@@ -9,13 +9,16 @@ const rootDir = path.resolve(__dirname, '..');
 
 const IMAGE_DIRS = [
   path.join(rootDir, 'public/images/blog'),
-  path.join(rootDir, 'public/images/projects')
+  path.join(rootDir, 'public/images/projects'),
+  path.join(rootDir, 'public/images/banners')
 ];
 
 const CONTENT_DIRS = [
   path.join(rootDir, 'src/posts'),
   path.join(rootDir, 'src/projects'),
-  path.join(rootDir, 'src/about')
+  path.join(rootDir, 'src/about'),
+  path.join(rootDir, 'src/pages'),
+  path.join(rootDir, 'src/components')
 ];
 
 async function processImages() {
@@ -36,7 +39,8 @@ async function processImages() {
           const newPath = path.join(parsed.dir, newFileName);
           
           try {
-            await sharp(fullPath)
+            const isGif = /\.gif$/i.test(file.name);
+            await sharp(fullPath, { animated: isGif })
               .webp({ quality: 80, effort: 6 })
               .toFile(newPath);
               
@@ -66,7 +70,7 @@ async function processImages() {
         const fullPath = path.join(currentDir, file.name);
         if (file.isDirectory()) {
           await walkContent(fullPath);
-        } else if (/\.md$/i.test(file.name)) {
+        } else if (/\.(md|jsx|js)$/i.test(file.name)) {
           let content = await fs.readFile(fullPath, 'utf8');
           let modified = false;
           

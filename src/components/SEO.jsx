@@ -4,7 +4,7 @@ const SITE_URL = 'https://kavishkadulshan.dev';
 const SITE_NAME = 'Kavishka Dulshan';
 const DEFAULT_DESCRIPTION =
   'Portfolio and blog of Kavishka Dulshan, a Software Engineering undergraduate specializing in full-stack development and IoT.';
-const DEFAULT_OG_IMAGE = `${SITE_URL}/image.png`;
+const DEFAULT_OG_IMAGE = `${SITE_URL}/image.webp`;
 
 /**
  * Reusable SEO component that injects page-specific `<head>` metadata.
