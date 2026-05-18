@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
+import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts';
 import SEO from '../components/SEO';
 import { FiTerminal, FiStar, FiUsers, FiGitPullRequest, FiAlertCircle, FiCode, FiFolder, FiClock, FiZap } from 'react-icons/fi';
 import FadeIn from '../components/FadeIn';
@@ -236,24 +237,104 @@ export default function Dashboard() {
         </div>
       </FadeIn>
 
-      {/* ── Lighthouse CI Scores ── */}
-      {lighthouseScores && (
-        <FadeIn delay={0.07}>
-          <div className="mb-16">
-            <h2 className="text-xl font-semibold text-gray-900 mb-2 flex items-center gap-2">
+      {/* ── Main Dashboard Grid ── */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+        {/* ── Language DNA (Left) ── */}
+        <FadeIn delay={0.1} className="flex flex-col h-full">
+          <h2 className="text-xl font-semibold text-gray-900 mb-6 flex items-center gap-2">
+            <FiCode className="text-gray-400" />
+            Language DNA
+          </h2>
+          {loadingRepos ? (
+            <div className="flex-1 min-h-[300px] flex items-center justify-center bg-white border border-gray-200 rounded-2xl animate-pulse shadow-sm">
+              <div className="w-32 h-32 rounded-full border-8 border-gray-100" />
+            </div>
+          ) : (
+            <div className="flex-1 min-h-[300px] bg-white border border-gray-200 rounded-2xl p-6 flex flex-col shadow-sm">
+              <ResponsiveContainer width="100%" height={260}>
+                <PieChart>
+                  <Pie
+                    data={sortedLanguages.slice(0, 8).map(([name, value]) => ({ name, value }))}
+                    cx="50%"
+                    cy="50%"
+                    innerRadius={65}
+                    outerRadius={95}
+                    paddingAngle={3}
+                    dataKey="value"
+                    stroke="none"
+                    label={({ cx, cy, midAngle, innerRadius, outerRadius, percent, name }) => {
+                      if (percent <= 0.04) return null;
+                      const RADIAN = Math.PI / 180;
+                      const radius = outerRadius + 20;
+                      const x = cx + radius * Math.cos(-midAngle * RADIAN);
+                      const y = cy + radius * Math.sin(-midAngle * RADIAN);
+                      return (
+                        <text x={x} y={y} fill="#374151" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central" fontSize="12" fontWeight="500">
+                          {`${name} ${(percent * 100).toFixed(0)}%`}
+                        </text>
+                      );
+                    }}
+                    labelLine={false}
+                  >
+                    {sortedLanguages.slice(0, 8).map(([lang], index) => {
+                      const languageColorMap = {
+                        'JavaScript': '#D4AF37', // Muted Gold
+                        'TypeScript': '#3182CE', // Muted Blue
+                        'Python': '#457B9D',     // Muted Teal/Blue
+                        'PHP': '#6C5B7B',        // Muted Plum
+                        'HTML': '#C05621',       // Muted Orange
+                        'CSS': '#2B6CB0',        // Muted Blue
+                        'C++': '#2C5282',        // Muted Dark Blue
+                        'Java': '#B7791F',       // Muted Brown
+                      };
+                      const fallbackColors = ['#171717', '#3f3f46', '#52525b', '#71717a', '#a1a1aa', '#d4d4d8', '#e4e4e7', '#f4f4f5'];
+                      const fill = languageColorMap[lang] || fallbackColors[index % fallbackColors.length];
+                      return <Cell key={`cell-${index}`} fill={fill} />;
+                    })}
+                  </Pie>
+                  <Tooltip 
+                    formatter={(value, name) => [`${value} repos`, name]}
+                    contentStyle={{ borderRadius: '8px', border: '1px solid #e5e7eb', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)', fontSize: '14px', fontWeight: '500' }}
+                    itemStyle={{ color: '#111827' }}
+                  />
+                </PieChart>
+              </ResponsiveContainer>
+              {sortedLanguages.length > 8 && (
+                <div className="mt-auto flex flex-wrap gap-2 pt-4 border-t border-gray-100 justify-center">
+                  {sortedLanguages.slice(8).map(([lang, count]) => (
+                    <span key={lang} className="px-2.5 py-1 bg-gray-50 text-gray-600 border border-gray-200 rounded-md text-xs font-medium">
+                      {lang}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+        </FadeIn>
+
+        {/* ── Lighthouse CI Scores (Right) ── */}
+        {lighthouseScores ? (
+          <FadeIn delay={0.07} className="flex flex-col h-full">
+            <h2 className="text-xl font-semibold text-gray-900 mb-6 flex items-center gap-2">
               <FiZap className="text-gray-400" />
               Site Quality
             </h2>
-            <p className="text-sm text-gray-500 mb-6">Lighthouse scores for kavishkadulshan.dev</p>
-            <div className="flex flex-wrap gap-8">
-              <ScoreRing score={lighthouseScores.performance}    label="Performance"     color="#16a34a" />
-              <ScoreRing score={lighthouseScores.accessibility}  label="Accessibility"   color="#2563eb" />
-              <ScoreRing score={lighthouseScores.seo}            label="SEO"             color="#7c3aed" />
-              <ScoreRing score={lighthouseScores.best_practices} label="Best Practices"  color="#d97706" />
+            <div className="flex-1 min-h-[300px] bg-white border border-gray-200 rounded-2xl p-6 flex flex-col justify-center items-center shadow-sm">
+              <div className="flex flex-wrap justify-center gap-6 sm:gap-10 mb-8">
+                <ScoreRing score={lighthouseScores.performance}    label="Performance"     color="#4E8D9C" />
+                <ScoreRing score={lighthouseScores.accessibility}  label="Accessibility"   color="#9C5E4E" />
+                <ScoreRing score={lighthouseScores.seo}            label="SEO"             color="#4E9C6B" />
+                <ScoreRing score={lighthouseScores.best_practices} label="Best Practices"  color="#7C4E9C" />
+              </div>
+              <p className="text-xs text-gray-500 bg-gray-50 px-4 py-2 rounded-full border border-gray-100">
+                Lighthouse scores for kavishkadulshan.dev
+              </p>
             </div>
-          </div>
-        </FadeIn>
-      )}
+          </FadeIn>
+        ) : (
+          <div className="hidden lg:block" /> 
+        )}
+      </div>
 
       {loadingRepos ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -269,41 +350,8 @@ export default function Dashboard() {
           ))}
         </div>
       ) : (
-        <>
-          {/* ── Language DNA ── */}
-          <FadeIn delay={0.1}>
-            <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
-              <FiCode className="text-gray-400" />
-              Language DNA
-            </h2>
-            {/* Progress bars */}
-            <div className="space-y-2 mb-4">
-              {sortedLanguages.slice(0, 8).map(([lang, count]) => {
-                const pct = totalReposWithLang > 0 ? Math.round((count / totalReposWithLang) * 100) : 0;
-                return (
-                  <div key={lang} className="flex items-center gap-3">
-                    <span className="text-sm text-gray-700 w-28 shrink-0">{lang}</span>
-                    <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
-                      <div
-                        className="h-full bg-gray-700 rounded-full transition-all duration-500"
-                        style={{ width: `${pct}%` }}
-                      />
-                    </div>
-                    <span className="text-xs text-gray-500 w-8 text-right">{pct}%</span>
-                  </div>
-                );
-              })}
-            </div>
-            {/* Tag cloud for the rest */}
-            <div className="flex flex-wrap gap-2 mb-16">
-              {sortedLanguages.slice(8).map(([lang, count]) => (
-                <span key={lang} className="px-3 py-1.5 bg-gray-50 text-gray-700 border border-gray-200 rounded-full text-sm font-medium">
-                  {lang} ({count})
-                </span>
-              ))}
-            </div>
-          </FadeIn>
 
+        <>
           {/* ── Active Repositories ── */}
           <div>
             <FadeIn delay={0.2}>
