@@ -17,11 +17,15 @@ export default function Layout() {
   return (
     <div className="min-h-screen flex flex-col bg-white text-gray-900" style={{ fontFamily: 'var(--font-sans)' }}>
       <ScrollToTop />
-      <NavBar />
+      <div className="print:hidden">
+        <NavBar />
+      </div>
       <main className="flex-1">
         <Outlet />
       </main>
-      <Footer />
+      <div className="print:hidden">
+        <Footer />
+      </div>
     </div>
   );
 }

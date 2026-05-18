@@ -4,6 +4,7 @@ import { getAboutData } from '../utils/getAbout';
 import FadeIn from '../components/FadeIn';
 import Timeline from '../components/Timeline';
 import { FiDownload } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 
 // Chronological milestones for the NSBM journey timeline
 const TIMELINE_EVENTS = [
@@ -84,16 +85,24 @@ export default function About() {
             <p className="text-gray-600 text-sm">{tagline}</p>
           </div>
           {/* Resume Download — highly visible CTA */}
-          <a
-            href="/resume.pdf"
-            download
-            id="resume-download-btn"
-            className="inline-flex items-center gap-2 self-start shrink-0 rounded-full bg-gray-900 text-white px-5 py-2.5 text-sm font-medium hover:bg-gray-700 transition-colors"
-            aria-label="Download Kavishka Dulshan's resume as PDF"
-          >
-            <FiDownload className="text-base" />
-            Download Resume (PDF)
-          </a>
+          <div className="flex flex-col sm:flex-row gap-3 self-start shrink-0">
+            <a
+              href="/resume.pdf"
+              download
+              id="resume-download-btn"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-gray-900 text-white px-5 py-2.5 text-sm font-medium hover:bg-gray-700 transition-colors"
+              aria-label="Download Kavishka Dulshan's resume as PDF"
+            >
+              <FiDownload className="text-base" />
+              Download Resume (PDF)
+            </a>
+            <Link
+              to="/academic-record"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-gray-200 bg-white text-gray-900 px-5 py-2.5 text-sm font-medium hover:border-gray-900 transition-colors"
+            >
+              Academic Record
+            </Link>
+          </div>
         </div>
       </FadeIn>
 

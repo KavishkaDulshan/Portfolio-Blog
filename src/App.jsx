@@ -8,6 +8,7 @@ import ProjectPost from './pages/ProjectPost';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Dashboard from './pages/Dashboard';
+import AcademicRecord from './pages/AcademicRecord';
 
 export default function App() {
   return (
@@ -32,6 +33,7 @@ export default function App() {
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
+        <Route path="academic-record" element={<AcademicRecord />} />
       </Route>
     </Routes>
   );
