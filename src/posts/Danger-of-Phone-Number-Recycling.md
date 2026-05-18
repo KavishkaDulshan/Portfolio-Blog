@@ -4,6 +4,7 @@ date: "2026-03-15"
 excerpt: "Telecom operators recycle inactive mobile numbers, creating significant cybersecurity risks. Learn how phone number recycling can lead to unauthorized access to your linked online accounts."
 tags: ["security", "privacy", "mobile-safety", "cybersecurity", "two-factor-authentication"]
 coverImage: "/images/blog/post3/image.webp"
+lang: "en"
 ---
 ## Understanding Phone Number Recycling
 

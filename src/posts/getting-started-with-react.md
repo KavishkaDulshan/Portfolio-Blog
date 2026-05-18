@@ -4,6 +4,7 @@ date: "2025-03-10"
 excerpt: "React can feel overwhelming at first. Here's how I approach learning it — starting with the mental model, not the syntax."
 tags: ["react", "javascript", "beginners"]
 coverImage: "/images/blog/post1/image.webp"
+lang: "en"
 ---
 React is a JavaScript library for building user interfaces. If you've been putting off learning it, this is the guide I wish existed when I started.
 

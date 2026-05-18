@@ -9,14 +9,16 @@ const DEFAULT_OG_IMAGE = `${SITE_URL}/image.webp`;
 /**
  * Reusable SEO component that injects page-specific `<head>` metadata.
  *
- * @param {Object}  props
- * @param {string}  props.title       - Page title (will be appended with " — Kavishka Dulshan")
- * @param {string}  [props.description] - Meta description
- * @param {string}  [props.path]      - Canonical path, e.g. "/blog" (defaults to "/")
- * @param {string}  [props.ogImage]   - Open Graph image URL (absolute or relative to public)
- * @param {string}  [props.ogType]    - Open Graph type, defaults to "website"
- * @param {boolean} [props.noSuffix]  - If true, don't append the site name suffix to the title
- * @param {string}  [props.article]   - If set, includes article:published_time
+ * @param {Object}   props
+ * @param {string}   props.title         - Page title (appended with " — Kavishka Dulshan")
+ * @param {string}   [props.description] - Meta description
+ * @param {string}   [props.path]        - Canonical path, e.g. "/blog" (defaults to "/")
+ * @param {string}   [props.ogImage]     - Open Graph image URL (absolute or relative to public)
+ * @param {string}   [props.ogType]      - Open Graph type, defaults to "website"
+ * @param {boolean}  [props.noSuffix]    - If true, don't append the site name suffix to the title
+ * @param {string}   [props.article]     - If set, includes article:published_time
+ * @param {Array}    [props.hreflang]    - Array of { lang: string, href: string } for i18n alternates
+ *                                         e.g. [{ lang: 'en', href: '...' }, { lang: 'si', href: '...' }]
  */
 export default function SEO({
   title,
@@ -26,10 +28,9 @@ export default function SEO({
   ogType = 'website',
   noSuffix = false,
   article,
+  hreflang,
 }) {
-  const fullTitle = noSuffix
-    ? title
-    : `${title} — ${SITE_NAME}`;
+  const fullTitle = noSuffix ? title : `${title} — ${SITE_NAME}`;
 
   const canonicalUrl = `${SITE_URL}${path}`;
 
@@ -46,6 +47,11 @@ export default function SEO({
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
       <link rel="canonical" href={canonicalUrl} />
+
+      {/* i18n hreflang alternate links — prevents duplicate-content penalties */}
+      {hreflang && hreflang.map(({ lang, href }) => (
+        <link key={lang} rel="alternate" hreflang={lang} href={href} />
+      ))}
 
       {/* Open Graph */}
       <meta property="og:type" content={ogType} />

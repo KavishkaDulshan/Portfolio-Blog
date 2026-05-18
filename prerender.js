@@ -14,6 +14,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { execSync } from 'node:child_process';
+import { fetchGitHubStats } from './scripts/fetch-github-stats.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -39,16 +40,42 @@ function getAllRoutes() {
   const staticRoutes = [
     '/',
     '/blog',
+    '/en/blog',
+    '/si/blog',
     '/projects',
     '/dashboard',
     '/about',
     '/contact',
   ];
 
-  const blogRoutes = getPostSlugs().map(slug => `/blog/${slug}`);
-  const projectRoutes = getProjectSlugs().map(slug => `/projects/${slug}`);
+  const postSlugs = getPostSlugs();
 
-  return [...staticRoutes, ...blogRoutes, ...projectRoutes];
+  // Each post gets both the legacy /blog/:slug path and its locale-specific path
+  const blogRoutes = postSlugs.map((slug) => `/blog/${slug}`);
+  const enBlogRoutes = postSlugs
+    .filter((slug) => {
+      // Read the lang field from frontmatter to determine locale
+      const filePath = path.resolve(__dirname, 'src/posts', `${slug}.md`);
+      if (!fs.existsSync(filePath)) return false;
+      const raw = fs.readFileSync(filePath, 'utf-8');
+      const langMatch = raw.match(/^lang:\s*"?(\w+)"?/m);
+      const lang = langMatch ? langMatch[1] : 'en';
+      return lang !== 'si';
+    })
+    .map((slug) => `/en/blog/${slug}`);
+  const siBlogRoutes = postSlugs
+    .filter((slug) => {
+      const filePath = path.resolve(__dirname, 'src/posts', `${slug}.md`);
+      if (!fs.existsSync(filePath)) return false;
+      const raw = fs.readFileSync(filePath, 'utf-8');
+      const langMatch = raw.match(/^lang:\s*"?(\w+)"?/m);
+      return langMatch ? langMatch[1] === 'si' : false;
+    })
+    .map((slug) => `/si/blog/${slug}`);
+
+  const projectRoutes = getProjectSlugs().map((slug) => `/projects/${slug}`);
+
+  return [...staticRoutes, ...blogRoutes, ...enBlogRoutes, ...siBlogRoutes, ...projectRoutes];
 }
 
 // ── 2. Build client + server bundles ────────────────────────────────
@@ -60,6 +87,12 @@ console.log('\n🔨 Building server bundle...');
 execSync('npx vite build --ssr src/entry-server.jsx --outDir dist/server', {
   stdio: 'inherit',
   cwd: __dirname,
+});
+
+// ── 3. Pre-fetch GitHub stats into dist/ (must run AFTER client build) ──
+await fetchGitHubStats({
+  distDir: path.resolve(__dirname, 'dist'),
+  token: process.env.VITE_GITHUB_TOKEN,
 });
 
 // ── 3. Pre-render every route ───────────────────────────────────────

@@ -4,6 +4,7 @@ date: "2025-09-10"
 excerpt: "Transform your Raspberry Pi into a functional wireless access point. This step-by-step guide covers the installation and configuration of hostapd and dnsmasq."
 tags: ["raspberry-pi", "networking", "iot", "diy", "wifi"]
 coverImage: "/images/blog/RaspberryPi/0.webp"
+lang: "en"
 ---
 In a recent project, I needed to use a Raspberry Pi as a WiFi access point. I thought it would be useful to share the process so anyone can set this up easily.
 

@@ -19,13 +19,13 @@ const heroVariants = {
 };
 const heroItem = {
   hidden: { opacity: 0, y: 18 },
-  show:   { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } },
 };
 
 const MotionLink = motion(Link);
 
 export default function Home() {
-  const latestPosts    = getAllPosts().slice(0, 3);
+  const latestPosts = getAllPosts().slice(0, 3);
   const latestProjects = getAllProjects().slice(0, 3);
   const [liveRepos, setLiveRepos] = useState([]);
 
@@ -33,7 +33,7 @@ export default function Home() {
     fetch('https://api.github.com/users/kavishkadulshan/repos?sort=updated&per_page=3')
       .then(res => res.json())
       .then(data => {
-        if(Array.isArray(data)) {
+        if (Array.isArray(data)) {
           setLiveRepos(data);
         }
       })
@@ -83,7 +83,7 @@ export default function Home() {
     <div className="bg-white">
       <SEO
         title="Software Engineer"
-        description="Hi, I'm Kavishka Dulshan — a Software Engineering undergraduate who builds software, tinkers with IoT, and writes about what I learn."
+        description="Kavishka Dulshan — Software Engineering undergraduate at NSBM Green University specializing in full-stack web development, computer security, and connected IoT devices."
         path="/"
         noSuffix={false}
       />
@@ -97,7 +97,7 @@ export default function Home() {
             <motion.p variants={heroItem}
               className="text-xs uppercase tracking-widest text-gray-600 mb-4 font-sans"
             >
-              Software Engineering Undergraduate
+              Software Engineering Undergraduate ·
             </motion.p>
 
             <motion.h1 variants={heroItem}
@@ -107,12 +107,16 @@ export default function Home() {
             </motion.h1>
 
             <motion.p variants={heroItem}
-              className="text-base sm:text-lg text-gray-500 leading-relaxed max-w-xl mb-10"
+              className="text-base sm:text-lg text-gray-500 leading-relaxed max-w-xl mb-8"
             >
-              I build software, tinker with IoT, write about what I learn, and share projects I care about. This is my corner of the internet. Read the blog, explore the work.
+              I specialize in the intersection of{' '}
+              <strong className="text-gray-700 font-medium">web application development</strong>,{' '}
+              <strong className="text-gray-700 font-medium">computer security</strong>, and{' '}
+              <strong className="text-gray-700 font-medium">connected devices</strong>. I build
+              full-stack systems, tinker with ESP32 &amp; Raspberry Pi, and write about what I learn.
             </motion.p>
 
-            <motion.div variants={heroItem} className="flex flex-wrap gap-3">
+            <motion.div variants={heroItem} className="flex flex-wrap gap-3 mb-6">
               <MotionLink
                 to="/blog"
                 whileHover="hover"
@@ -133,6 +137,18 @@ export default function Home() {
                   <FiArrowRight />
                 </motion.span>
               </MotionLink>
+            </motion.div>
+
+            {/* Keyword identity pills */}
+            <motion.div variants={heroItem} className="flex flex-wrap gap-2 mb-6">
+              {['Full-Stack Dev', 'IoT & Embedded', 'Security-Minded'].map((pill) => (
+                <span
+                  key={pill}
+                  className="text-xs px-3 py-1 rounded-full border border-gray-200 text-gray-600 bg-gray-50"
+                >
+                  {pill}
+                </span>
+              ))}
             </motion.div>
 
             {/* Tech stack icon row */}
@@ -166,7 +182,7 @@ export default function Home() {
             <h2 className="text-xl font-semibold text-gray-900 mb-8">GitHub contributions</h2>
             <div className="w-full overflow-x-auto pb-4" ref={contributionsWrapperRef}>
               <div className="min-w-[800px]">
-                <GitHubCalendar 
+                <GitHubCalendar
                   username="kavishkadulshan"
                   colorScheme="light"
                   theme={{

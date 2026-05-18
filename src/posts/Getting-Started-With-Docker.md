@@ -4,6 +4,7 @@ date: "2026-05-16"
 excerpt: "Docker revolutionized how we build, ship, and run software. This comprehensive guide covers why it became an industry standard and how you can get started using it today."
 tags: ["docker", "devops", "containers", "software-engineering"]
 coverImage: "/images/blog/Docker/0.webp"
+lang: "en"
 ---
 If you have spent any time in software development, you have likely run into the infamous phrase: *"Well, it works on my machine!"* It usually happens when code runs perfectly on a local computer but completely crashes the moment it gets deployed to a staging or production server.
 

@@ -24,10 +24,10 @@ export default function NavBar() {
         <div className="flex justify-between h-12 items-center">
 
           {/* Logo */}
-          <Link to="/" className="flex items-center" aria-label="Go to home">
+          <Link to="/" className="flex items-center" aria-label="Kavishka Dulshan – Go to home">
             <img
               src="/favicon.svg"
-              alt="alCatraZ.dev"
+              alt="Kavishka Dulshan"
               className="h-12 w-auto object-contain"
             />
           </Link>

@@ -4,8 +4,9 @@ date: "2025-08-25"
 excerpt: "Choosing the right microcontroller is key for embedded systems and IoT. Here’s a breakdown of the Arduino Uno and ESP32 to help you decide."
 tags: ["iot", "arduino", "esp32", "microcontrollers", "engineering"]
 coverImage: "/images/blog/ESP32vsUno/0.webp"
+lang: "en"
 ---
----
+
 
 If you’re diving into embedded systems or IoT, choosing the right microcontroller is key. Here’s a quick breakdown to help you decide:
 

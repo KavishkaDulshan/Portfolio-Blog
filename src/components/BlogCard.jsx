@@ -1,8 +1,12 @@
 import { Link } from 'react-router-dom';
 import { FiCalendar, FiArrowRight } from 'react-icons/fi';
 
-export default function BlogCard({ post }) {
+export default function BlogCard({ post, lang }) {
   const { slug, title, date, excerpt, tags = [], coverImage } = post;
+
+  // Use i18n-aware path if we know the locale; fallback to /blog/:slug for safety
+  const basePath = lang === 'si' ? '/si/blog' : lang === 'en' ? '/en/blog' : '/blog';
+  const postPath = `${basePath}/${slug}`;
 
   const formattedDate = date
     ? new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
@@ -12,7 +16,7 @@ export default function BlogCard({ post }) {
     <article className="group flex flex-col rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden">
       {/* Thumbnail */}
       {coverImage && (
-        <Link to={`/blog/${slug}`} tabIndex={-1} aria-hidden="true">
+        <Link to={postPath} tabIndex={-1} aria-hidden="true">
           <img
             src={coverImage}
             alt=""
@@ -40,7 +44,7 @@ export default function BlogCard({ post }) {
 
         {/* Title */}
         <h2 className="text-base font-semibold text-gray-900 leading-snug mb-2 group-hover:underline decoration-1 underline-offset-2">
-          <Link to={`/blog/${slug}`}>{title}</Link>
+          <Link to={postPath}>{title}</Link>
         </h2>
 
         {/* Excerpt */}
@@ -50,7 +54,7 @@ export default function BlogCard({ post }) {
 
         {/* CTA */}
         <Link
-          to={`/blog/${slug}`}
+          to={postPath}
           className="mt-auto text-sm font-medium text-gray-900 hover:text-gray-700 inline-flex items-center gap-1 group/btn"
         >
           Read article <FiArrowRight className="transform group-hover/btn:translate-x-1 transition-transform" />

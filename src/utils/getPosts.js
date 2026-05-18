@@ -19,3 +19,13 @@ export function getAllPosts() {
 export function getPostBySlug(slug) {
   return getAllPosts().find((p) => p.slug === slug) ?? null;
 }
+
+/** Returns only English posts (lang: "en" or no lang field set). */
+export function getEnPosts() {
+  return getAllPosts().filter((p) => !p.lang || p.lang === 'en');
+}
+
+/** Returns only Sinhala posts (lang: "si"). */
+export function getSiPosts() {
+  return getAllPosts().filter((p) => p.lang === 'si');
+}

@@ -2,6 +2,60 @@ import ReactMarkdown from 'react-markdown';
 import SEO from '../components/SEO';
 import { getAboutData } from '../utils/getAbout';
 import FadeIn from '../components/FadeIn';
+import Timeline from '../components/Timeline';
+import { FiDownload } from 'react-icons/fi';
+
+// Chronological milestones for the NSBM journey timeline
+const TIMELINE_EVENTS = [
+  {
+    year: '2021',
+    title: 'A/L Completed — Commerce Stream',
+    subtitle: 'Kaluthara Vidyalaya National School',
+    description: 'Information Communication Technology, Accounting, Economics.',
+  },
+  {
+    year: '2023',
+    title: 'BSc Software Engineering Begins',
+    subtitle: 'NSBM Green University (National School of Business Management)',
+    description:
+      'Studying core SE principles, algorithms, data structures, system design, and modern development practices.',
+  },
+  {
+    year: 'Sep 2023',
+    title: 'Python for Beginners Certificate',
+    subtitle: 'University of Moratuwa (Open Learning)',
+  },
+  {
+    year: 'Jun 2024',
+    title: 'EF SET English Certificate — C1 Advanced (67/100)',
+    subtitle: 'EF Standard English Test',
+  },
+  {
+    year: 'Jul 2025',
+    title: 'Web Design for Beginners Certificate',
+    subtitle: 'University of Moratuwa (Open Learning)',
+  },
+  {
+    year: 'Sep 2025',
+    title: 'Launched kavishkadulshan.dev',
+    subtitle: 'Personal portfolio & technical blog',
+    description:
+      'Built with React + Vite SSG. Covers full-stack projects, IoT builds, and software engineering writing.',
+  },
+  {
+    year: 'Mar 2026',
+    title: 'MongoDB Document Model Certificate',
+    subtitle: 'MongoDB University via Credly',
+  },
+  {
+    year: '2026 →',
+    title: 'Building, shipping, and writing publicly',
+    subtitle: 'Full-Stack · IoT · Security',
+    description:
+      'Open to software engineering internship opportunities. Currently building full-stack systems and ESP32 IoT projects.',
+    highlight: 'Open to Internships',
+  },
+];
 
 export default function About() {
   const {
@@ -22,13 +76,28 @@ export default function About() {
         path="/about"
       />
 
-      {/* Header */}
+      {/* ── Header + Resume CTA ── */}
       <FadeIn>
-        <h1 className="font-serif text-3xl sm:text-4xl font-medium text-gray-900 mb-2">{name}</h1>
-        <p className="text-gray-600 text-sm mb-12">{tagline}</p>
+        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6 mb-12">
+          <div>
+            <h1 className="font-serif text-3xl sm:text-4xl font-medium text-gray-900 mb-2">{name}</h1>
+            <p className="text-gray-600 text-sm">{tagline}</p>
+          </div>
+          {/* Resume Download — highly visible CTA */}
+          <a
+            href="/resume.pdf"
+            download
+            id="resume-download-btn"
+            className="inline-flex items-center gap-2 self-start shrink-0 rounded-full bg-gray-900 text-white px-5 py-2.5 text-sm font-medium hover:bg-gray-700 transition-colors"
+            aria-label="Download Kavishka Dulshan's resume as PDF"
+          >
+            <FiDownload className="text-base" />
+            Download Resume (PDF)
+          </a>
+        </div>
       </FadeIn>
 
-      {/* Bio */}
+      {/* ── Bio ── */}
       {body?.trim() && (
         <FadeIn delay={0.05}>
           <section className="mb-12">
@@ -41,7 +110,19 @@ export default function About() {
 
       <div className="border-t border-gray-200 mb-12" />
 
-      {/* Education */}
+      {/* ── NSBM Journey Timeline ── */}
+      <FadeIn delay={0.05}>
+        <section className="mb-12">
+          <h2 className="text-xs font-semibold text-gray-900 uppercase tracking-widest mb-8">
+            Journey
+          </h2>
+          <Timeline events={TIMELINE_EVENTS} />
+        </section>
+      </FadeIn>
+
+      <div className="border-t border-gray-200 mb-12" />
+
+      {/* ── Education ── */}
       {education.length > 0 && (
         <FadeIn delay={0.05}>
           <section className="mb-12">
@@ -66,7 +147,7 @@ export default function About() {
 
       <div className="border-t border-gray-200 mb-12" />
 
-      {/* Skills */}
+      {/* ── Skills ── */}
       {skills.length > 0 && (
         <FadeIn delay={0.05}>
           <section className="mb-12">
@@ -92,7 +173,7 @@ export default function About() {
         </FadeIn>
       )}
 
-      {/* Certificates */}
+      {/* ── Certificates ── */}
       {certificates.length > 0 && (
         <FadeIn delay={0.05}>
           <>
@@ -124,7 +205,7 @@ export default function About() {
         </FadeIn>
       )}
 
-      {/* Currently */}
+      {/* ── Currently ── */}
       {currently.length > 0 && (
         <FadeIn delay={0.05}>
           <>

@@ -1,0 +1,7 @@
+{
+  "performance": 98,
+  "accessibility": 100,
+  "seo": 100,
+  "best_practices": 96,
+  "note": "Run Lighthouse on kavishkadulshan.dev and update these values. Or integrate lighthouse-ci in your GitHub Actions workflow."
+}

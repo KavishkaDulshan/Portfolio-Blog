@@ -4,6 +4,7 @@ date: "2026-05-14"
 excerpt: "Choosing between an ESP32-S3 and an STM32H7 can be tough. We break down the specs, performance, and best use cases for these two microcontroller giants."
 tags: ["embedded-systems", "microcontrollers", "esp32", "stm32", "iot"]
 coverImage: "/images/blog/ESP32vsSTM32/1.webp"
+lang: "en"
 ---
 When it comes to high-performance microcontrollers, the ESP32-S3 and the STM32H7 represent two of the most popular choices for developers today. While both are considered "powerhouses," they excel in very different environments.
 
