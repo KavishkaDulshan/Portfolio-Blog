@@ -3,7 +3,7 @@ title: "Demystifying the MAX30102: How This Tiny Biometric Sensor Tracks Your Pu
 date: "2026-05-21"
 excerpt: "Discover the science behind the MAX30102 biometric sensor. Learn how photplethysmography works, bypass a common MH-ET Live hardware flaw, and stream real-time heart rate and SpO2 data using an ESP32."
 tags: ["embedded-systems", "esp32", "biometrics", "sensors", "arduino"]
-coverImage: "/images/blog/max30102/image.webp"
+coverImage: "/images/blog/max30102/0.webp"
 ---
 Ever wondered how smartwatches and fitness trackers read your pulse through your skin? It feels like magic, but it is actually a clever combination of optical physics, fluid dynamics, and embedded engineering.
 
@@ -44,6 +44,9 @@ $$
 > **Hardware Detail:** The AC component represents the dynamic, pulsating blood flow tied to your heartbeat. The DC component represents the static elements—your bones, skin, and steady venous blood that absorb a constant amount of light. Isolating the AC component allows the sensor to ignore everything else and look strictly at your moving arterial blood.
 
 The onboard circuitry automatically filters out external ambient room light, processes the signals through an internal 18-bit Analog-to-Digital Converter (ADC), and passes the clean digital data out over an $I^2C$ communication bus via standard Data (SDA) and Clock (SCL) lines.
+
+
+![Max30102](/images/blog/max30102/image.webp "max30102")
 
 ## Hardware Gotcha: The MH-ET Live Design Flaw
 
