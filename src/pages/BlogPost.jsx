@@ -3,8 +3,11 @@ import SEO from '../components/SEO';
 import { useEffect, useRef, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
 import rehypeHighlight from 'rehype-highlight';
+import rehypeKatex from 'rehype-katex';
 import 'highlight.js/styles/github.css';
+import 'katex/dist/katex.min.css';
 import mermaid from 'mermaid';
 import { getPostBySlug } from '../utils/getPosts';
 
@@ -244,8 +247,8 @@ export default function BlogPost() {
           prose-img:rounded-xl prose-img:shadow-sm"
       >
         <ReactMarkdown
-          remarkPlugins={[remarkGfm]}
-          rehypePlugins={[rehypeHighlight]}
+          remarkPlugins={[remarkGfm, remarkMath]}
+          rehypePlugins={[rehypeHighlight, rehypeKatex]}
           components={mdComponents}
         >
           {body}
