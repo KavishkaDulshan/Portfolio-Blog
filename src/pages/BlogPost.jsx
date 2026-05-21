@@ -11,6 +11,8 @@ import 'katex/dist/katex.min.css';
 import mermaid from 'mermaid';
 import { getPostBySlug } from '../utils/getPosts';
 
+const SITE_URL = 'https://kavishkadulshan.dev';
+
 mermaid.initialize({ startOnLoad: true, theme: 'default' });
 
 // Renders ![alt](src "title") — if a title is present it renders as a visible caption.
@@ -183,21 +185,76 @@ export default function BlogPost() {
 
   if (!post) return <Navigate to="/blog" replace />;
 
-  const { title, date, tags = [], coverImage, body } = post;
+  const { title, date, tags = [], coverImage, body, lang, translation, excerpt } = post;
 
   const formattedDate = date
     ? new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
     : '';
 
+  // ── Hreflang alternate links for translated post pairs ──
+  // If this post has a `translation` frontmatter field, look up the sibling
+  // post and build hreflang link objects for the SEO component.
+  const hreflang = (() => {
+    if (!translation) return undefined;
+    const sibling = getPostBySlug(translation);
+    if (!sibling) return undefined;
+    const thisLang = lang || 'en';
+    const siblingLang = sibling.lang || 'en';
+    return [
+      { lang: thisLang,     href: `${SITE_URL}/blog/${slug}` },
+      { lang: siblingLang,  href: `${SITE_URL}/blog/${translation}` },
+      { lang: 'x-default',  href: `${SITE_URL}/blog/${thisLang === 'en' ? slug : translation}` },
+    ];
+  })();
+
+  // ── BlogPosting JSON-LD structured data ──
+  // Provides Google with rich contextual data enabling rich search results.
+  const resolvedOgImage = coverImage
+    ? (coverImage.startsWith('http') ? coverImage : `${SITE_URL}${coverImage}`)
+    : `${SITE_URL}/image.webp`;
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: title,
+    description: excerpt || `Read "${title}" on Kavishka Dulshan's blog.`,
+    image: resolvedOgImage,
+    datePublished: date || undefined,
+    dateModified: date || undefined,
+    inLanguage: lang === 'si' ? 'si' : 'en',
+    url: `${SITE_URL}/blog/${slug}`,
+    author: {
+      '@type': 'Person',
+      name: 'Kavishka Dulshan',
+      url: SITE_URL,
+      sameAs: [
+        'https://github.com/KavishkaDulshan',
+        'https://www.linkedin.com/in/kavishka-dulshan/',
+      ],
+    },
+    publisher: {
+      '@type': 'Person',
+      name: 'Kavishka Dulshan',
+      url: SITE_URL,
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `${SITE_URL}/blog/${slug}`,
+    },
+    keywords: tags.join(', ') || undefined,
+  };
+
   return (
     <div className="max-w-2xl mx-auto px-6 sm:px-8 py-10 sm:py-16">
       <SEO
         title={title}
-        description={post.excerpt || `Read "${title}" on Kavishka Dulshan's blog.`}
+        description={excerpt || `Read "${title}" on Kavishka Dulshan's blog.`}
         path={`/blog/${slug}`}
         ogImage={coverImage}
         ogType="article"
         article={date}
+        hreflang={hreflang}
+        jsonLd={jsonLd}
       />
       {/* Back */}
       <Link

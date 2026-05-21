@@ -75,6 +75,30 @@ export default function About() {
         title="About"
         description={`${name} — ${tagline}. Full-stack developer and IoT enthusiast specializing in React, Node.js, Flutter, and embedded systems.`}
         path="/about"
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'AboutPage',
+          name: 'About Kavishka Dulshan',
+          description: `${name} — ${tagline}. Full-stack developer and IoT enthusiast.`,
+          url: 'https://kavishkadulshan.dev/about',
+          mainEntity: {
+            '@type': 'Person',
+            name: 'Kavishka Dulshan',
+            url: 'https://kavishkadulshan.dev/',
+            image: 'https://kavishkadulshan.dev/image.webp',
+            jobTitle: 'Software Engineering Undergraduate',
+            description: 'Full-stack developer and IoT enthusiast at NSBM Green University.',
+            alumniOf: {
+              '@type': 'EducationalOrganization',
+              name: 'National School of Business Management (NSBM Green University)',
+              url: 'https://nsbm.ac.lk',
+            },
+            sameAs: [
+              'https://github.com/KavishkaDulshan',
+              'https://www.linkedin.com/in/kavishka-dulshan/',
+            ],
+          },
+        }}
       />
 
       {/* ── Header + Resume CTA ── */}

@@ -206,6 +206,8 @@ function InlineVideo({ src }) {
   );
 }
 
+const SITE_URL = 'https://kavishkadulshan.dev';
+
 export default function ProjectPost() {
   const { slug } = useParams();
   const project = getProjectBySlug(slug);
@@ -223,15 +225,44 @@ export default function ProjectPost() {
     coverImage,
     gallery,
     body,
+    description,
   } = project;
+
+  // ── CreativeWork / SoftwareApplication JSON-LD ──
+  const resolvedOgImage = coverImage
+    ? (coverImage.startsWith('http') ? coverImage : `${SITE_URL}${coverImage}`)
+    : `${SITE_URL}/image.webp`;
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: title,
+    description: description || excerpt || `A project by Kavishka Dulshan: ${title}`,
+    image: resolvedOgImage,
+    url: `${SITE_URL}/projects/${slug}`,
+    applicationCategory: 'DeveloperApplication',
+    author: {
+      '@type': 'Person',
+      name: 'Kavishka Dulshan',
+      url: SITE_URL,
+      sameAs: [
+        'https://github.com/KavishkaDulshan',
+        'https://www.linkedin.com/in/kavishka-dulshan/',
+      ],
+    },
+    keywords: tags.join(', ') || undefined,
+    ...(github ? { codeRepository: github } : {}),
+    ...(demo ? { installUrl: demo } : {}),
+  };
 
   return (
     <div className="max-w-2xl mx-auto px-6 sm:px-8 py-10 sm:py-16">
       <SEO
         title={title}
-        description={project.description || excerpt || `Explore the "${title}" project by Kavishka Dulshan.`}
+        description={description || excerpt || `Explore the "${title}" project by Kavishka Dulshan.`}
         path={`/projects/${slug}`}
         ogImage={coverImage}
+        jsonLd={jsonLd}
       />
       {/* Back */}
       <Link

@@ -5,6 +5,7 @@ excerpt: "A step-by-step guide on transforming your Raspberry Pi into a function
 tags: ["RaspberryPi", "WiFi", "Networking", "IoT", "DIYProjects"]
 coverImage: "/images/blog/RaspberryPi/0.webp"
 lang: "si"
+translation: "RaspberryPiEn"
 ---
 මම මෑතකදී කරපු project එකකදි මට සිද්දවුනා Raspberry pi එකක් WIFI access point එක්ක් විදිහට use කරන්න. කාටම හරි useful වෙයි කියලා හිතලා මං කියන්නම් කොහොමද ඒක ලේසියෙන්ම කරගන්නේ කියලා.
 

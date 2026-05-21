@@ -110,6 +110,23 @@ export default function Contact() {
         title="Contact"
         description="Get in touch with Kavishka Dulshan — open to internships, collaboration, and interesting ideas. Reach out via email, GitHub, or LinkedIn."
         path="/contact"
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'ContactPage',
+          name: 'Contact Kavishka Dulshan',
+          description: 'Get in touch with Kavishka Dulshan. Open to internships, collaboration, and interesting ideas.',
+          url: 'https://kavishkadulshan.dev/contact',
+          mainEntity: {
+            '@type': 'Person',
+            name: 'Kavishka Dulshan',
+            email: 'kavishkadulshan2@gmail.com',
+            url: 'https://kavishkadulshan.dev/',
+            sameAs: [
+              'https://github.com/KavishkaDulshan',
+              'https://www.linkedin.com/in/kavishka-dulshan/',
+            ],
+          },
+        }}
       />
 
       {/* ── Header ── */}

@@ -4,6 +4,12 @@
  * Scans src/posts/ and src/projects/ for Markdown files and generates
  * a complete sitemap.xml with all static + dynamic routes.
  *
+ * SEO improvements:
+ *   - Blog posts with a `translation` frontmatter field get xhtml:link
+ *     alternate entries linking them to their translated counterparts.
+ *     This tells Google the pages are translation pairs and prevents
+ *     duplicate-content penalties while maximising multi-language crawl coverage.
+ *
  * Run as: node scripts/generate-sitemap.js
  * Automatically runs as a prebuild step via package.json.
  */
@@ -28,11 +34,23 @@ function getMdSlugs(dir) {
     .map(f => f.replace('.md', ''));
 }
 
-function parseFrontmatterDate(dir, slug) {
+/**
+ * Parse frontmatter key=value from a Markdown file.
+ * Returns a plain object with all matched frontmatter fields.
+ */
+function parseFrontmatter(dir, slug) {
   const filepath = path.resolve(ROOT, dir, `${slug}.md`);
   const raw = fs.readFileSync(filepath, 'utf-8');
+
   const dateMatch = raw.match(/^date:\s*["']?(\d{4}-\d{2}-\d{2})["']?/m);
-  return dateMatch ? dateMatch[1] : TODAY;
+  const langMatch = raw.match(/^lang:\s*["']?(\w+)["']?/m);
+  const translationMatch = raw.match(/^translation:\s*["']?([^\s"']+)["']?/m);
+
+  return {
+    date: dateMatch ? dateMatch[1] : TODAY,
+    lang: langMatch ? langMatch[1] : 'en',
+    translation: translationMatch ? translationMatch[1] : null,
+  };
 }
 
 // ── Build sitemap entries ───────────────────────────────────────────
@@ -55,47 +73,89 @@ for (const page of staticPages) {
     lastmod: TODAY,
     changefreq: page.changefreq,
     priority: page.priority,
+    alternates: null,
   });
 }
 
-// Blog posts
+// Blog posts — canonical /blog/:slug path + hreflang alternates for translations
 const postSlugs = getMdSlugs('src/posts');
+
+// Build a map of slug → frontmatter so we can cross-reference translations
+const postMeta = {};
 for (const slug of postSlugs) {
-  const date = parseFrontmatterDate('src/posts', slug);
+  postMeta[slug] = parseFrontmatter('src/posts', slug);
+}
+
+for (const slug of postSlugs) {
+  const { date, lang, translation } = postMeta[slug];
+
+  // Build hreflang alternate list if this post has a translation pair
+  let alternates = null;
+  if (translation && postMeta[translation]) {
+    const siblingLang = postMeta[translation].lang;
+    // The x-default points to the English version (or this post if it's already EN)
+    const defaultSlug = lang === 'en' ? slug : translation;
+    alternates = [
+      { lang, href: `${SITE_URL}/blog/${slug}` },
+      { lang: siblingLang, href: `${SITE_URL}/blog/${translation}` },
+      { lang: 'x-default', href: `${SITE_URL}/blog/${defaultSlug}` },
+    ];
+  }
+
   entries.push({
     loc: `${SITE_URL}/blog/${slug}`,
     lastmod: date,
     changefreq: 'monthly',
     priority: '0.8',
+    alternates,
   });
 }
 
 // Project posts
 const projectSlugs = getMdSlugs('src/projects');
 for (const slug of projectSlugs) {
-  const date = parseFrontmatterDate('src/projects', slug);
+  const { date } = parseFrontmatter('src/projects', slug);
   entries.push({
     loc: `${SITE_URL}/projects/${slug}`,
     lastmod: date,
     changefreq: 'monthly',
     priority: '0.8',
+    alternates: null,
   });
 }
 
 // ── Generate XML ────────────────────────────────────────────────────
 
-const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${entries
-  .map(
-    (e) => `  <url>
+// Determine if any entry requires xhtml:link alternates so we can add the
+// xmlns:xhtml namespace only when needed (keeps the file clean otherwise).
+const hasAlternates = entries.some(e => e.alternates);
+
+const xmlHeader = hasAlternates
+  ? `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">`
+  : `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`;
+
+const xmlBody = entries
+  .map((e) => {
+    const alternateTags = e.alternates
+      ? e.alternates
+          .map(a => `    <xhtml:link rel="alternate" hreflang="${a.lang}" href="${a.href}"/>`)
+          .join('\n')
+      : '';
+
+    return `  <url>
     <loc>${e.loc}</loc>
     <lastmod>${e.lastmod}</lastmod>
     <changefreq>${e.changefreq}</changefreq>
-    <priority>${e.priority}</priority>
-  </url>`
-  )
-  .join('\n')}
+    <priority>${e.priority}</priority>${alternateTags ? '\n' + alternateTags : ''}
+  </url>`;
+  })
+  .join('\n');
+
+const xml = `${xmlHeader}
+${xmlBody}
 </urlset>
 `;
 
@@ -106,3 +166,7 @@ fs.writeFileSync(outputPath, xml);
 
 console.log(`✅ Sitemap generated: ${outputPath}`);
 console.log(`   ${entries.length} URLs (${staticPages.length} static + ${postSlugs.length} blog posts + ${projectSlugs.length} projects)`);
+const pairsCount = entries.filter(e => e.alternates).length;
+if (pairsCount > 0) {
+  console.log(`   ${pairsCount} post(s) with hreflang alternate translations`);
+}

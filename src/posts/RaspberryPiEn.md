@@ -5,6 +5,7 @@ excerpt: "Transform your Raspberry Pi into a functional wireless access point. T
 tags: ["raspberry-pi", "networking", "iot", "diy", "wifi"]
 coverImage: "/images/blog/RaspberryPi/0.webp"
 lang: "en"
+translation: "RaspberryPi"
 ---
 In a recent project, I needed to use a Raspberry Pi as a WiFi access point. I thought it would be useful to share the process so anyone can set this up easily.
 

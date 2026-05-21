@@ -4,9 +4,10 @@ import { FiCalendar, FiArrowRight } from 'react-icons/fi';
 export default function BlogCard({ post, lang }) {
   const { slug, title, date, excerpt, tags = [], coverImage } = post;
 
-  // Use i18n-aware path if we know the locale; fallback to /blog/:slug for safety
-  const basePath = lang === 'si' ? '/si/blog' : lang === 'en' ? '/en/blog' : '/blog';
-  const postPath = `${basePath}/${slug}`;
+  // Always use the canonical /blog/:slug path to avoid GSC "Duplicate without
+  // user-selected canonical" issues. The SEO component declares /blog/:slug as
+  // the canonical URL, so internal links must match it exactly.
+  const postPath = `/blog/${slug}`;
 
   const formattedDate = date
     ? new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })

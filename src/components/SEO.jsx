@@ -19,6 +19,9 @@ const DEFAULT_OG_IMAGE = `${SITE_URL}/image.webp`;
  * @param {string}   [props.article]     - If set, includes article:published_time
  * @param {Array}    [props.hreflang]    - Array of { lang: string, href: string } for i18n alternates
  *                                         e.g. [{ lang: 'en', href: '...' }, { lang: 'si', href: '...' }]
+ * @param {Object}   [props.jsonLd]      - JSON-LD structured data object (rendered as
+ *                                         <script type="application/ld+json"> and hoisted
+ *                                         into <head> by prerender.js at build time)
  */
 export default function SEO({
   title,
@@ -29,6 +32,7 @@ export default function SEO({
   noSuffix = false,
   article,
   hreflang,
+  jsonLd,
 }) {
   const fullTitle = noSuffix ? title : `${title} — ${SITE_NAME}`;
 
@@ -71,6 +75,14 @@ export default function SEO({
       {article && (
         <meta property="article:published_time" content={article} />
       )}
+
+      {/* JSON-LD structured data — supports a single schema object or an array of schemas.
+         Each schema is emitted as its own <script> block (Google's recommended pattern). */}
+      {jsonLd && (Array.isArray(jsonLd) ? jsonLd : [jsonLd]).map((schema, i) => (
+        <script key={i} type="application/ld+json">
+          {JSON.stringify(schema)}
+        </script>
+      ))}
     </Helmet>
   );
 }

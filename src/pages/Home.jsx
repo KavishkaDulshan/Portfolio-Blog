@@ -86,6 +86,47 @@ export default function Home() {
         description="Kavishka Dulshan — Software Engineering undergraduate at NSBM Green University specializing in full-stack web development, computer security, and connected IoT devices."
         path="/"
         noSuffix={false}
+        jsonLd={[
+          {
+            '@context': 'https://schema.org',
+            '@type': 'ProfilePage',
+            name: 'Kavishka Dulshan — Software Engineer',
+            description: 'Portfolio and blog of Kavishka Dulshan, a Software Engineering undergraduate specializing in full-stack development and IoT.',
+            url: 'https://kavishkadulshan.dev/',
+            mainEntity: {
+              '@type': 'Person',
+              name: 'Kavishka Dulshan',
+              url: 'https://kavishkadulshan.dev/',
+              image: 'https://kavishkadulshan.dev/image.webp',
+              jobTitle: 'Software Engineering Undergraduate',
+              description: 'Full-stack developer and IoT enthusiast at NSBM Green University, specializing in React, Node.js, Flutter, and embedded systems.',
+              alumniOf: {
+                '@type': 'EducationalOrganization',
+                name: 'National School of Business Management (NSBM Green University)',
+                url: 'https://nsbm.ac.lk',
+              },
+              sameAs: [
+                'https://github.com/KavishkaDulshan',
+                'https://www.linkedin.com/in/kavishka-dulshan/',
+              ],
+              knowsAbout: [
+                'React', 'Node.js', 'TypeScript', 'Flutter', 'ESP32',
+                'Raspberry Pi', 'Full-Stack Development', 'IoT', 'Computer Security',
+              ],
+            },
+          },
+          {
+            '@context': 'https://schema.org',
+            '@type': 'WebSite',
+            name: 'Kavishka Dulshan',
+            url: 'https://kavishkadulshan.dev/',
+            description: 'Portfolio and blog of Kavishka Dulshan, a Software Engineering undergraduate.',
+            author: {
+              '@type': 'Person',
+              name: 'Kavishka Dulshan',
+            },
+          },
+        ]}
       />
 
       {/* ── Hero ── */}

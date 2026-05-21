@@ -7,6 +7,13 @@
  *   3. Loads the server bundle and renders every route to static HTML
  *   4. Writes each rendered page as a physical .html file in dist/
  *
+ * SEO improvements:
+ *   - Only canonical /blog/:slug paths are pre-rendered per post (no duplicate
+ *     /en/blog/:slug or /si/blog/:slug HTML files). This fixes the GSC
+ *     "Duplicate without user-selected canonical" warning.
+ *   - JSON-LD <script> blocks are hoisted from the SSR body into <head> so
+ *     crawlers receive structured data without JavaScript execution.
+ *
  * Run as: node prerender.js
  */
 
@@ -48,34 +55,14 @@ function getAllRoutes() {
     '/contact',
   ];
 
-  const postSlugs = getPostSlugs();
-
-  // Each post gets both the legacy /blog/:slug path and its locale-specific path
-  const blogRoutes = postSlugs.map((slug) => `/blog/${slug}`);
-  const enBlogRoutes = postSlugs
-    .filter((slug) => {
-      // Read the lang field from frontmatter to determine locale
-      const filePath = path.resolve(__dirname, 'src/posts', `${slug}.md`);
-      if (!fs.existsSync(filePath)) return false;
-      const raw = fs.readFileSync(filePath, 'utf-8');
-      const langMatch = raw.match(/^lang:\s*"?(\w+)"?/m);
-      const lang = langMatch ? langMatch[1] : 'en';
-      return lang !== 'si';
-    })
-    .map((slug) => `/en/blog/${slug}`);
-  const siBlogRoutes = postSlugs
-    .filter((slug) => {
-      const filePath = path.resolve(__dirname, 'src/posts', `${slug}.md`);
-      if (!fs.existsSync(filePath)) return false;
-      const raw = fs.readFileSync(filePath, 'utf-8');
-      const langMatch = raw.match(/^lang:\s*"?(\w+)"?/m);
-      return langMatch ? langMatch[1] === 'si' : false;
-    })
-    .map((slug) => `/si/blog/${slug}`);
-
+  // Each post gets ONLY the canonical /blog/:slug path.
+  // /en/blog/:slug and /si/blog/:slug are NOT pre-rendered as individual post
+  // pages — BlogCard.jsx links to /blog/:slug exclusively, so no duplicate
+  // files are created and GSC canonical warnings are eliminated.
+  const blogRoutes = getPostSlugs().map((slug) => `/blog/${slug}`);
   const projectRoutes = getProjectSlugs().map((slug) => `/projects/${slug}`);
 
-  return [...staticRoutes, ...blogRoutes, ...enBlogRoutes, ...siBlogRoutes, ...projectRoutes];
+  return [...staticRoutes, ...blogRoutes, ...projectRoutes];
 }
 
 // ── 2. Build client + server bundles ────────────────────────────────
@@ -95,7 +82,7 @@ await fetchGitHubStats({
   token: process.env.VITE_GITHUB_TOKEN,
 });
 
-// ── 3. Pre-render every route ───────────────────────────────────────
+// ── 4. Pre-render every route ───────────────────────────────────────
 
 async function prerender() {
   const distDir = path.resolve(__dirname, 'dist');
@@ -119,21 +106,49 @@ async function prerender() {
       // at the start of the rendered output. We extract them from the body,
       // remove them from the inline position, and inject them into <head>.
 
-      // Extract SEO tags that React 19 inlined in the rendered HTML
+      // Extract <title>
       const inlineTitle = appHtml.match(/<title>[^<]*<\/title>/)?.[0] || '';
-      const inlineMetas = appHtml.match(/<meta\s[^>]*(?:name|property)=["'][^"']*["'][^>]*\/?>/g) || [];
-      const inlineCanonical = appHtml.match(/<link\s[^>]*rel=["']canonical["'][^>]*\/?>/g) || [];
 
-      // Remove the extracted SEO tags from the body content
+      // Extract all <meta> tags with name or property attributes
+      const inlineMetas = appHtml.match(/<meta\s[^>]*(?:name|property)=["'][^"']*["'][^>]*\/?>/)
+        ? appHtml.match(/<meta\s[^>]*(?:name|property)=["'][^"']*["'][^>]*\/?>/g) || []
+        : [];
+
+      // Extract canonical <link> tags
+      const inlineCanonical = appHtml.match(/<link\s[^>]*rel=["']canonical["'][^>]*\/?>/)
+        ? appHtml.match(/<link\s[^>]*rel=["']canonical["'][^>]*\/?>/g) || []
+        : [];
+
+      // Extract hreflang alternate <link> tags (for i18n translation pairs)
+      const inlineHreflang = appHtml.match(/<link\s[^>]*rel=["']alternate["'][^>]*\/?>/)
+        ? appHtml.match(/<link\s[^>]*rel=["']alternate["'][^>]*\/?>/g) || []
+        : [];
+
+      // ── JSON-LD hoisting ──
+      // Extract <script type="application/ld+json">...</script> blocks that
+      // pages inject via the SEO component's jsonLd prop. Google reads these
+      // directly from <head>; hoisting them avoids requiring JS execution.
+      const inlineJsonLd = [];
+      const jsonLdRegex = /<script\s+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi;
+      let jsonLdMatch;
+      while ((jsonLdMatch = jsonLdRegex.exec(appHtml)) !== null) {
+        inlineJsonLd.push(jsonLdMatch[0]);
+      }
+
+      // Remove all extracted SEO tags from the body content
       let cleanAppHtml = appHtml;
+
       if (inlineTitle) {
         cleanAppHtml = cleanAppHtml.replace(inlineTitle, '');
       }
       for (const meta of inlineMetas) {
         cleanAppHtml = cleanAppHtml.replace(meta, '');
       }
-      for (const link of inlineCanonical) {
+      for (const link of [...inlineCanonical, ...inlineHreflang]) {
         cleanAppHtml = cleanAppHtml.replace(link, '');
+      }
+      for (const jsonLd of inlineJsonLd) {
+        cleanAppHtml = cleanAppHtml.replace(jsonLd, '');
       }
 
       let finalHtml = template;
@@ -154,19 +169,24 @@ async function prerender() {
 
       // Remove the template's default meta tags that will be replaced
       const defaultMetaPatterns = [
-        /\s*<meta\s+name="description"[^>]*\/?>\s*/gi,
-        /\s*<meta\s+property="og:[^"]*"[^>]*\/?>\s*/gi,
+        /\s*<meta\s+name="description"[^>]*\/?\>\s*/gi,
+        /\s*<meta\s+property="og:[^"]*"[^>]*\/?\>\s*/gi,
       ];
       for (const pattern of defaultMetaPatterns) {
         finalHtml = finalHtml.replace(pattern, '\n    ');
       }
 
-      // Build the SEO head block from extracted tags
-      const seoHeadTags = [...inlineMetas, ...inlineCanonical]
+      // Build the complete SEO head block from all extracted tags
+      const seoHeadTags = [
+        ...inlineMetas,
+        ...inlineCanonical,
+        ...inlineHreflang,
+        ...inlineJsonLd,
+      ]
         .map(tag => `    ${tag}`)
         .join('\n');
 
-      // Inject extracted SEO tags into <head> before </head>
+      // Inject all SEO tags into <head> before </head>
       if (seoHeadTags) {
         finalHtml = finalHtml.replace('</head>', `${seoHeadTags}\n  </head>`);
       }
