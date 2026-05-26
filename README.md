@@ -83,3 +83,4 @@ npm run compress-images
 - [ ]  Open Graph images for social sharing
 - [ ]  Reading time estimate on blog posts
 - [ ]  Tag filtering on blog list page
+- [ ]  Add Highlights
