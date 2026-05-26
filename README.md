@@ -84,3 +84,4 @@ npm run compress-images
 - [ ]  Reading time estimate on blog posts
 - [ ]  Tag filtering on blog list page
 - [ ]  Add Highlights
+- [ ]  Add likes and comments to posts
