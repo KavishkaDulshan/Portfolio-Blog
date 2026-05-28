@@ -235,12 +235,16 @@ export default function Home() {
                   Download Resume
                   <FiDownload />
                 </a>
-                <Link
+                <MotionLink
                   to="/about"
-                  className="w-full sm:w-auto inline-flex justify-center items-center gap-2 rounded-full text-gray-600 px-6 py-2.5 text-sm font-medium hover:text-gray-900 hover:bg-gray-50 transition-all"
+                  whileHover="hover"
+                  className="w-full sm:w-auto inline-flex justify-center items-center gap-2 rounded-full border border-gray-300 text-gray-700 px-5 py-2.5 text-sm font-medium hover:border-gray-900 hover:text-gray-900 transition-colors group"
                 >
                   About Me
-                </Link>
+                  <motion.span variants={{ hover: { x: 3 } }}>
+                    <FiArrowRight />
+                  </motion.span>
+                </MotionLink>
               </div>
             </motion.div>
           </div>
