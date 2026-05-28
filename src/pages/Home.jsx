@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import { motion } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
-import { FiBookOpen, FiArrowRight, FiStar } from 'react-icons/fi';
+import { FiBookOpen, FiArrowRight, FiStar, FiDownload } from 'react-icons/fi';
 import { getAllPosts } from '../utils/getPosts';
 import { getAllProjects } from '../utils/getProjects';
 import BlogCard from '../components/BlogCard';
@@ -198,19 +198,52 @@ export default function Home() {
             </motion.div>
           </motion.div>
 
-          {/* Right — interactive particle animation (desktop only) */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1.2, delay: 0.6 }}
-            className="hidden lg:block h-[480px] overflow-hidden bg-white"
-            style={{
-              maskImage: 'radial-gradient(ellipse 85% 85% at 50% 50%, black 50%, transparent 100%)',
-              WebkitMaskImage: 'radial-gradient(ellipse 85% 85% at 50% 50%, black 50%, transparent 100%)',
-            }}
-          >
-            <ParticleCanvas />
-          </motion.div>
+          {/* Right — interactive particle animation & Internship banner */}
+          <div className="flex flex-col w-full items-center justify-center">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1.2, delay: 0.6 }}
+              className="hidden lg:block h-[480px] w-full overflow-hidden bg-white"
+              style={{
+                maskImage: 'radial-gradient(ellipse 85% 85% at 50% 50%, black 50%, transparent 100%)',
+                WebkitMaskImage: 'radial-gradient(ellipse 85% 85% at 50% 50%, black 50%, transparent 100%)',
+              }}
+            >
+              <ParticleCanvas />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="w-full text-center flex flex-col items-center relative z-10 mt-8 lg:-mt-12"
+            >
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-green-50/50 text-green-700 rounded-full text-xs font-medium mb-4 backdrop-blur-sm">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                </span>
+                Actively Applying for Internships
+              </div>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+                <a
+                  href="/KavishkaDulshan.pdf"
+                  download
+                  className="w-full sm:w-auto inline-flex justify-center items-center gap-2 rounded-full bg-gray-900 text-white px-6 py-2.5 text-sm font-medium hover:bg-gray-800 transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5"
+                >
+                  Download Resume
+                  <FiDownload />
+                </a>
+                <Link
+                  to="/about"
+                  className="w-full sm:w-auto inline-flex justify-center items-center gap-2 rounded-full text-gray-600 px-6 py-2.5 text-sm font-medium hover:text-gray-900 hover:bg-gray-50 transition-all"
+                >
+                  About Me
+                </Link>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
