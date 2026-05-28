@@ -111,7 +111,7 @@ export default function About() {
           {/* Resume Download — highly visible CTA */}
           <div className="flex flex-col sm:flex-row gap-3 self-start shrink-0">
             <a
-              href="/resume.pdf"
+              href="/KavishkaDulshan.pdf"
               download
               id="resume-download-btn"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-gray-900 text-white px-5 py-2.5 text-sm font-medium hover:bg-gray-700 transition-colors"
