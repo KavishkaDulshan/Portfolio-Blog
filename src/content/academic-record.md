@@ -21,13 +21,13 @@
 | SE 101.3 | Object Oriented Programming with Java | A |
 
 **Year 2 Semester 1**
-| Module Name | Result |
-| :--- | :--- |
-| Computer Networks | A- |
-| Development of Enterprise Applications I | A |
-| Operating Systems | A |
-| Statistics for Computing | B+ |
-| Systems Analysis and Design | B+ |
+|Module Code | Module Name | Result |
+| :--- | :--- | :--- |
+|CN 201.3| Computer Networks | A- |
+|SE 204.3| Development of Enterprise Applications I | A |
+|CS 201.3| Operating Systems | A |
+|MA 201.3| Statistics for Computing | B+ |
+|SE 201.3| Systems Analysis and Design | B+ |
 
 **Year 2 Semester 2**
 | Module Code | Module Name | Result |
