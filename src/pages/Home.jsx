@@ -193,7 +193,7 @@ export default function Home() {
             </motion.div>
 
             {/* Mobile Internship Banner (Hidden on desktop) */}
-            <motion.div variants={heroItem} className="lg:hidden mb-8 w-full flex flex-col items-start relative z-10">
+            <motion.div variants={heroItem} className="lg:hidden mb-8 w-full flex flex-col items-center text-center relative z-10">
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-green-50/50 text-green-700 rounded-full text-xs font-medium mb-4 backdrop-blur-sm">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -201,7 +201,7 @@ export default function Home() {
                 </span>
                 Actively Applying for Internships
               </div>
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-start gap-3 w-full">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 w-full">
                 <a
                   href="/KavishkaDulshan.pdf"
                   download
