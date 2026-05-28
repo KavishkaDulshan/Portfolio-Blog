@@ -192,6 +192,37 @@ export default function Home() {
               ))}
             </motion.div>
 
+            {/* Mobile Internship Banner (Hidden on desktop) */}
+            <motion.div variants={heroItem} className="lg:hidden mb-8 w-full flex flex-col items-start relative z-10">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-green-50/50 text-green-700 rounded-full text-xs font-medium mb-4 backdrop-blur-sm">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                </span>
+                Actively Applying for Internships
+              </div>
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-start gap-3 w-full">
+                <a
+                  href="/KavishkaDulshan.pdf"
+                  download
+                  className="w-full sm:w-auto inline-flex justify-center items-center gap-2 rounded-full bg-gray-900 text-white px-6 py-2.5 text-sm font-medium hover:bg-gray-800 transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5"
+                >
+                  Download Resume
+                  <FiDownload />
+                </a>
+                <MotionLink
+                  to="/about"
+                  whileHover="hover"
+                  className="w-full sm:w-auto inline-flex justify-center items-center gap-2 rounded-full border border-gray-300 text-gray-700 px-5 py-2.5 text-sm font-medium hover:border-gray-900 hover:text-gray-900 transition-colors group"
+                >
+                  About Me
+                  <motion.span variants={{ hover: { x: 3 } }}>
+                    <FiArrowRight />
+                  </motion.span>
+                </MotionLink>
+              </div>
+            </motion.div>
+
             {/* Tech stack icon row */}
             <motion.div variants={heroItem}>
               <TechStack />
@@ -217,7 +248,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="w-full text-center flex flex-col items-center relative z-10 mt-8 lg:-mt-12"
+              className="hidden lg:flex w-full text-center flex-col items-center relative z-10 -mt-12"
             >
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-green-50/50 text-green-700 rounded-full text-xs font-medium mb-4 backdrop-blur-sm">
                 <span className="relative flex h-2 w-2">
