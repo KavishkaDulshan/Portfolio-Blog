@@ -16,7 +16,7 @@ function ScrollToTop() {
 
 export default function Layout() {
   return (
-    <div className="min-h-screen flex flex-col bg-white text-gray-900" style={{ fontFamily: 'var(--font-sans)' }}>
+    <div className="min-h-screen flex flex-col bg-white text-gray-900 pb-14 md:pb-0" style={{ fontFamily: 'var(--font-sans)' }}>
       <ScrollToTop />
       <div className="print:hidden">
         <NavBar />
