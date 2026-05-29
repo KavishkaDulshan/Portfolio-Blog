@@ -21,7 +21,7 @@ export default function NavBar() {
 
   return (
     <>
-      <nav className="bg-white border-b border-gray-200 md:sticky md:top-0 z-50">
+      <nav className="bg-white border-b border-gray-200 md:sticky md:top-0 z-50 print:hidden">
         <div className="max-w-5xl mx-auto px-6 sm:px-8">
           <div className="flex justify-between h-12 items-center">
 

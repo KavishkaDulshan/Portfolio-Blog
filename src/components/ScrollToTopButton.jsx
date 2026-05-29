@@ -34,7 +34,7 @@ export default function ScrollToTopButton() {
           exit={{ opacity: 0, scale: 0.8, y: 20 }}
           transition={{ duration: 0.2 }}
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 z-50 p-3 bg-gray-900 text-white rounded-full shadow-lg hover:bg-gray-700 transition-colors print:hidden flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
+          className="fixed bottom-20 right-6 md:bottom-8 md:right-8 z-50 p-3 bg-gray-900 text-white rounded-full shadow-lg hover:bg-gray-700 transition-colors print:hidden flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
           aria-label="Scroll to top"
         >
           <FiArrowUp size={22} />
