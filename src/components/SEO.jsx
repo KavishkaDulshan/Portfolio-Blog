@@ -54,7 +54,7 @@ export default function SEO({
 
       {/* i18n hreflang alternate links — prevents duplicate-content penalties */}
       {hreflang && hreflang.map(({ lang, href }) => (
-        <link key={lang} rel="alternate" hreflang={lang} href={href} />
+        <link key={lang} rel="alternate" hrefLang={lang} href={href} />
       ))}
 
       {/* Open Graph */}
