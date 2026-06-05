@@ -11,6 +11,7 @@ import 'katex/dist/katex.min.css';
 import mermaid from 'mermaid';
 import { getPostBySlug } from '../utils/getPosts';
 import { GISCUS } from '../config/giscus';
+import Giscus from '@giscus/react';
 
 const SITE_URL = 'https://kavishkadulshan.dev';
 
@@ -314,45 +315,19 @@ export default function BlogPost() {
       </div>
 
       {/* Giscus comments */}
-      <div id="giscus-container" className="giscus mt-12" />
-
-      {/* mount Giscus script on client only */}
-      
-      <GiscusMount slug={slug} />
+      <div className="mt-12">
+        <Giscus
+          repo={GISCUS.repo}
+          repoId={GISCUS.repoId}
+          category={GISCUS.category}
+          categoryId={GISCUS.categoryId}
+          mapping={GISCUS.mapping}
+          reactionsEnabled={GISCUS.reactionsEnabled}
+          emitMetadata={GISCUS.emitMetadata}
+          theme={GISCUS.theme}
+          lang={GISCUS.lang}
+        />
+      </div>
     </div>
   );
-}
-
-function GiscusMount({ slug }) {
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    const container = document.getElementById('giscus-container');
-    if (!container) return;
-
-    // Clear previous widget if present
-    container.innerHTML = '';
-
-    const script = document.createElement('script');
-    script.src = 'https://giscus.app/client.js';
-    script.async = true;
-    script.crossOrigin = 'anonymous';
-    script.setAttribute('data-repo', GISCUS.repo);
-    if (GISCUS.repoId) script.setAttribute('data-repo-id', GISCUS.repoId);
-    if (GISCUS.category) script.setAttribute('data-category', GISCUS.category);
-    if (GISCUS.categoryId) script.setAttribute('data-category-id', GISCUS.categoryId);
-    script.setAttribute('data-mapping', GISCUS.mapping);
-    script.setAttribute('data-reactions-enabled', GISCUS.reactionsEnabled);
-    script.setAttribute('data-emit-metadata', GISCUS.emitMetadata);
-    script.setAttribute('data-theme', GISCUS.theme);
-    script.setAttribute('data-lang', GISCUS.lang);
-
-    container.appendChild(script);
-
-    return () => {
-      container.innerHTML = '';
-    };
-  }, [slug]);
-
-  return null;
 }
