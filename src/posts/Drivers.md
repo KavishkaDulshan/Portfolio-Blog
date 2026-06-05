@@ -19,7 +19,7 @@ Here is a breakdown of where they sit in a system architecture and how they tie 
 
 Modern computer systems are divided into layers to maintain security and stability. Drivers usually sit right in the middle, acting as the bridge between the software you interact with and the physical silicon.
 
-![Diagram illustrating the three layers of system architecture: User Space, Kernel Space, and Hardware](/images/blog/drivers/1.webm "System Architecture Layers")
+![Diagram illustrating the three layers of system architecture: User Space, Kernel Space, and Hardware](/images/blog/drivers/1.webp "System Architecture Layers")
 
 ### 1. User Space (The Top Layer)
 
@@ -39,41 +39,36 @@ This is the physical device itself your RAM, storage drives, network interface c
 
 The relationship between the kernel and the driver is like the relationship between a manager and a specialist. Drivers are not separate from the kernel; they are the kernel. An operating system like Linux is essentially just a massive collection of device drivers wrapped around a memory and process manager.
 
-\* \*\*Standardized APIs:\*\* The kernel provides a standard API for general tasks. For example, the kernel knows how to "write data to a disk" or "render a 3D polygon."
-
-\* \*\*Delegation:\*\* When an application tells the kernel to save a file, the kernel doesn't care if you are using an NVMe SSD, an old spinning hard drive, or a USB thumb drive. The kernel simply hands the data to the storage driver and says, "Save this."
-
-\* \*\*Translation:\*\* The driver takes that generic command and translates it into the exact voltage pulses, memory register addresses, and communication protocols required by that specific manufacturer's hardware.
+- **Standardized APIs:** The kernel provides a standard API for general tasks. For example, the kernel knows how to "write data to a disk" or "render a 3D polygon."
+- **Delegation:** When an application tells the kernel to save a file, the kernel doesn't care if you are using an NVMe SSD, an old spinning hard drive, or a USB thumb drive. The kernel simply hands the data to the storage driver and says, "Save this."
+- **Translation:** The driver takes that generic command and translates it into the exact voltage pulses, memory register addresses, and communication protocols required by that specific manufacturer's hardware.
 
 ## How Drivers Relate to Real Hardware
 
 Real hardware is controlled by manipulating specific memory addresses (registers) and sending data over physical buses (like PCIe, USB, or I2C). The driver is programmed with the exact "map" of these registers.
 
-\* \*\*In high-performance computing:\*\* If you are running an AI model or a game, the OS sends the rendering request to the GPU driver. The driver knows the exact microarchitecture of the specific chip whether it's an integrated Radeon 680M or a dedicated NVIDIA Quadro and translates standard API calls (like Vulkan or DirectX) into the specific binary instructions that make the GPU's cores do the math.
+**In high-performance computing**: If you are running an AI model or a game, the OS sends the rendering request to the GPU driver. The driver knows the exact microarchitecture of the specific chip whether it's an integrated Radeon 680M or a dedicated NVIDIA Quadro and translates standard API calls (like Vulkan or DirectX) into the specific binary instructions that make the GPU's cores do the math.
 
-\* \*\*In embedded systems:\*\* If you are building an IoT device and need to read data from an MPU6050 accelerometer, the driver (often implemented as a low-level library in microcontrollers like an ESP32) handles the precise timing of the I2C clock signals, sends the correct hexadecimal addresses to wake the sensor up, and parses the raw bytes returned into human-readable X/Y/Z coordinates.
+**In embedded systems**: If you are building an IoT device and need to read data from an MPU6050 accelerometer, the driver (often implemented as a low-level library in microcontrollers like an ESP32) handles the precise timing of the I2C clock signals, sends the correct hexadecimal addresses to wake the sensor up, and parses the raw bytes returned into human-readable X/Y/Z coordinates.
 
 ### The System Flow at a Glance
 
-| Layer | Component | Action Example |
 
-| :--- | :--- | :--- |
-
-| \*\*User Space\*\* | Application | Clicks "Record" in an audio app. |
-
-| \*\*OS API\*\* | Audio Subsystem | Routes the audio stream request to the kernel. |
-
-| \*\*Kernel Space\*\* | The OS Kernel | Validates permissions and calls the driver. |
-
-| \*\*Kernel Space\*\* | The Driver | Translates the request into specific I2S/USB protocols. |
-
-| \*\*Hardware\*\* | Microphone | Activates the physical diaphragm and sends digital audio back up the chain. |
+| Layer            | Component       | Action Example                                                              |
+| ---------------- | --------------- | --------------------------------------------------------------------------- |
+| **User Space**   | Application     | Clicks "Record" in an audio app.                                            |
+| **OS API**       | Audio Subsystem | Routes the audio stream request to the kernel.                              |
+| **Kernel Space** | The OS Kernel   | Validates permissions and calls the driver.                                 |
+| **Kernel Space** | The Driver      | Translates the request into specific I2S/USB protocols.                     |
+| **Hardware**     | Microphone      | Activates the physical diaphragm and sends digital audio back up the chain. |
 
 ## The Beautiful Mechanics: Where Math Becomes Electricity
 
 If you write standard software a Flutter app or a Node.js backend you are manipulating abstract concepts: objects, arrays, and strings.
 
 But when you write a driver, your code physically alters electricity. That is the profound beauty of it. Drivers are primarily written in C and Assembly, and they communicate with hardware through two main mechanisms:
+
+![Driver mechanics animation showing MMIO and interrupts](/images/blog/drivers/2.webp "Driver mechanics")
 
 ### 1. Memory-Mapped I/O (MMIO)
 
