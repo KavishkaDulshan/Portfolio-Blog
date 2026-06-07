@@ -16,7 +16,7 @@ React's fundamental concept is simple: **your UI is a function of your state**.
 UI = f(state)
 ```
 
-Given the same state, your UI will always look the same. Change the state, and React figures out the minimal set of DOM updates needed to reflect that change. That's it — everything else is just details.
+Given the same state, your UI will always look the same. Change the state, and React figures out the minimal set of DOM updates needed to reflect that change. That's it  everything else is just details.
 
 ![React's component tree visualised](/images/blog/react-tree.webp "The component tree — every UI is a hierarchy of nested components")
 
@@ -35,7 +35,7 @@ You'll have a working React app running at `http://localhost:5173` in under a mi
 
 ## Components
 
-Everything in React is a component — a function that returns JSX (an HTML-like syntax that compiles to JavaScript).
+Everything in React is a component  a function that returns JSX (an HTML-like syntax that compiles to JavaScript).
 
 ```jsx
 function Greeting({ name }) {
@@ -113,4 +113,4 @@ Once you're comfortable with components, state, and effects, explore:
 
 ---
 
-The best way to learn React is to build something real. Pick a small project — a todo list, a weather app, anything — and build it. The documentation at [react.dev](https://react.dev) is excellent; use it constantly.
+The best way to learn React is to build something real. Pick a small project  a todo list, a weather app, anything  and build it. The documentation at [react.dev](https://react.dev) is excellent; use it constantly.
