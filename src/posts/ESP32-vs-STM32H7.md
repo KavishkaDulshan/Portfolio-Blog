@@ -6,7 +6,7 @@ tags: ["embedded-systems", "microcontrollers", "esp32", "stm32", "iot"]
 coverImage: "/images/blog/ESP32vsSTM32/1.webp"
 lang: "en"
 ---
-When it comes to high-performance microcontrollers, the ESP32-S3 and the STM32H7 represent two of the most popular choices for developers today. While both are considered "powerhouses," they excel in very different environments.
+When it comes to high performance microcontrollers, the ESP32-S3 and the STM32H7 represent two of the most popular choices for developers today. While both are considered "powerhouses," they excel in very different environments.
 
 ![ESP32 vs STM32](/images/blog/ESP32vsSTM32/0.webp "comparison")
 
@@ -32,7 +32,7 @@ In contrast, the **STM32H7** focuses on wired reliability and industrial standar
 
 ## Graphics and Processing Power
 
-If your project requires a high-resolution display or complex user interface (HMI), the **STM32H7** is built for the task. It includes a dedicated Chrom-ART Accelerator and a JPEG codec to handle graphical heavy lifting without taxing the main CPU.
+If your project requires a high-resolution display or complex user interface (HMI), the **STM32H7** is built for the task. It includes a dedicated Chrom ART Accelerator and a JPEG codec to handle graphical heavy lifting without taxing the main CPU.
 
 The ESP32-S3 can handle simple HMI and limited graphic layers, but its real strength in processing lies in its AI hardware acceleration. It is optimized for edge computing tasks like wake-word detection or simple image recognition.
 
