@@ -55,7 +55,7 @@ In 2015, Docker helped establish the **Open Container Initiative (OCI)** alongsi
 
 ### 3. The Kubernetes Boom
 
-As companies began running thousands of Docker containers simultaneously, they needed a way to manage them automatically. Google released Kubernetes—an open-source orchestration system built specifically to automate the deployment, scaling, and management of containerized applications. Together, Docker and Kubernetes solidifed containerization as the default architecture for modern cloud infrastructure.
+As companies began running thousands of Docker containers simultaneously, they needed a way to manage them automatically. Google released Kubernetes an open-source orchestration system built specifically to automate the deployment, scaling, and management of containerized applications. Together, Docker and Kubernetes solidifed containerization as the default architecture for modern cloud infrastructure.
 
 ---
 
