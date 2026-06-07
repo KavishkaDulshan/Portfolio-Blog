@@ -7,7 +7,7 @@ coverImage: "/images/blog/max30102/0.webp"
 ---
 Ever wondered how smartwatches and fitness trackers read your pulse through your skin? It feels like magic, but it is actually a clever combination of optical physics, fluid dynamics, and embedded engineering.
 
-One of the most popular, accessible tools for bringing this technology into your own DIY projects is the MAX30102 sensor—frequently found on the low-cost MH-ET Live breakout board. Whether you are building an IoT health dashboard, a smart companion robot, or an embedded diagnostic tool, this guide breaks down exactly how the hardware works, how to navigate a notorious hardware pitfall, and how to wire it up to an ESP32 to stream real-time biometric data.
+One of the most popular, accessible tools for bringing this technology into your own DIY projects is the MAX30102 sensor frequently found on the low cost MH-ET Live breakout board. Whether you are building an IoT health dashboard, a smart companion robot, or an embedded diagnostic tool, this guide breaks down exactly how the hardware works, how to navigate a notorious hardware pitfall, and how to wire it up to an ESP32 to stream real-time biometric data.
 
 ## The Core Physics: What is Photplethysmography?
 
@@ -41,10 +41,9 @@ $$
 \text{Ratio } (R) = \frac{(\text{AC}_{\text{Red}} / \text{DC}_{\text{Red}})}{(\text{AC}_{\text{IR}} / \text{DC}_{\text{IR}})}
 $$
 
-> **Hardware Detail:** The AC component represents the dynamic, pulsating blood flow tied to your heartbeat. The DC component represents the static elements—your bones, skin, and steady venous blood that absorb a constant amount of light. Isolating the AC component allows the sensor to ignore everything else and look strictly at your moving arterial blood.
+> **Hardware Detail:** The AC component represents the dynamic, pulsating blood flow tied to your heartbeat. The DC component represents the static elements your bones, skin, and steady venous blood that absorb a constant amount of light. Isolating the AC component allows the sensor to ignore everything else and look strictly at your moving arterial blood.
 
-The onboard circuitry automatically filters out external ambient room light, processes the signals through an internal 18-bit Analog-to-Digital Converter (ADC), and passes the clean digital data out over an $I^2C$ communication bus via standard Data (SDA) and Clock (SCL) lines.
-
+The onboard circuitry automatically filters out external ambient room light, processes the signals through an internal 18 bit Analog to Digital Converter (ADC), and passes the clean digital data out over an $I^2C$ communication bus via standard Data (SDA) and Clock (SCL) lines.
 
 ![Max30102](/images/blog/max30102/image.webp "max30102")
 
@@ -54,9 +53,9 @@ Before jumping into wiring, there is a vital hardware detail every developer usi
 
 The MAX30102 chip requires a 1.8V power rail internally, but the breakout board includes onboard regulators so it can accept 5V or 3.3V. However, the designers tied the onboard $I^2C$ pull-up resistors directly to the 5V (VIN) rail by default.
 
-If you hook this board up to a 3.3V microcontroller—like an ESP32 or an STM32—the 5V pull-ups can flood your controller's $I^2C$ pins with a higher voltage than they are designed to handle. This frequently manifests as sudden $I^2C$ bus lockups, or the sensor refusing to initialize entirely.
+If you hook this board up to a 3.3V microcontroller like an ESP32 or an STM32 the 5V pull-ups can flood your controller's $I^2C$ pins with a higher voltage than they are designed to handle. This frequently manifests as sudden $I^2C$ bus lockups, or the sensor refusing to initialize entirely.
 
-**The Fix:** If you experience connection drops, look for the tiny trace on the back of the PCB connecting the pull-up array to the 5V pad. Cutting that trace with an exacto knife and soldering a small jumper bridge over to the 3.3V pad forces the pull-ups to operate on safe, microcontroller-friendly logic levels.
+**The Fix:** If you experience connection drops, look for the tiny trace on the back of the PCB connecting the pull-up array to the 5V pad. Cutting that trace with an exacto knife and soldering a small jumper bridge over to the 3.3V pad forces the pull  ups to operate on safe, microcontroller-friendly logic levels.
 
 ## Step-by-Step Integration: ESP32 & Arduino Guide
 
