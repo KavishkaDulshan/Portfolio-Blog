@@ -3,7 +3,7 @@ title: "Understanding REST APIs: The Messengers of the Internet"
 date: "2026-06-11"
 excerpt: "A beginner-friendly guide to REST APIs. Learn how they work, the essential HTTP methods, and the core principles of REST architecture."
 tags: ["api", "rest-api", "web-development", "backend", "software-architecture"]
-coverImage: "/images/blog/RESTAPI/image.webp"
+coverImage: "/images/blog/RESTAPI/0.webp"
 ---
 A REST API (Representational State Transfer Application Programming Interface) is a set of rules and conventions that allows different software applications to communicate with each other over the internet.
 
@@ -19,6 +19,8 @@ Imagine you are sitting at a restaurant.
 You can't just walk into the kitchen and grab your food. You need a **Waiter**, which is the **API**.
 
 You give your order (a request) to the waiter, the waiter takes it to the kitchen, and the kitchen gives the waiter your food to bring back to you (the response). A REST API just means the waiter is following a very specific, standardized set of rules to do this job.
+
+![REST APIs](/images/blog/RESTAPI/image.webp "REST APIs")
 
 ## How It Works: The HTTP Methods
 
