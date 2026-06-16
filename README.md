@@ -75,7 +75,7 @@ Color is a distraction when you're trying to read. The constraint forces hierarc
 npm run compress-images
 ```
 
-npm run compress-images
+npm run compressimages
 
 ## Future plans
 
