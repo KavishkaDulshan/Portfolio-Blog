@@ -64,7 +64,7 @@ export default function ChatBot({ title, excerpt, body, type }) {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
             transition={{ duration: 0.2, ease: 'easeOut' }}
-            className="fixed bottom-24 left-4 md:top-16 md:right-4 md:bottom-auto md:left-auto z-50 w-[calc(100vw-2rem)] md:w-[380px] h-[65vh] md:h-[calc(100vh-7rem)] md:max-h-[700px] bg-white rounded-2xl shadow-xl border border-gray-200 flex flex-col overflow-hidden"
+            className="fixed bottom-24 left-4 md:top-16 md:right-4 md:bottom-auto md:left-auto z-50 w-[calc(100vw-2rem)] md:w-[380px] h-[65vh] md:h-[calc(100vh-7rem-30px)] md:max-h-[670px] bg-white rounded-2xl shadow-xl border border-gray-200 flex flex-col overflow-hidden"
           >
             <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200 bg-gray-50 shrink-0">
               <div className="flex items-center gap-2">
@@ -170,24 +170,17 @@ export default function ChatBot({ title, excerpt, body, type }) {
         )}
       </AnimatePresence>
 
-      {/* Desktop toggle button — fixed top-right, just outside article border */}
-      <button
-        onClick={toggleChat}
-        className="hidden lg:inline-flex lg:fixed lg:top-16 z-50 items-center gap-2 px-4 py-2.5 rounded-full border border-gray-300 bg-white text-gray-700 text-sm font-medium hover:border-gray-900 hover:text-gray-900 hover:bg-gray-50 transition-colors shadow-sm"
-        style={{ left: 'calc((100vw + 42rem) / 2 + 0.75rem)' }}
-      >
-        {isOpen ? (
-          <>
-            <FiX size={16} />
-            Close chat
-          </>
-        ) : (
-          <>
-            <FiMessageSquare size={16} />
-            Ask AI
-          </>
-        )}
-      </button>
+      {/* Desktop toggle button — hidden when panel open to avoid overlap */}
+      {!isOpen && (
+        <button
+          onClick={toggleChat}
+          className="hidden lg:inline-flex lg:fixed lg:top-16 z-50 items-center gap-2 px-4 py-2.5 rounded-full border border-gray-300 bg-white text-gray-700 text-sm font-medium hover:border-gray-900 hover:text-gray-900 hover:bg-gray-50 transition-colors shadow-sm"
+          style={{ left: 'calc((100vw + 42rem) / 2 + 0.75rem)' }}
+        >
+          <FiMessageSquare size={16} />
+          Ask AI about this {type}
+        </button>
+      )}
 
       {/* Tablet toggle button — 768-1024px: floating circle bottom-right */}
       <button
