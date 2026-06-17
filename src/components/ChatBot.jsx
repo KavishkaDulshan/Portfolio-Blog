@@ -2,6 +2,8 @@ import { useEffect, useRef } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { AnimatePresence, motion } from 'framer-motion';
 import { FiMessageSquare, FiX, FiSend, FiChevronDown } from 'react-icons/fi';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import useChat from '../hooks/useChat';
 import LoaderAnimation from './LoaderAnimation';
 
@@ -121,15 +123,17 @@ export default function ChatBot({ title, excerpt, body, type }) {
                   key={i}
                   className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
-                  <div
-                    className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed whitespace-pre-wrap ${
-                      msg.role === 'user'
-                        ? 'bg-gray-900 text-white rounded-br-md'
-                        : 'bg-gray-100 text-gray-800 rounded-bl-md'
-                    }`}
-                  >
-                    {msg.content}
-                  </div>
+                  {msg.role === 'user' ? (
+                    <div className="max-w-[85%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed whitespace-pre-wrap bg-gray-900 text-white rounded-br-md">
+                      {msg.content}
+                    </div>
+                  ) : (
+                    <div className="max-w-[85%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed bg-gray-100 text-gray-800 rounded-bl-md prose prose-gray prose-sm max-w-none prose-p:my-1 prose-headings:my-2 prose-headings:text-gray-800 prose-strong:text-gray-800 prose-code:bg-gray-200 prose-code:px-1 prose-code:rounded prose-ul:my-1 prose-ol:my-1 prose-li:my-0">
+                      <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                        {msg.content}
+                      </ReactMarkdown>
+                    </div>
+                  )}
                 </div>
               ))}
 
