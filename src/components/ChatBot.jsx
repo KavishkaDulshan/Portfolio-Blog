@@ -3,6 +3,7 @@ import { useEffect, useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { FiMessageSquare, FiX, FiSend, FiChevronDown } from 'react-icons/fi';
 import useChat from '../hooks/useChat';
+import ParticleCanvas from './ParticleCanvas';
 
 function TypingDots() {
   return (
@@ -56,7 +57,7 @@ export default function ChatBot({ title, excerpt, body, type }) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2, ease: 'easeOut' }}
-            className="fixed bottom-20 right-4 sm:right-6 z-50 w-[calc(100vw-2rem)] sm:w-[380px] max-h-[560px] h-[60vh] sm:h-[520px] bg-white rounded-2xl shadow-xl border border-gray-200 flex flex-col overflow-hidden"
+            className="fixed bottom-20 left-4 z-50 w-[calc(100vw-2rem)] sm:w-[380px] max-h-[560px] h-[60vh] sm:h-[520px] bg-white rounded-2xl shadow-xl border border-gray-200 flex flex-col overflow-hidden"
           >
             <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200 bg-gray-50 shrink-0">
               <div className="flex items-center gap-2">
@@ -84,27 +85,33 @@ export default function ChatBot({ title, excerpt, body, type }) {
               </div>
             </div>
 
-            <div ref={listRef} className="flex-1 overflow-y-auto px-4 py-4 space-y-3">
-              {messages.length === 0 && (
-                <div className="space-y-3">
-                  <p className="text-sm text-gray-500 text-center pt-4">
-                    Ask me anything about this {type}!
-                  </p>
-                  <div className="flex flex-wrap gap-2 justify-center">
-                    {suggested.map((q) => (
-                      <button
-                        key={q}
-                        onClick={() => sendMessage(q)}
-                        className="text-xs px-3 py-1.5 rounded-full border border-gray-300 text-gray-600 hover:border-gray-900 hover:text-gray-900 hover:bg-gray-50 transition-colors"
-                      >
-                        {q}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
+            <div ref={listRef} className="flex-1 overflow-y-auto">
+              <div className="px-4 py-4 space-y-3">
+                {messages.length === 0 && (
+                  <>
+                    <div className="flex flex-col items-center justify-center space-y-4 pt-4">
+                      <p className="text-sm text-gray-600 text-center">
+                        Ask me anything about this {type}!
+                      </p>
+                      <div className="flex flex-wrap gap-2 justify-center">
+                        {suggested.map((q) => (
+                          <button
+                            key={q}
+                            onClick={() => sendMessage(q)}
+                            className="text-xs px-3 py-1.5 rounded-full border border-gray-300 text-gray-700 hover:border-gray-900 hover:text-gray-900 hover:bg-gray-50 transition-colors bg-white"
+                          >
+                            {q}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="h-[200px] w-full rounded-lg overflow-hidden">
+                      <ParticleCanvas />
+                    </div>
+                  </>
+                )}
 
-              {messages.map((msg, i) => (
+                {messages.map((msg, i) => (
                 <div
                   key={i}
                   className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
@@ -128,6 +135,7 @@ export default function ChatBot({ title, excerpt, body, type }) {
                   </div>
                 </div>
               )}
+            </div>
             </div>
 
             <form onSubmit={handleSubmit} className="border-t border-gray-200 p-3 shrink-0 flex gap-2">
@@ -155,7 +163,7 @@ export default function ChatBot({ title, excerpt, body, type }) {
 
       <button
         onClick={toggleChat}
-        className="fixed bottom-6 right-4 sm:right-6 z-50 w-12 h-12 rounded-full bg-gray-900 text-white shadow-lg hover:bg-gray-700 transition-colors flex items-center justify-center"
+        className="fixed bottom-6 left-4 z-50 w-12 h-12 rounded-full bg-gray-900 text-white shadow-lg hover:bg-gray-700 transition-colors flex items-center justify-center"
       >
         {isOpen ? <FiX size={20} /> : <FiMessageSquare size={20} />}
       </button>
