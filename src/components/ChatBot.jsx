@@ -57,7 +57,7 @@ export default function ChatBot({ title, excerpt, body, type }) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2, ease: 'easeOut' }}
-            className="fixed bottom-20 left-4 z-50 w-[calc(100vw-2rem)] sm:w-[380px] max-h-[560px] h-[60vh] sm:h-[520px] bg-white rounded-2xl shadow-xl border border-gray-200 flex flex-col overflow-hidden"
+            className="fixed bottom-24 md:bottom-20 left-4 z-50 w-[calc(100vw-2rem)] sm:w-[380px] h-[65vh] sm:h-[520px] bg-white rounded-2xl shadow-xl border border-gray-200 flex flex-col overflow-hidden"
           >
             <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200 bg-gray-50 shrink-0">
               <div className="flex items-center gap-2">
@@ -163,7 +163,7 @@ export default function ChatBot({ title, excerpt, body, type }) {
 
       <button
         onClick={toggleChat}
-        className="fixed bottom-6 left-4 z-50 w-12 h-12 rounded-full bg-gray-900 text-white shadow-lg hover:bg-gray-700 transition-colors flex items-center justify-center"
+        className="fixed bottom-16 md:bottom-6 left-4 z-50 w-12 h-12 rounded-full bg-gray-900 text-white shadow-lg hover:bg-gray-700 transition-colors flex items-center justify-center"
       >
         {isOpen ? <FiX size={20} /> : <FiMessageSquare size={20} />}
       </button>
