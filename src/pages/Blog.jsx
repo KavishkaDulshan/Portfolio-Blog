@@ -90,7 +90,7 @@ function BlogList({ lang }) {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {posts.map((post, i) => (
-            <FadeIn key={post.slug} delay={i * 0.07}>
+            <FadeIn key={post.slug} delay={i * 0.02}>
               <BlogCard post={post} lang={lang} />
             </FadeIn>
           ))}

@@ -319,7 +319,7 @@ export default function Home() {
           </FadeIn>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {liveRepos.map((repo, i) => (
-              <FadeIn key={repo.id} delay={i * 0.08}>
+              <FadeIn key={repo.id} delay={i * 0.02}>
                 <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="block group h-full">
                   <div className="h-full border border-gray-200 rounded-2xl p-5 hover:border-gray-900 transition-colors flex flex-col">
                     <h3 className="font-medium text-gray-900 mb-2 truncate group-hover:underline">{repo.name}</h3>
@@ -351,7 +351,7 @@ export default function Home() {
           </FadeIn>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {latestPosts.map((post, i) => (
-              <FadeIn key={post.slug} delay={i * 0.08}>
+              <FadeIn key={post.slug} delay={i * 0.02}>
                 <BlogCard post={post} />
               </FadeIn>
             ))}
@@ -374,7 +374,7 @@ export default function Home() {
             </FadeIn>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {latestProjects.map((project, i) => (
-                <FadeIn key={project.slug} delay={i * 0.08}>
+                <FadeIn key={project.slug} delay={i * 0.02}>
                   <ProjectCard project={project} />
                 </FadeIn>
               ))}

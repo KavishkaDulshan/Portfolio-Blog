@@ -34,7 +34,7 @@ export default function Projects() {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {projects.map((project, i) => (
-            <FadeIn key={project.slug} delay={i * 0.07}>
+            <FadeIn key={project.slug} delay={i * 0.02}>
               <ProjectCard project={project} />
             </FadeIn>
           ))}
