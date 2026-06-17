@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { FiMessageSquare, FiX, FiSend, FiChevronDown } from 'react-icons/fi';
 import useChat from '../hooks/useChat';
-import ParticleCanvas from './ParticleCanvas';
+import LoaderAnimation from './LoaderAnimation';
 
 function TypingDots() {
   return (
@@ -105,8 +105,8 @@ export default function ChatBot({ title, excerpt, body, type }) {
                         ))}
                       </div>
                     </div>
-                    <div className="h-[200px] w-full rounded-lg overflow-hidden">
-                      <ParticleCanvas />
+                    <div className="h-[200px] w-full">
+                      <LoaderAnimation />
                     </div>
                   </>
                 )}
