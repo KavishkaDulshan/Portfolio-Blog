@@ -50,6 +50,11 @@ export default function ChatBot({ title, excerpt, body, type }) {
 
   return (
     <>
+      {/* Backdrop blur — mobile only when chat is open */}
+      {isOpen && (
+        <div className="fixed inset-0 z-40 bg-black/15 backdrop-blur-sm md:hidden" />
+      )}
+
       <AnimatePresence>
         {isOpen && (
           <motion.div
