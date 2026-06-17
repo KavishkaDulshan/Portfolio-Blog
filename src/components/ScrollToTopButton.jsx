@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { FiArrowUp } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useChatContext } from '../contexts/ChatContext';
 
 export default function ScrollToTopButton() {
+  const { isChatOpen } = useChatContext();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -27,7 +29,7 @@ export default function ScrollToTopButton() {
 
   return (
     <AnimatePresence>
-      {isVisible && (
+      {isVisible && !isChatOpen && (
         <motion.button
           initial={{ opacity: 0, scale: 0.8, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}

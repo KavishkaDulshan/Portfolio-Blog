@@ -1,5 +1,6 @@
 import { useState, useRef, useCallback } from 'react';
 import { PROVIDERS } from '../config/deepseek';
+import { useChatContext } from '../contexts/ChatContext';
 
 function truncateBody(text, maxLen = 6000) {
   if (!text || text.length <= maxLen) return text || '';
@@ -71,10 +72,10 @@ async function tryModel(provider, model, payload) {
 }
 
 export default function useChat({ title, excerpt, body, type }) {
+  const { isChatOpen, setIsChatOpen } = useChatContext();
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
   const suggested = type === 'project' ? SUGGESTIONS_PROJECT : SUGGESTIONS_BLOG;
   const systemPrompt = useRef(buildSystemPrompt({ title, excerpt, body, type }));
 
@@ -157,15 +158,15 @@ export default function useChat({ title, excerpt, body, type }) {
   }, []);
 
   const toggleChat = useCallback(() => {
-    setIsOpen((prev) => !prev);
-  }, []);
+    setIsChatOpen((prev) => !prev);
+  }, [setIsChatOpen]);
 
   return {
     messages,
     input,
     setInput,
     isLoading,
-    isOpen,
+    isOpen: isChatOpen,
     toggleChat,
     sendMessage,
     clearChat,

@@ -3,6 +3,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import NavBar from './NavBar';
 import Footer from './Footer';
 import ScrollToTopButton from './ScrollToTopButton';
+import { ChatProvider } from '../contexts/ChatContext';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -16,6 +17,7 @@ function ScrollToTop() {
 
 export default function Layout() {
   return (
+    <ChatProvider>
     <div className="min-h-screen flex flex-col bg-white text-gray-900 pb-14 md:pb-0" style={{ fontFamily: 'var(--font-sans)' }}>
       <ScrollToTop />
       <NavBar />
@@ -27,5 +29,6 @@ export default function Layout() {
       </div>
       <ScrollToTopButton />
     </div>
+    </ChatProvider>
   );
 }
