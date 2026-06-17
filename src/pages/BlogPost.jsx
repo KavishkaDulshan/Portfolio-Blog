@@ -12,6 +12,7 @@ import mermaid from 'mermaid';
 import { getPostBySlug } from '../utils/getPosts';
 import { GISCUS } from '../config/giscus';
 import Giscus from '@giscus/react';
+import ChatBot from '../components/ChatBot';
 
 const SITE_URL = 'https://kavishkadulshan.dev';
 
@@ -328,6 +329,8 @@ export default function BlogPost() {
           lang={GISCUS.lang}
         />
       </div>
+
+      <ChatBot title={title} excerpt={excerpt} body={body} type="blog" />
     </div>
   );
 }

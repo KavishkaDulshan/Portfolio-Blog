@@ -11,6 +11,7 @@ import 'katex/dist/katex.min.css';
 import mermaid from 'mermaid';
 import { getProjectBySlug } from '../utils/getProjects';
 import ImageGallery from '../components/ImageGallery';
+import ChatBot from '../components/ChatBot';
 
 mermaid.initialize({ startOnLoad: true, theme: 'default' });
 
@@ -374,6 +375,8 @@ export default function ProjectPost() {
 
       {/* Image gallery */}
       {gallery?.length > 0 && <ImageGallery images={gallery} />}
+
+      <ChatBot title={title} excerpt={excerpt} body={body} type="project" />
     </div>
   );
 }
