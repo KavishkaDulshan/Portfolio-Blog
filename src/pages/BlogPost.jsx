@@ -315,6 +315,8 @@ export default function BlogPost() {
         </ReactMarkdown>
       </div>
 
+      <ChatBot title={title} excerpt={excerpt} body={body} type="blog" />
+
       {/* Giscus comments */}
       <div className="mt-12">
         <Giscus
@@ -328,9 +330,8 @@ export default function BlogPost() {
           theme={GISCUS.theme}
           lang={GISCUS.lang}
         />
-      </div>
+        </div>
 
-      <ChatBot title={title} excerpt={excerpt} body={body} type="blog" />
     </div>
   );
 }

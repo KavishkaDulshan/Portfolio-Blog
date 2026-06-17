@@ -373,10 +373,10 @@ export default function ProjectPost() {
         </ReactMarkdown>
       </div>
 
+      <ChatBot title={title} excerpt={excerpt} body={body} type="project" />
+
       {/* Image gallery */}
       {gallery?.length > 0 && <ImageGallery images={gallery} />}
-
-      <ChatBot title={title} excerpt={excerpt} body={body} type="project" />
     </div>
   );
 }
