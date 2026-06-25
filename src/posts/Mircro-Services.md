@@ -5,13 +5,13 @@ excerpt: "Explore the critical architectural decisions in software engineering: 
 tags: ["software-architecture", "microservices", "kubernetes", "docker", "cloud-native"]
 coverImage: "/images/blog/microservices/1.webp"
 ---
-As software applications scale from simple prototypes to complex enterprise platforms, the underlying architecture dictates how quickly a system can evolve, scale, and recover from failures. Choosing the right architectural pattern—and understanding the infrastructure required to support it—is one of the most critical decisions in software engineering.
+As software applications scale from simple prototypes to complex enterprise platforms, the underlying architecture dictates how quickly a system can evolve, scale, and recover from failures. Choosing the right architectural pattern and understanding the infrastructure required to support it is one of the most critical decisions in software engineering.
 
 ![Diagram illustrating the structural differences between monolithic applications and distributed microservices ecosystems](/images/blog/microservices/image.webp "Monolithic vs. Microservices Architecture")
 
 ## 1. The Monolithic Foundation
 
-The traditional approach to software development is the monolithic architecture. In a monolith, all components of an application—the user interface, business logic, data access layer, and background processing—are tightly coupled into a single, unified codebase and deployed together as one executable unit.
+The traditional approach to software development is the monolithic architecture. In a monolith, all components of an application the user interface, business logic, data access layer, and background processing are tightly coupled into a single, unified codebase and deployed together as one executable unit.
 
 ### Core Attributes of a Monolith
 
@@ -29,7 +29,7 @@ The traditional approach to software development is the monolithic architecture.
 
 As applications grow in size and team complexity, monoliths begin to exhibit significant drawbacks:
 
-* **Inflexible Scaling:** If a single feature (such as a real-time messaging gateway or video processing engine) experiences a massive spike in traffic, the entire monolith must be duplicated across extra servers, consuming unnecessary CPU and memory for idle modules.
+* **Inflexible Scaling:** If a single feature (such as a real time messaging gateway or video processing engine) experiences a massive spike in traffic, the entire monolith must be duplicated across extra servers, consuming unnecessary CPU and memory for idle modules.
 * **Fault Intolerance:** Because all code runs in the same memory space, a critical bug or memory leak in a minor feature can crash the entire application.
 * **Code Entanglement:** Over time, boundaries between modules blur, leading to "spaghetti code" that makes onboarding new engineers difficult and slows down development velocity.
 
@@ -53,7 +53,7 @@ A microservices architecture addresses these bottlenecks by decomposing a large,
 
 Microservices are not a silver bullet; they introduce substantial operational complexity:
 
-* **Network Latency & Reliability:** In-memory method calls are replaced with network calls, which introduces latency and potential points of network failure.
+* **Network Latency & Reliability:** In memory method calls are replaced with network calls, which introduces latency and potential points of network failure.
 * **Data Consistency:** Achieving data consistency across multiple independent databases requires implementing complex patterns like the Saga Pattern or event-driven architecture using message brokers.
 * **Operational Overhead:** Managing dozens of separate codebases, deployment pipelines, and environment configurations requires mature DevOps practices.
 
