@@ -3,11 +3,11 @@ title: "Architecting the Modern Web: Monoliths, Microservices, and the Cloud-Nat
 date: "2026-06-25"
 excerpt: "Explore the critical architectural decisions in software engineering: comparing monoliths and microservices, and understanding the cloud-native toolkit of Docker and Kubernetes."
 tags: ["software-architecture", "microservices", "kubernetes", "docker", "cloud-native"]
-coverImage: "/images/blog/microservices/image.webp"
+coverImage: "/images/blog/microservices/1.webp"
 ---
 As software applications scale from simple prototypes to complex enterprise platforms, the underlying architecture dictates how quickly a system can evolve, scale, and recover from failures. Choosing the right architectural pattern—and understanding the infrastructure required to support it—is one of the most critical decisions in software engineering.
 
-![Diagram illustrating the structural differences between monolithic applications and distributed microservices ecosystems](/images/blog/architecture/monolith-vs-microservices.png "Monolithic vs. Microservices Architecture")
+![Diagram illustrating the structural differences between monolithic applications and distributed microservices ecosystems](/images/blog/microservices/image.webp "Monolithic vs. Microservices Architecture")
 
 ## 1. The Monolithic Foundation
 
