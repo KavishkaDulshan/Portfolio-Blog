@@ -61,7 +61,7 @@ The system uses **JWT Authentication** to secure these endpoints, requiring a Be
 ## Lessons Learned
 
 * **Architectural Planning:** Designing the backend architecture from scratch taught me the importance of the Repository pattern in making a large codebase manageable for a group.
-* **API Testing Rigor:** Developing and testing APIs for a multi-user environment highlighted the need for strict server-side validation using FluentValidation to prevent data corruption.
+* **API Testing Rigor:** Developing and testing APIs for a multi-user environment highlighted the need for strict server side validation using FluentValidation to prevent data corruption.
 * **Concurrency Management:** Implementing SignalR required a deep understanding of how to manage state across multiple client connections in a real-time environment.
 
 ---
