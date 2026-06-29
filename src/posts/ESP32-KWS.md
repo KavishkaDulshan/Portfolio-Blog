@@ -3,7 +3,7 @@ title: "Unlocking ESP32-S3 Vector Instructions for Native Voice Keyword Spotting
 date: "2026-06-29"
 excerpt: "Learn how utilizing the ESP32-S3's 128-bit SIMD vector engine and shifting to the native ESP-SR framework maximizes Edge AI performance in dual-core robotics applications."
 tags: ["esp32", "edge-ai", "embedded-systems", "robotics", "esp-idf"]
-coverImage: "/images/blog/esp32-vector/cover.png"
+coverImage: "/images/blog/ESP32KWS/0.webp"
 ---
 Tracking the complete software development lifecycle of the Companion Robot Project (2.1) has led to critical architectural breakthroughs. To support real-time user interactions without compromising physical system stability, the robot's architecture successfully transitioned from a standard, limited Arduino environment into an advanced dual-core ESP-IDF and Arduino hybrid framework.
 
