@@ -15,7 +15,7 @@ What makes the ESP32-S3 a true powerhouse for localized Edge AI is its underlyin
 
 These specialized vector extensions allow the microcontroller to execute multiple mathematical operations concurrently within a single clock cycle. For intensive Edge AI workloads like Keyword Spotting (KWS), which depend heavily on matrix multiplications, deep convolutions, and Fast Fourier Transforms (FFT) to process audio spectrograms, these vector instructions provide a hardware-accelerated speedup of up to 10x compared to traditional scalar execution paths.
 
-![ESP32-S3 Vector Engine Pipeline Architecture](/images/blog/esp32-vector/pipeline.png "Visualizing 128-bit SIMD concurrent data processing lanes")
+![ESP32-S3 Vector Engine Pipeline Architecture](/images/blog/ESP32KWS/image.webp "Visualizing 128-bit SIMD concurrent data processing lanes")
 
 ## ESP-SR (WakeNet) vs. Edge Impulse KWS
 
@@ -69,12 +69,15 @@ flowchart LR
 Transitioning the Companion Robot Project (2.1) to a native voice keyword spotting engine follows a structured deployment pipeline:
 
 ### 1. Dataset Collection
+
 Record 50 to 100 clean audio sample iterations of your custom wake word. To prevent ingestion errors or sample-rate conversion distortion, ensure files are formatted strictly as **16kHz, 16-bit, Mono PCM .wav** files.
 
 ### 2. Model Compilation
+
 Process your raw recording dataset through Espressif's local script pipelines. This optimization step structures the neural network weights specifically for the LX7 vector engine, producing a highly optimized, deployable `model.bin` file.
 
 ### 3. Flash Deployment
+
 Use the command-line utility `esptool.py` to burn the compiled binary directly into the custom flash partition boundary mapping. This separates the asset data from active firmware code.
 
 ```bash
