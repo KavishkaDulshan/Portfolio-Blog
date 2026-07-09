@@ -6,8 +6,6 @@ tags: ["iot", "arduino", "esp32", "microcontrollers", "engineering"]
 coverImage: "/images/blog/ESP32vsUno/0.webp"
 lang: "en"
 ---
-
-
 If you’re diving into embedded systems or IoT, choosing the right microcontroller is key. Here’s a quick breakdown to help you decide:
 
 ![ESP32vsUno](/images/blog/ESP32vsUno/1.webp "comparison")
@@ -44,7 +42,7 @@ If you’re diving into embedded systems or IoT, choosing the right microcontrol
 
 ## My Take
 
-ESP32 is like the smartphone of microcontrollers — powerful, feature-rich, and still affordable. But Arduino Uno is a fantastic choice for beginners to understand the fundamentals of electronics and coding.
+ESP32 is like the smartphone of microcontrollers  powerful, feature-rich, and still affordable. But Arduino Uno is a fantastic choice for beginners to understand the fundamentals of electronics and coding.
 
 ### Choose Arduino Uno if:
 
