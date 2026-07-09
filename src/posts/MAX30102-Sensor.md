@@ -142,4 +142,4 @@ Rest your finger flat and lightly against the glass window of the sensor. Within
 
 **Pro-Tip for Clean Data:** A common mistake is pressing down hard on the sensor out of habit. Pressing too firmly compresses the delicate blood vessels in your fingertip, blocking the local arterial pulse entirely. This flattens your waveforms into erratic static. For the cleanest signal, place your finger with just enough weight to seal out the ambient light of the room.
 
-Kavishka Dulshan
+Kavishka  Dulshan
