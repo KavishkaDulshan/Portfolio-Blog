@@ -3,7 +3,7 @@ title: "Teaching My Smart Companion Robot to Listen: Building a Custom Offline K
 date: "2026-07-09"
 excerpt: "Discover how to build a custom offline Keyword Spotting (KWS) pipeline for a smart companion robot, ensuring real-time edge execution without cloud dependencies."
 tags: ["robotics", "edge-computing", "machine-learning", "embedded-systems", "esp32"]
-coverImage: "/images/blog/kws-pipeline/cover.png"
+coverImage: "/images/blog/KWS/image.webp"
 ---
 Building a smart companion robot comes with a unique set of edge computing challenges. While cloud-based voice assistants are powerful, they require constant internet connectivity, introduce latency, and raise privacy concerns. For a truly responsive robot, execution needs to happen completely on the edge.
 
