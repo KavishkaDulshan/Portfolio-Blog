@@ -5,7 +5,7 @@ excerpt: "Discover how to build a custom offline Keyword Spotting (KWS) pipeline
 tags: ["robotics", "edge-computing", "machine-learning", "embedded-systems", "esp32"]
 coverImage: "/images/blog/kws-pipeline/cover.png"
 ---
-Building a smart companion robot comes with a unique set of edge-computing challenges. While cloud-based voice assistants are powerful, they require constant internet connectivity, introduce latency, and raise privacy concerns. For a truly responsive robot, execution needs to happen completely on the edge.
+Building a smart companion robot comes with a unique set of edge computing challenges. While cloud-based voice assistants are powerful, they require constant internet connectivity, introduce latency, and raise privacy concerns. For a truly responsive robot, execution needs to happen completely on the edge.
 
 To give my robot local listening capabilities, I built an offline Keyword Spotting (KWS) pipeline. Instead of using generic datasets, I recorded over 1,200 custom audio samples from scratch to train a model that recognizes three distinct operational commands.
 
@@ -21,11 +21,11 @@ A robust voice-activated robot requires more than a simple wake word; it needs c
 * **unknown:** Random conversational phrases to ensure it doesn't trigger on similar-sounding words.
 * **noise:** Ambient room hum, fan noise, and mechanical sounds from the robot's own servos.
 
-To train the model effectively, I captured over 1,200 individual 1-second samples at a 16 kHz sampling rate. This volume of data provided the network with enough variance in distance, pitch, and background environments to achieve industrial-grade reliability.
+To train the model effectively, I captured over 1,200 individual 1 second samples at a 16 kHz sampling rate. This volume of data provided the network with enough variance in distance, pitch, and background environments to achieve industrial-grade reliability.
 
 ## 2. Hardware Architecture & Signal Processing
 
-The robot captures raw audio via a high-performance I2S digital microphone. Unlike older analog microphones that are highly susceptible to electromagnetic interference from nearby motors, digital I2S streams clean, uncorrupted PCM data directly to the microcontroller.
+The robot captures raw audio via a high performance I2S digital microphone. Unlike older analog microphones that are highly susceptible to electromagnetic interference from nearby motors, digital I2S streams clean, uncorrupted PCM data directly to the microcontroller.
 
 The hardware pins are bound directly via the ESP32 I2S peripheral configuration:
 
@@ -37,7 +37,7 @@ The hardware pins are bound directly via the ESP32 I2S peripheral configuration:
 
 Raw audio waveforms take up a massive footprint and contain too much raw variance for a micro-neural network to calculate in real time. To compress this data without losing critical voice features, the system utilizes MFCC (Mel-Frequency Cepstral Coefficients).
 
-MFCC windows the 1-second audio frame, performs a Fast Fourier Transform (FFT), and warps the spectrum onto the Mel scale—mirroring how human ears actually perceive pitch. This transforms the 16 kHz audio chunk into a dense 2D features image (a spectrogram) perfectly optimized for a Convolutional Neural Network (CNN).
+MFCC windows the 1-second audio frame, performs a Fast Fourier Transform (FFT), and warps the spectrum onto the Mel scale mirroring how human ears actually perceive pitch. This transforms the 16 kHz audio chunk into a dense 2D features image (a spectrogram) perfectly optimized for a Convolutional Neural Network (CNN).
 
 ## 3. Deep Dive into the Robot's Microcontroller Architecture
 
@@ -98,7 +98,7 @@ void loop() {
 
 A clean compile is only half the battle. To verify the performance of the model against unexpected audio anomalies, I built an active diagnostic logger into the serial pipeline. This allows me to track live peak volumes alongside specific class percentages.
 
-Here are two distinct real-world samples captured during bench testing:
+Here are two distinct real world samples captured during bench testing:
 
 ### Case A: Valid Intent Verification
 
@@ -111,7 +111,7 @@ Because the wake_word successfully clears our 60% threshold limit, the system in
 
 ### Case B: Handling External Audio Spikes
 
-Edge environments are loud and chaotic. During testing, a sudden non-vocal audio spike occurred near the workbench, hitting a massive Peak Volume of 5,031.
+Edge environments are loud and chaotic. During testing, a sudden non vocal audio spike occurred near the workbench, hitting a massive Peak Volume of 5,031.
 
 Without robust dataset training, a sudden spike like this could easily cause a false trigger. However, because the training dataset included hundreds of custom noise variations, the model correctly classified the anomaly:
 
