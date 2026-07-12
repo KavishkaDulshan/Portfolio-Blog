@@ -170,3 +170,4 @@ Deployment to the Microsoft Azure Virtual Machine is fully automated. The `.gith
 As an actively developed project, the upcoming roadmap includes:
 
 * Implementing advanced group chat administration features.
+* Transform the system from the monolithic architecture to micro services architecture.
