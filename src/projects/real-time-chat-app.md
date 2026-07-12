@@ -171,3 +171,4 @@ As an actively developed project, the upcoming roadmap includes:
 
 * Implementing advanced group chat administration features.
 * Transform the system from the monolithic architecture to micro services architecture.
+* Optimize the system to handle huge traffic spikes.
