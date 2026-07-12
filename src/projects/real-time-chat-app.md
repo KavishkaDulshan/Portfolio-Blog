@@ -169,7 +169,6 @@ Deployment to the Microsoft Azure Virtual Machine is fully automated. The `.gith
 
 As an actively developed project, the upcoming roadmap includes:
 
-* Implementing End-to-End (E2E) encryption via the Signal Protocol.
 * Adding WebRTC support for voice and video calling.
 * Enhancing media compression algorithms for faster image and file sharing.
 * Implementing advanced group chat administration features.
