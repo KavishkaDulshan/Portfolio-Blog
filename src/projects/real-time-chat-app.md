@@ -9,7 +9,7 @@ coverImage: "/images/projects/Gallery/blinkchat/1.webp"
 ---
 ## Overview
 
-**BlinkChat** is a scalable, cross-platform real-time messaging application designed to provide a seamless and secure communication experience. Currently live and hosted on a **Microsoft Azure Virtual Machine**, the platform allows users to register, authenticate, and communicate instantly.
+**BlinkChat** is a scalable, cross-platform real time messaging application designed to provide a seamless and secure communication experience. Currently live and hosted on a **Microsoft Azure Virtual Machine**, the platform allows users to register, authenticate, and communicate instantly.
 
 While the application is fully functional and open for user registration, it remains under active development. New features are continuously being implemented, and existing infrastructure is being fine-tuned to ensure high availability, optimal performance, and robust security.
 
@@ -103,7 +103,7 @@ graph TD
 
 ### 1. Multi-Factor Authentication & OTP
 
-To ensure identity verification, the platform features a Multi-Factor Authentication (MFA) workflow. Users register with an email and must verify their identity using a One-Time Password (OTP) delivered via Nodemailer. Only after successful OTP validation (`/verify-otp`) is the secure JWT provisioned to the client.
+To ensure identity verification, the platform features a Multi Factor Authentication (MFA) workflow. Users register with an email and must verify their identity using a One-Time Password (OTP) delivered via Nodemailer. Only after successful OTP validation (`/verify-otp`) is the secure JWT provisioned to the client.
 
 ### 2. Real-Time Chat Engine
 
