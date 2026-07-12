@@ -169,5 +169,4 @@ Deployment to the Microsoft Azure Virtual Machine is fully automated. The `.gith
 
 As an actively developed project, the upcoming roadmap includes:
 
-* Enhancing media compression algorithms for faster image and file sharing.
 * Implementing advanced group chat administration features.
