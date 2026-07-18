@@ -8,6 +8,7 @@ import LinkedInBadge from '../components/LinkedInBadge';
 import {
   FiMail, FiGithub, FiLinkedin, FiSend, FiCalendar, FiCheck, FiAlertCircle,
 } from 'react-icons/fi';
+import { SiHuggingface } from 'react-icons/si';
 
 // ── Zod validation schema ──────────────────────────────────────────────────
 const contactSchema = z.object({
@@ -42,6 +43,14 @@ const channels = [
     value: 'kavishka-dulshan',
     href: 'https://www.linkedin.com/in/kavishka-dulshan/',
     description: 'Professional profile and connections.',
+  },
+  {
+    id: 'contact-huggingface',
+    icon: SiHuggingface,
+    label: 'Hugging Face',
+    value: 'KavishkaD',
+    href: 'https://huggingface.co/KavishkaD',
+    description: 'AI models, datasets, and ML contributions.',
   },
 ];
 
