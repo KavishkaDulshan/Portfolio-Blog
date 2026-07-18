@@ -85,3 +85,4 @@ npm run compressimages
 - [ ]  Tag filtering on blog list page
 - [ ]  Add Highlights
 - [ ]  Add likes and comments to posts
+- [ ]  Have to fix Developer state.
