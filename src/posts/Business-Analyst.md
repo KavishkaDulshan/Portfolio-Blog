@@ -3,7 +3,7 @@ title: "The Role of a Business Analyst in Software Development"
 date: "2026-08-11"
 excerpt: "Discover how Business Analysts act as the critical bridge between business stakeholders and technical teams to ensure project success."
 tags: ["software-engineering", "business-analyst", "sdlc", "tech-careers"]
-coverImage: "/images/blog/business-analyst/cover.png"
+coverImage: "/images/blog/BA/image.webp"
 ---
 In a software company, a Business Analyst (BA) acts as the critical bridge between the business stakeholders (like clients, product managers, and executives) and the technical team (software engineers, QA testers, and architects).
 
