@@ -32,7 +32,7 @@ An engineer's job is to build the software right (clean code, scalable architect
 
 ### 3. They Let Engineers Focus on Engineering
 
-Dealing with stakeholder politics, scheduling meetings to clarify business logic, and writing user manuals takes a massive amount of time. By handling the business-facing communication and requirement gathering, BAs free up software engineers to focus entirely on technical architecture, coding, and deployment strategies.
+Dealing with stakeholder politics, scheduling meetings to clarify business logic, and writing user manuals takes a massive amount of time. By handling the business facing communication and requirement gathering, BAs free up software engineers to focus entirely on technical architecture, coding, and deployment strategies.
 
 Understanding how to collaborate effectively with a BA is a major step in transitioning from writing solo code to functioning within an industry-level engineering team.
 
