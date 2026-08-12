@@ -7,7 +7,7 @@ coverImage: "/images/blog/BA/image.webp"
 ---
 In a software company, a Business Analyst (BA) acts as the critical bridge between the business stakeholders (like clients, product managers, and executives) and the technical team (software engineers, QA testers, and architects).
 
-When you are developing and deploying an industry-level project, having a clear understanding of what you are actually supposed to build is just as important as the code itself. That is where the BA steps in. They are the translators who turn vague business problems into concrete, actionable technical requirements.
+When you are developing and deploying an industry level project, having a clear understanding of what you are actually supposed to build is just as important as the code itself. That is where the BA steps in. They are the translators who turn vague business problems into concrete, actionable technical requirements.
 
 ## Core Responsibilities of a BA
 
