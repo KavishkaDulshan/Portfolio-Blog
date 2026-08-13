@@ -36,54 +36,66 @@ html, body, #root {
   --color-gray-950: #ffffff;
 }
 
-/* Neutralize highlight.js's light "github" theme in dark mode. */
+/* Colorful syntax highlighting for dark mode (inspired by GitHub Dark) */
 .dark .hljs {
-  color: var(--color-gray-800);
+  color: #c9d1d9;
   background: transparent;
 }
 .dark .hljs-comment,
 .dark .hljs-quote {
-  color: var(--color-gray-500);
+  color: #8b949e;
+  font-style: italic;
 }
 .dark .hljs-keyword,
 .dark .hljs-selector-tag,
 .dark .hljs-subst,
 .dark .hljs-name,
-.dark .hljs-tag {
-  color: var(--color-gray-800);
+.dark .hljs-tag,
+.dark .hljs-built_in {
+  color: #ff7b72;
 }
 .dark .hljs-string,
 .dark .hljs-doctag,
-.dark .hljs-number,
 .dark .hljs-literal,
-.dark .hljs-variable,
 .dark .hljs-template-variable,
 .dark .hljs-tag .hljs-attr {
-  color: var(--color-gray-600);
+  color: #a5d6ff;
 }
 .dark .hljs-title,
 .dark .hljs-section,
 .dark .hljs-selector-id {
-  color: var(--color-gray-900);
+  color: #d2a8ff;
+  font-weight: bold;
 }
 .dark .hljs-attr,
 .dark .hljs-attribute,
-.dark .hljs-type,
-.dark .hljs-built_in {
-  color: var(--color-gray-700);
+.dark .hljs-type {
+  color: #79c0ff;
+}
+.dark .hljs-number,
+.dark .hljs-variable {
+  color: #79c0ff;
 }
 .dark .hljs-meta,
 .dark .hljs-symbol,
 .dark .hljs-bullet,
 .dark .hljs-link,
 .dark .hljs-regexp {
-  color: var(--color-gray-500);
+  color: #ff7b72;
 }
-.dark .hljs-addition,
-.dark .hljs-deletion,
-.dark .hljs-emphasis,
+.dark .hljs-addition {
+  color: #3fb950;
+  background-color: rgba(46, 160, 67, 0.15);
+}
+.dark .hljs-deletion {
+  color: #ff7b72;
+  background-color: rgba(248, 81, 73, 0.15);
+}
+.dark .hljs-emphasis {
+  font-style: italic;
+}
 .dark .hljs-strong {
-  color: var(--color-gray-700);
+  font-weight: bold;
 }
 
 /* LoaderAnimation hardcodes black shapes — flip them with the theme. */
