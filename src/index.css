@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+@custom-variant dark (&:where(.dark, .dark *));
 
 html, body, #root {
   height: 100%;
@@ -9,6 +10,94 @@ html, body, #root {
   --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
   --font-serif: 'Lora', ui-serif, Georgia, serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+/* ── Dark theme ─────────────────────────────────────────────────────
+   The site's black-and-white design is built on the white + gray
+   palette, so inverting those tokens under `.dark` makes every existing
+   background / text / border utility flip automatically. `black` and the
+   neutral/zinc/slate scales stay absolute (used for overlay scrims and
+   as "always this color" escape hatches). */
+.dark {
+  color-scheme: dark;
+
+  --color-white: #0a0a0a;
+
+  --color-gray-50:  #171717;
+  --color-gray-100: #1f1f1f;
+  --color-gray-200: #2a2a2a;
+  --color-gray-300: #3f3f46;
+  --color-gray-400: #6b7280;
+  --color-gray-500: #9ca3af;
+  --color-gray-600: #d1d5db;
+  --color-gray-700: #e5e7eb;
+  --color-gray-800: #f3f4f6;
+  --color-gray-900: #fafafa;
+  --color-gray-950: #ffffff;
+}
+
+/* Neutralize highlight.js's light "github" theme in dark mode. */
+.dark .hljs {
+  color: var(--color-gray-200);
+  background: transparent;
+}
+.dark .hljs-comment,
+.dark .hljs-quote {
+  color: var(--color-gray-500);
+}
+.dark .hljs-keyword,
+.dark .hljs-selector-tag,
+.dark .hljs-subst,
+.dark .hljs-name,
+.dark .hljs-tag {
+  color: var(--color-gray-200);
+}
+.dark .hljs-string,
+.dark .hljs-doctag,
+.dark .hljs-number,
+.dark .hljs-literal,
+.dark .hljs-variable,
+.dark .hljs-template-variable,
+.dark .hljs-tag .hljs-attr {
+  color: var(--color-gray-400);
+}
+.dark .hljs-title,
+.dark .hljs-section,
+.dark .hljs-selector-id {
+  color: var(--color-gray-100);
+}
+.dark .hljs-attr,
+.dark .hljs-attribute,
+.dark .hljs-type,
+.dark .hljs-built_in {
+  color: var(--color-gray-300);
+}
+.dark .hljs-meta,
+.dark .hljs-symbol,
+.dark .hljs-bullet,
+.dark .hljs-link,
+.dark .hljs-regexp {
+  color: var(--color-gray-500);
+}
+.dark .hljs-addition,
+.dark .hljs-deletion,
+.dark .hljs-emphasis,
+.dark .hljs-strong {
+  color: var(--color-gray-300);
+}
+
+/* LoaderAnimation hardcodes black shapes — flip them with the theme. */
+.dark .loader-chat > span,
+.dark .base-chat span:before,
+.dark .face-chat,
+.dark .face-chat:after,
+.dark .loader-chat > span > span,
+.dark .longfazers-chat span {
+  background: var(--color-gray-900);
+}
+.dark .base-chat span,
+.dark .base-chat span:after {
+  border-right-color: var(--color-gray-900);
 }
 
 @keyframes gradient {

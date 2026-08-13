@@ -37,7 +37,7 @@ function ScoreRing({ score, label, color }) {
     <div className="flex flex-col items-center gap-2">
       <div className="relative w-14 h-14">
         <svg className="w-14 h-14 -rotate-90" viewBox="0 0 56 56">
-          <circle cx="28" cy="28" r={radius} fill="none" stroke="#e5e7eb" strokeWidth="4" />
+          <circle cx="28" cy="28" r={radius} fill="none" stroke="currentColor" className="text-gray-200" strokeWidth="4" />
           <circle
             cx="28" cy="28" r={radius} fill="none"
             stroke={color} strokeWidth="4"
@@ -269,7 +269,7 @@ export default function Dashboard() {
                       const x = cx + radius * Math.cos(-midAngle * RADIAN);
                       const y = cy + radius * Math.sin(-midAngle * RADIAN);
                       return (
-                        <text x={x} y={y} fill="#374151" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central" fontSize="12" fontWeight="500">
+                        <text x={x} y={y} fill="currentColor" className="text-gray-700" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central" fontSize="12" fontWeight="500">
                           {`${name} ${(percent * 100).toFixed(0)}%`}
                         </text>
                       );
@@ -294,8 +294,8 @@ export default function Dashboard() {
                   </Pie>
                   <Tooltip 
                     formatter={(value, name) => [`${value} repos`, name]}
-                    contentStyle={{ borderRadius: '8px', border: '1px solid #e5e7eb', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)', fontSize: '14px', fontWeight: '500' }}
-                    itemStyle={{ color: '#111827' }}
+                    contentStyle={{ borderRadius: '8px', border: '1px solid var(--color-gray-200)', backgroundColor: 'var(--color-white)', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)', fontSize: '14px', fontWeight: '500' }}
+                    itemStyle={{ color: 'var(--color-gray-900)' }}
                   />
                 </PieChart>
               </ResponsiveContainer>

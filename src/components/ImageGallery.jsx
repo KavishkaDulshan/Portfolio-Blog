@@ -37,14 +37,14 @@ function Lightbox({ images, index, onClose, onPrev, onNext }) {
       {/* Close */}
       <button
         onClick={onClose}
-        className="absolute top-4 right-5 text-white/80 hover:text-white text-3xl leading-none font-light"
+        className="absolute top-4 right-5 text-neutral-100/80 hover:text-neutral-100 text-3xl leading-none font-light"
         aria-label="Close"
       >
         ×
       </button>
 
       {/* Counter */}
-      <span className="absolute top-5 left-1/2 -translate-x-1/2 text-white/60 text-sm">
+      <span className="absolute top-5 left-1/2 -translate-x-1/2 text-neutral-100/60 text-sm">
         {index + 1} / {images.length}
       </span>
 
@@ -52,7 +52,7 @@ function Lightbox({ images, index, onClose, onPrev, onNext }) {
       {images.length > 1 && (
         <button
           onClick={(e) => { e.stopPropagation(); onPrev(); }}
-          className="absolute left-3 sm:left-6 text-white/70 hover:text-white text-4xl leading-none font-light px-2 py-4 select-none"
+          className="absolute left-3 sm:left-6 text-neutral-100/70 hover:text-neutral-100 text-4xl leading-none font-light px-2 py-4 select-none"
           aria-label="Previous"
         >
           ‹
@@ -71,7 +71,7 @@ function Lightbox({ images, index, onClose, onPrev, onNext }) {
           draggable={false}
         />
         {img.caption && (
-          <p className="text-white/70 text-sm text-center px-4">{img.caption}</p>
+          <p className="text-neutral-100/70 text-sm text-center px-4">{img.caption}</p>
         )}
       </div>
 
@@ -79,7 +79,7 @@ function Lightbox({ images, index, onClose, onPrev, onNext }) {
       {images.length > 1 && (
         <button
           onClick={(e) => { e.stopPropagation(); onNext(); }}
-          className="absolute right-3 sm:right-6 text-white/70 hover:text-white text-4xl leading-none font-light px-2 py-4 select-none"
+          className="absolute right-3 sm:right-6 text-neutral-100/70 hover:text-neutral-100 text-4xl leading-none font-light px-2 py-4 select-none"
           aria-label="Next"
         >
           ›
@@ -124,7 +124,7 @@ export default function ImageGallery({ images: raw = [] }) {
             {/* Hover overlay */}
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors flex items-center justify-center">
               <svg
-                className="w-7 h-7 text-white opacity-0 group-hover:opacity-100 transition-opacity drop-shadow"
+                className="w-7 h-7 text-neutral-100 opacity-0 group-hover:opacity-100 transition-opacity drop-shadow"
                 fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}
               >
                 <path strokeLinecap="round" strokeLinejoin="round"
@@ -132,7 +132,7 @@ export default function ImageGallery({ images: raw = [] }) {
               </svg>
             </div>
             {img.caption && (
-              <span className="absolute bottom-0 inset-x-0 px-2 py-1 text-xs text-white bg-black/50 truncate text-left">
+              <span className="absolute bottom-0 inset-x-0 px-2 py-1 text-xs text-neutral-100 bg-black/50 truncate text-left">
                 {img.caption}
               </span>
             )}

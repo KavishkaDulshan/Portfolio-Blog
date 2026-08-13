@@ -14,7 +14,9 @@ const SPRING_DAMP  = 0.72;
 const FADE_IN_MS   = 1200;           // initial soft fade-in
 
 // B&W depth shades — index 0 = front/darkest, last = back/lightest
-const SHADES = ['#111', '#2a2a2a', '#444', '#5e5e5e', '#787878', '#929292', '#aaa'];
+const SHADES_LIGHT = ['#111', '#2a2a2a', '#444', '#5e5e5e', '#787878', '#929292', '#aaa'];
+// Inverted for dark mode — index 0 = front/lightest, last = back/darkest
+const SHADES_DARK = ['#f5f5f5', '#d4d4d4', '#a3a3a3', '#8a8a8a', '#6b6b6b', '#525252', '#3a3a3a'];
 
 // ── 3-D helpers ──────────────────────────────────────────────────────
 function rotX([x, y, z], a) {
@@ -120,15 +122,18 @@ export default function ParticleCanvas() {
       ctx.clearRect(0, 0, W, H);
 
       const sorted = particles.slice().sort((a, b) => a.z - b.z);
+      const shades = document.documentElement.classList.contains('dark')
+        ? SHADES_DARK
+        : SHADES_LIGHT;
 
       for (const p of sorted) {
         const [sx, sy, sc] = proj(p.x, p.y, p.z, cx, cy);
         const r  = Math.max(0.3, DOT_R * sc);
         const t  = Math.max(0, Math.min(1, (sc - 0.75) / 0.6));
-        const si = Math.round((1 - t) * (SHADES.length - 1));
+        const si = Math.round((1 - t) * (shades.length - 1));
 
         ctx.globalAlpha = gAlpha * Math.min(1, sc * 1.4);
-        ctx.fillStyle   = SHADES[si];
+        ctx.fillStyle   = shades[si];
         ctx.beginPath();
         ctx.arc(sx, sy, r, 0, Math.PI * 2);
         ctx.fill();
