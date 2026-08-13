@@ -11,6 +11,7 @@ import TechStack from '../components/TechStack';
 import FadeIn from '../components/FadeIn';
 import ParticleCanvas from '../components/ParticleCanvas';
 import { GitHubCalendar } from 'react-github-calendar';
+import { useTheme } from '../contexts/ThemeContext';
 
 // Stagger variants for hero text lines
 const heroVariants = {
@@ -28,6 +29,7 @@ export default function Home() {
   const latestPosts = getAllPosts().slice(0, 3);
   const latestProjects = getAllProjects().slice(0, 3);
   const [liveRepos, setLiveRepos] = useState([]);
+  const { theme } = useTheme();
 
   useEffect(() => {
     fetch('https://api.github.com/users/kavishkadulshan/repos?sort=updated&per_page=3')
@@ -194,7 +196,7 @@ export default function Home() {
 
             {/* Mobile Internship Banner (Hidden on desktop) */}
             <motion.div variants={heroItem} className="lg:hidden mb-8 w-full flex flex-col items-center text-center relative z-10">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-green-50/50 text-green-700 rounded-full text-xs font-medium mb-4 backdrop-blur-sm">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-green-50/50 text-green-700 dark:bg-green-900/30 dark:text-green-400 rounded-full text-xs font-medium mb-4 backdrop-blur-sm">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
@@ -250,7 +252,7 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.8 }}
               className="hidden lg:flex w-full text-center flex-col items-center relative z-10 -mt-12"
             >
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-green-50/50 text-green-700 rounded-full text-xs font-medium mb-4 backdrop-blur-sm">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-green-50/50 text-green-700 dark:bg-green-900/30 dark:text-green-400 rounded-full text-xs font-medium mb-4 backdrop-blur-sm">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
@@ -293,9 +295,10 @@ export default function Home() {
               <div className="min-w-[800px]">
                 <GitHubCalendar
                   username="kavishkadulshan"
-                  colorScheme="light"
+                  colorScheme={theme}
                   theme={{
-                    light: ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39']
+                    light: ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39'],
+                    dark: ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353'],
                   }}
                   hideColorLegend={false}
                 />
