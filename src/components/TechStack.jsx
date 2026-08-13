@@ -47,12 +47,12 @@ export default function TechStack() {
   const [hovered, setHovered] = useState(null);
 
   return (
-    <div className="pt-10 pb-2">
+    <div className="pt-10 pb-2 relative z-20">
       <p className="text-xs uppercase tracking-widest text-gray-500 mb-5">Technologies</p>
 
       {/* Stacked icon group */}
-      <motion.div
-        className="flex items-center flex-wrap gap-y-4"
+      <motion.div 
+        className="flex items-center flex-wrap gap-y-4 pl-[14px]"
         initial="rest"
         whileHover="hover"
         animate="rest"
@@ -60,7 +60,7 @@ export default function TechStack() {
         {icons.map(({ Icon, label }, i) => (
           <motion.div
             key={label}
-            style={{ marginLeft: i === 0 ? 0 : -14, zIndex: icons.length - i }}
+            style={{ marginLeft: -14, zIndex: hovered === i ? 100 : icons.length - i }}
             variants={{
               rest:  { x: 0 },
               hover: { x: i * 10 },
