@@ -12,6 +12,7 @@ import mermaid from 'mermaid';
 import { getProjectBySlug } from '../utils/getProjects';
 import ImageGallery from '../components/ImageGallery';
 import ChatBot from '../components/ChatBot';
+import { useTheme } from '../contexts/ThemeContext';
 
 mermaid.initialize({ startOnLoad: true, theme: 'default' });
 
@@ -30,6 +31,7 @@ function ImageWithCaption({ src, alt, title }) {
 // Renders mermaid diagrams with fullscreen option
 function MermaidBlock({ code }) {
   const ref = useRef(null);
+  const { theme } = useTheme();
   const [svg, setSvg] = useState('');
   const [error, setError] = useState('');
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -41,6 +43,11 @@ function MermaidBlock({ code }) {
       setError('No diagram code provided');
       return;
     }
+
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: theme === 'dark' ? 'dark' : 'default',
+    });
 
     const renderDiagram = async () => {
       try {
@@ -55,7 +62,7 @@ function MermaidBlock({ code }) {
       }
     };
     renderDiagram();
-  }, [code]);
+  }, [code, theme]);
 
   if (error) {
     return (
@@ -353,7 +360,7 @@ export default function ProjectPost() {
 
       {/* Body */}
       <div
-        className="prose prose-gray max-w-none
+        className="prose prose-gray dark:prose-invert max-w-none text-gray-800
           prose-headings:font-serif prose-headings:font-medium prose-headings:text-gray-900
           prose-p:text-gray-800 prose-p:leading-relaxed
           prose-a:text-gray-900 prose-a:underline prose-a:underline-offset-2
@@ -362,6 +369,7 @@ export default function ProjectPost() {
           prose-pre:bg-gray-100 prose-pre:border prose-pre:border-gray-300 prose-pre:rounded-xl
           prose-blockquote:border-l-gray-400 prose-blockquote:text-gray-700
           prose-li:text-gray-800
+          prose-th:text-gray-900 prose-td:text-gray-800
           prose-img:rounded-xl prose-img:shadow-sm"
       >
         <ReactMarkdown

@@ -53,11 +53,11 @@ export default function AcademicRecord() {
           </button>
         </div>
 
-        <div className="prose prose-gray max-w-none 
+        <div className="prose prose-gray dark:prose-invert max-w-none text-gray-800
                         prose-headings:font-serif prose-headings:text-gray-900 prose-headings:font-medium
                         prose-table:w-full prose-table:border-collapse prose-table:mt-2
-                        prose-th:bg-gray-50 prose-th:p-3 prose-th:text-left prose-th:border-b-2 prose-th:border-gray-200
-                        prose-td:p-3 prose-td:border-b prose-td:border-gray-100">
+                        prose-th:bg-gray-50 prose-th:p-3 prose-th:text-left prose-th:border-b-2 prose-th:border-gray-200 prose-th:text-gray-900
+                        prose-td:p-3 prose-td:border-b prose-td:border-gray-100 prose-td:text-gray-800">
           <ReactMarkdown remarkPlugins={[remarkGfm]}>
             {academicRecordMd}
           </ReactMarkdown>
