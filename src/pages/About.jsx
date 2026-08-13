@@ -3,7 +3,7 @@ import SEO from '../components/SEO';
 import { getAboutData } from '../utils/getAbout';
 import FadeIn from '../components/FadeIn';
 import Timeline from '../components/Timeline';
-import { FiDownload } from 'react-icons/fi';
+import { FiDownload, FiCompass, FiActivity, FiBookOpen, FiLayers, FiAward } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
 // Chronological milestones for the NSBM journey timeline
@@ -143,120 +143,143 @@ export default function About() {
 
       <div className="border-t border-gray-200 mb-12" />
 
-      {/* ── NSBM Journey Timeline ── */}
-      <FadeIn delay={0.05}>
-        <section className="mb-12">
-          <h2 className="text-xs font-semibold text-gray-900 uppercase tracking-widest mb-8">
-            Journey
-          </h2>
-          <Timeline events={TIMELINE_EVENTS} />
-        </section>
-      </FadeIn>
-
-      <div className="border-t border-gray-200 mb-12" />
-
-      {/* ── Education ── */}
-      {education.length > 0 && (
-        <FadeIn delay={0.05}>
-          <section className="mb-12">
-            <h2 className="text-xs font-semibold text-gray-900 uppercase tracking-widest mb-6">Education</h2>
-            <div className="space-y-8">
-              {education.map((entry, i) => (
-                <div key={i} className="flex gap-4">
-                  <div className="w-0.5 bg-gray-900 rounded-full shrink-0 mt-1" />
-                  <div>
-                    <p className="text-sm font-semibold text-gray-900">{entry.degree}</p>
-                    <p className="text-sm text-gray-600 mt-0.5">{entry.institution} · {entry.period}</p>
-                    {entry.description && (
-                      <p className="text-sm text-gray-700 mt-2 leading-relaxed">{entry.description}</p>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-        </FadeIn>
-      )}
-
-      <div className="border-t border-gray-200 mb-12" />
-
-      {/* ── Skills ── */}
-      {skills.length > 0 && (
-        <FadeIn delay={0.05}>
-          <section className="mb-12">
-            <h2 className="text-xs font-semibold text-gray-900 uppercase tracking-widest mb-6">Skills</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-              {skills.map(({ category, items }) => (
-                <div key={category}>
-                  <p className="text-xs uppercase tracking-widest text-gray-600 mb-3">{category}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {items.map((item) => (
-                      <span
-                        key={item}
-                        className="text-sm px-3 py-1 rounded-full border border-gray-300 text-gray-700"
-                      >
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-        </FadeIn>
-      )}
-
-      {/* ── Certificates ── */}
-      {certificates.length > 0 && (
-        <FadeIn delay={0.05}>
-          <>
-            <div className="border-t border-gray-200 mb-12" />
-            <section className="mb-12">
-              <h2 className="text-xs font-semibold text-gray-900 uppercase tracking-widest mb-6">Certificates</h2>
-              <div className="space-y-4">
-                {certificates.map((cert, i) => (
-                  <div key={i} className="flex items-start justify-between gap-4">
-                    <div>
-                      <p className="text-sm font-medium text-gray-900">{cert.title}</p>
-                      <p className="text-sm text-gray-600 mt-0.5">{cert.issuer} · {cert.date}</p>
-                    </div>
-                    {cert.url && (
-                      <a
-                        href={cert.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-xs text-gray-600 hover:text-gray-900 hover:underline underline-offset-2 whitespace-nowrap shrink-0"
-                      >
-                        View ↗
-                      </a>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </section>
-          </>
-        </FadeIn>
-      )}
-
-      {/* ── Currently ── */}
-      {currently.length > 0 && (
-        <FadeIn delay={0.05}>
-          <>
-            <div className="border-t border-gray-200 mb-12" />
+      {/* ── Two-Column Layout ── */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+        
+        {/* Left Column ── Journey Timeline & Certificates ── */}
+        <div className="space-y-12">
+          <FadeIn delay={0.05}>
             <section>
-              <h2 className="text-xs font-semibold text-gray-900 uppercase tracking-widest mb-4">Currently</h2>
-              <ul className="space-y-2">
-                {currently.map((item, i) => (
-                  <li key={i} className="flex gap-3 text-sm text-gray-800">
-                    <span className="text-gray-500 shrink-0">—</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
+              <div className="flex items-center gap-2.5 mb-8">
+                <FiCompass className="text-gray-400 text-lg shrink-0" />
+                <h2 className="text-xs font-semibold text-gray-900 uppercase tracking-widest">
+                  Journey
+                </h2>
+              </div>
+              <Timeline events={TIMELINE_EVENTS} />
             </section>
-          </>
-        </FadeIn>
-      )}
+          </FadeIn>
+
+          {/* ── Certificates ── */}
+          {certificates.length > 0 && (
+            <FadeIn delay={0.25}>
+              <section className="border border-gray-200 rounded-2xl p-6">
+                <div className="flex items-center gap-2.5 mb-6">
+                  <FiAward className="text-gray-400 text-lg shrink-0" />
+                  <h2 className="text-xs font-semibold text-gray-900 uppercase tracking-widest">
+                    Certificates
+                  </h2>
+                </div>
+                <div className="space-y-5">
+                  {certificates.map((cert, i) => (
+                    <div key={i} className="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
+                      <div>
+                        <p className="text-sm font-medium text-gray-900">{cert.title}</p>
+                        <p className="text-sm text-gray-600 mt-0.5">{cert.issuer} · {cert.date}</p>
+                      </div>
+                      {cert.url && (
+                        <a
+                          href={cert.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors whitespace-nowrap shrink-0"
+                        >
+                          View Certificate ↗
+                        </a>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </section>
+            </FadeIn>
+          )}
+        </div>
+
+        {/* Right Column ── Cards ── */}
+        <div className="space-y-8">
+          
+          {/* ── Currently ── */}
+          {currently.length > 0 && (
+            <FadeIn delay={0.1}>
+              <section className="border border-gray-200 rounded-2xl p-6">
+                <div className="flex items-center gap-2.5 mb-4">
+                  <FiActivity className="text-gray-400 text-lg shrink-0" />
+                  <h2 className="text-xs font-semibold text-gray-900 uppercase tracking-widest">
+                    Current Focus
+                  </h2>
+                </div>
+                <ul className="space-y-2">
+                  {currently.map((item, i) => (
+                    <li key={i} className="flex gap-3 text-sm text-gray-800">
+                      <span className="text-gray-500 shrink-0">—</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            </FadeIn>
+          )}
+
+          {/* ── Education ── */}
+          {education.length > 0 && (
+            <FadeIn delay={0.15}>
+              <section className="border border-gray-200 rounded-2xl p-6">
+                <div className="flex items-center gap-2.5 mb-6">
+                  <FiBookOpen className="text-gray-400 text-lg shrink-0" />
+                  <h2 className="text-xs font-semibold text-gray-900 uppercase tracking-widest">
+                    Education
+                  </h2>
+                </div>
+                <div className="space-y-6">
+                  {education.map((entry, i) => (
+                    <div key={i} className="flex gap-4">
+                      <div className="w-0.5 bg-gray-900 rounded-full shrink-0 mt-1" />
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900">{entry.degree}</p>
+                        <p className="text-sm text-gray-600 mt-0.5">{entry.institution} · {entry.period}</p>
+                        {entry.description && (
+                          <p className="text-sm text-gray-700 mt-2 leading-relaxed">{entry.description}</p>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            </FadeIn>
+          )}
+
+          {/* ── Skills ── */}
+          {skills.length > 0 && (
+            <FadeIn delay={0.2}>
+              <section className="border border-gray-200 rounded-2xl p-6">
+                <div className="flex items-center gap-2.5 mb-6">
+                  <FiLayers className="text-gray-400 text-lg shrink-0" />
+                  <h2 className="text-xs font-semibold text-gray-900 uppercase tracking-widest">
+                    Skills & Tools
+                  </h2>
+                </div>
+                <div className="space-y-6">
+                  {skills.map(({ category, items }) => (
+                    <div key={category}>
+                      <p className="text-xs uppercase tracking-widest text-gray-600 mb-3">{category}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {items.map((item) => (
+                          <span
+                            key={item}
+                            className="text-sm px-3 py-1 rounded-full border border-gray-300 text-gray-700 bg-gray-50"
+                          >
+                            {item}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            </FadeIn>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
