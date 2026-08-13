@@ -38,7 +38,7 @@ html, body, #root {
 
 /* Neutralize highlight.js's light "github" theme in dark mode. */
 .dark .hljs {
-  color: var(--color-gray-200);
+  color: var(--color-gray-800);
   background: transparent;
 }
 .dark .hljs-comment,
@@ -50,7 +50,7 @@ html, body, #root {
 .dark .hljs-subst,
 .dark .hljs-name,
 .dark .hljs-tag {
-  color: var(--color-gray-200);
+  color: var(--color-gray-800);
 }
 .dark .hljs-string,
 .dark .hljs-doctag,
@@ -59,18 +59,18 @@ html, body, #root {
 .dark .hljs-variable,
 .dark .hljs-template-variable,
 .dark .hljs-tag .hljs-attr {
-  color: var(--color-gray-400);
+  color: var(--color-gray-600);
 }
 .dark .hljs-title,
 .dark .hljs-section,
 .dark .hljs-selector-id {
-  color: var(--color-gray-100);
+  color: var(--color-gray-900);
 }
 .dark .hljs-attr,
 .dark .hljs-attribute,
 .dark .hljs-type,
 .dark .hljs-built_in {
-  color: var(--color-gray-300);
+  color: var(--color-gray-700);
 }
 .dark .hljs-meta,
 .dark .hljs-symbol,
@@ -83,7 +83,7 @@ html, body, #root {
 .dark .hljs-deletion,
 .dark .hljs-emphasis,
 .dark .hljs-strong {
-  color: var(--color-gray-300);
+  color: var(--color-gray-700);
 }
 
 /* LoaderAnimation hardcodes black shapes — flip them with the theme. */
