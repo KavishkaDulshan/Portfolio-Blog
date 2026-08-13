@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { FiHome, FiBookOpen, FiFolder, FiGrid, FiUser, FiMail } from 'react-icons/fi';
+import ThemeToggle from './ThemeToggle';
 
 const navLinks = [
   { label: 'Home', to: '/', icon: FiHome },
@@ -30,7 +31,12 @@ export default function NavBar() {
               <img
                 src="/favicon.svg"
                 alt="Kavishka Dulshan"
-                className="h-12 w-auto object-contain"
+                className="h-12 w-auto object-contain dark:hidden"
+              />
+              <img
+                src="/logo-dark.webp"
+                alt="Kavishka Dulshan"
+                className="h-12 w-auto object-contain hidden dark:block"
               />
             </Link>
 
@@ -43,20 +49,23 @@ export default function NavBar() {
               ))}
             </div>
 
-            {/* Mobile hamburger */}
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden text-gray-500 hover:text-gray-900 transition-colors"
-              aria-label="Toggle menu"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-                {isOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5" />
-                )}
-              </svg>
-            </button>
+            {/* Theme toggle + mobile hamburger */}
+            <div className="flex items-center gap-4">
+              <ThemeToggle />
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="md:hidden text-gray-500 hover:text-gray-900 transition-colors"
+                aria-label="Toggle menu"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                  {isOpen ? (
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  ) : (
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5" />
+                  )}
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
 
@@ -96,6 +105,7 @@ export default function NavBar() {
               <Icon className="w-6 h-6" />
             </NavLink>
           ))}
+          <ThemeToggle className="flex flex-col items-center justify-center w-full h-full" />
         </div>
       </nav>
     </>
