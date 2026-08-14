@@ -79,7 +79,7 @@ execSync('npx vite build --ssr src/entry-server.jsx --outDir dist/server', {
 // ── 3. Pre-fetch GitHub stats into dist/ (must run AFTER client build) ──
 await fetchGitHubStats({
   distDir: path.resolve(__dirname, 'dist'),
-  token: process.env.VITE_GITHUB_TOKEN,
+  token: process.env.GITHUB_TOKEN || process.env.VITE_GITHUB_TOKEN,
 });
 
 // ── 4. Pre-render every route ───────────────────────────────────────

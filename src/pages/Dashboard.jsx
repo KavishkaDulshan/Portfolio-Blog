@@ -96,53 +96,8 @@ export default function Dashboard() {
         setLoadingStats(false);
       })
       .catch(() => {
-        // Fall back to live GraphQL (dev mode / missing static file)
-        const token = import.meta.env.VITE_GITHUB_TOKEN;
-        if (!token) {
-          setStatsError('Stats unavailable: Missing API token.');
-          setLoadingStats(false);
-          return;
-        }
-
-        const query = `
-          query {
-            user(login: "kavishkadulshan") {
-              followers { totalCount }
-              issues { totalCount }
-              pullRequests { totalCount }
-              repositories(first: 100, ownerAffiliations: OWNER, isFork: false) {
-                nodes { stargazerCount }
-              }
-            }
-          }
-        `;
-
-        fetch('https://api.github.com/graphql', {
-          method: 'POST',
-          headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ query }),
-        })
-          .then((res) => res.json())
-          .then(({ data }) => {
-            if (data?.user) {
-              const totalStars = data.user.repositories.nodes.reduce(
-                (acc, repo) => acc + (repo.stargazerCount || 0), 0
-              );
-              setStats({
-                followers: data.user.followers.totalCount,
-                issues: data.user.issues.totalCount,
-                pullRequests: data.user.pullRequests.totalCount,
-                stars: totalStars,
-              });
-            } else {
-              setStatsError('Failed to load stats.');
-            }
-          })
-          .catch(() => setStatsError('Failed to fetch GitHub stats.'))
-          .finally(() => setLoadingStats(false));
+        setStatsError('Failed to load stats.');
+        setLoadingStats(false);
       });
   }, []);
 
