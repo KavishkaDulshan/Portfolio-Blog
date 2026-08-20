@@ -3,12 +3,12 @@ title: "The Comprehensive Guide to DevOps: Principles, Lifecycle, and Tooling"
 date: "2026-08-20"
 excerpt: "A complete guide to DevOps covering core principles, the CI/CD lifecycle, essential automation tools, DevSecOps, and best practices for modern software delivery."
 tags: ["devops", "cloud", "ci-cd", "software-engineering", "automation"]
-coverImage: "/images/blog/devops/cover.png"
+coverImage: "/images/blog/devops/1.webp"
 ---
 
 Modern software development demands speed, reliability, and scale. DevOps represents the cultural shift, engineering practices, and tooling designed to break down traditional silos between software development and IT operations.
 
-![DevOps Infinity Lifecycle Diagram](/images/blog/devops/lifecycle.png "The DevOps lifecycle illustrating continuous development, testing, integration, deployment, and monitoring")
+![DevOps Infinity Lifecycle Diagram](/images/blog/devops/image.webp "The DevOps lifecycle illustrating continuous development, testing, integration, deployment, and monitoring")
 
 ## What is DevOps?
 
