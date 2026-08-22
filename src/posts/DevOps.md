@@ -12,7 +12,7 @@ Modern software development demands speed, reliability, and scale. DevOps repres
 
 ## What is DevOps?
 
-DevOps combines **Development (Dev)** and **Operations (Ops)** into a unified methodology. Instead of developers writing code and passing it over a figurative wall to system administrators to deploy and maintain, cross-functional teams share ownership of the software across its entire lifecycle—from design and build to deployment and production monitoring.
+DevOps combines **Development (Dev)** and **Operations (Ops)** into a unified methodology. Instead of developers writing code and passing it over a figurative wall to system administrators to deploy and maintain, cross functional teams share ownership of the software across its entire lifecycle—from design and build to deployment and production monitoring.
 
 ### Core Objectives
 
