@@ -26,7 +26,7 @@ Understanding the raw hardware is the first step in deciding which chip fits you
 
 ## Connectivity and IoT
 
-The **ESP32-S3** is the undisputed king of wireless connectivity. With native Wi-Fi 4 and Bluetooth 5.0 (including Mesh support) built directly into the silicon, it is designed for the modern IoT landscape. If your project needs to talk to the cloud or a smartphone out of the box, the ESP32-S3 is the most cost-effective and space-efficient solution.
+The **ESP32-S3** is the undisputed king of wireless connectivity. With native Wi-Fi 4 and Bluetooth 5.0 (including Mesh support) built directly into the silicon, it is designed for the modern IoT landscape. If your project needs to talk to the cloud or a smartphone out of the box, the ESP32-S3 is the most cost effective and space-efficient solution.
 
 In contrast, the **STM32H7** focuses on wired reliability and industrial standards. While it lacks built-in Wi-Fi, it features an Ethernet MAC and advanced communication protocols like CAN-FD, making it better suited for factory floors or automotive applications where wireless interference is a concern.
 
@@ -55,7 +55,7 @@ The **STM32H7** is backed by robust industrial and professional support. STMicro
 
 * You require massive processing power (up to 480 MHz).
 * Your project involves complex industrial controls or high-end graphics (HMI).
-* You need robust, high-speed wired peripherals like Ethernet or CAN-FD.
+* You need robust, high speed wired peripherals like Ethernet or CAN-FD.
 * You are developing medical or industrial-grade hardware.
 
 ---
