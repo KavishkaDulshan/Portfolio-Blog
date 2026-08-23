@@ -5,7 +5,7 @@ excerpt: "Learn how utilizing the ESP32-S3's 128-bit SIMD vector engine and shif
 tags: ["esp32", "edge-ai", "embedded-systems", "robotics", "esp-idf"]
 coverImage: "/images/blog/ESP32KWS/0.webp"
 ---
-Tracking the complete software development lifecycle of the Companion Robot Project (2.1) has led to critical architectural breakthroughs. To support real-time user interactions without compromising physical system stability, the robot's architecture successfully transitioned from a standard, limited Arduino environment into an advanced dual-core ESP-IDF and Arduino hybrid framework.
+Tracking the complete software development lifecycle of the Companion Robot Project (2.1) has led to critical architectural breakthroughs. To support real time user interactions without compromising physical system stability, the robot's architecture successfully transitioned from a standard, limited Arduino environment into an advanced dual-core ESP-IDF and Arduino hybrid framework.
 
 By strategically isolating firmware tasks across both processing cores, the system completely eliminates kernel panics and high-frequency bus collisions. However, running a responsive voice interface alongside display graphics and physical sensor grids required moving beyond generic machine learning libraries to unlock raw hardware acceleration.
 
