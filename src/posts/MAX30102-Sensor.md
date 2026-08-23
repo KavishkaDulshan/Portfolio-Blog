@@ -51,7 +51,7 @@ The onboard circuitry automatically filters out external ambient room light, pro
 
 Before jumping into wiring, there is a vital hardware detail every developer using the MH-ET Live variant should know.
 
-The MAX30102 chip requires a 1.8V power rail internally, but the breakout board includes onboard regulators so it can accept 5V or 3.3V. However, the designers tied the onboard $I^2C$ pull-up resistors directly to the 5V (VIN) rail by default.
+The MAX30102 chip requires a 1.8V power rail internally, but the breakout board includes onboard regulators so it can accept 5V or 3.3V. However, the designers tied the onboard $I^2C$ pull up resistors directly to the 5V (VIN) rail by default.
 
 If you hook this board up to a 3.3V microcontroller like an ESP32 or an STM32 the 5V pull-ups can flood your controller's $I^2C$ pins with a higher voltage than they are designed to handle. This frequently manifests as sudden $I^2C$ bus lockups, or the sensor refusing to initialize entirely.
 
